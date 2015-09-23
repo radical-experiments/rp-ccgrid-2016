@@ -8,6 +8,7 @@ import time
 import os
 import radical.pilot as rp
 import random
+import pprint
 
 # "Global" configs
 
@@ -71,7 +72,7 @@ resource_config = {
         'LAUNCH_METHOD': 'FORK',
         #'AGENT_SPAWNER': 'POPEN',
         'AGENT_SPAWNER': 'SHELL',
-        'PPN': 4
+        'PPN': 8
     },
     'APRUN': {
         'RESOURCE': 'ncsa.bw',
@@ -186,18 +187,118 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 
 #--------------------------------------------------------------------------
 #
-def insert_exp_details(session, id):
+def insert_exp_details(session, details):
+
+    if not isinstance(details, dict):
+        raise Exception("Experiment details should be a dict")
 
     if session is None:
         raise Exception("No active session.")
 
     result = session._dbs._s.update(
         {"_id": session._uid},
-        {"$set" : {"experiment": {'id': id}}}
+        {"$set" : {"experiment": details}}
     )
 
     # return the object id as a string
     return str(result)
+
+
+def construct_agent_config(num_sub_agents):
+
+    config = {
+
+        # directory for staging files inside the agent sandbox
+        "staging_area"         : "staging_area",
+
+        # url scheme to indicate the use of staging_area
+        "staging_scheme"       : "staging",
+
+        # max number of cu out/err chars to push to db
+        "max_io_loglength"     : 1024,
+
+        # max time period to collect db notifications into bulks (seconds)
+        "bulk_collection_time" : 1.0,
+
+        # time to sleep between database polls (seconds)
+        "db_poll_sleeptime"    : 0.1,
+
+        # time between checks of internal state and commands from mothership (seconds)
+        "heartbeat_interval"   : 10,
+        # factor by which the number of units are increased at a certain step.  Value of
+        # "1" will leave the units unchanged.  Any blowup will leave on unit as the
+        # original, and will then create clones with an changed unit ID (see blowup()).
+        "clone" : {
+            "AgentWorker"                 : {"input" : 1, "output" : 1},
+            "AgentStagingInputComponent"  : {"input" : 1, "output" : 1},
+            "AgentSchedulingComponent"    : {"input" : 1, "output" : 1},
+            "AgentExecutingComponent"     : {"input" : 1, "output" : 1},
+            "AgentStagingOutputComponent" : {"input" : 1, "output" : 1}
+        },
+
+        # flag to drop all blown-up units at some point in the pipeline.  The units
+        # with the original IDs will again be left untouched, but all other units are
+        # silently discarded.
+        # 0: drop nothing
+        # 1: drop clones
+        # 2: drop everything
+        "drop" : {
+            "AgentWorker"                 : {"input" : 1, "output" : 1},
+            "AgentStagingInputComponent"  : {"input" : 1, "output" : 1},
+            "AgentSchedulingComponent"    : {"input" : 1, "output" : 1},
+            "AgentExecutingComponent"     : {"input" : 1, "output" : 1},
+            "AgentStagingOutputComponent" : {"input" : 1, "output" : 1}
+        }
+    }
+
+    layout =  {
+        "agent_0"   : {
+            "target": "local",
+            "pull_units": True,
+            "sub_agents": [],
+            "bridges" : [
+                # Leave the bridges on agent_0 for now
+                "agent_staging_input_queue",
+                "agent_scheduling_queue",
+                "agent_executing_queue",
+                "agent_staging_output_queue",
+
+                "agent_unschedule_pubsub",
+                "agent_reschedule_pubsub",
+                "agent_command_pubsub",
+                "agent_state_pubsub"
+            ],
+            "components" : {
+                # We'll only toy around with the AgentExecutingComponent for now
+                "AgentStagingInputComponent": 1,
+                "AgentSchedulingComponent": 1,
+                "AgentExecutingComponent": 0,
+                "AgentStagingOutputComponent" : 1
+            }
+        }
+    }
+
+    for sub_agent_id in range(1, num_sub_agents+1):
+
+        sub_agent_name = "agent_%d" % sub_agent_id
+
+        layout[sub_agent_name] = {
+            "components": {
+                "AgentExecutingComponent": 1,
+            },
+            "target": "node"
+        }
+
+        # Add sub-agent to list of sub-agents
+        layout["agent_0"]["sub_agents"].append(sub_agent_name)
+
+    # Add the complete contructed layout to the agent config now
+    config["agent_layout"] = layout
+
+    return config
+#
+#------------------------------------------------------------------------------
+
 
 #------------------------------------------------------------------------------
 #
@@ -303,7 +404,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         time.sleep(5)
 
         print "inserting meta data into session"
-        insert_exp_details(session, 42)
+        insert_exp_details(session, {'magic': agent_config})
 
         print "closing session"
         session.close(cleanup=False, terminate=True)
@@ -802,12 +903,107 @@ def exp6(repeat):
 
 #------------------------------------------------------------------------------
 #
+# Variable CU duration (0, 600, 3600)
+# Fixed backend (ORTE)
+# Variable CU count (1 generations)
+# Variable CU cores = pilot cores
+# CU = /bin/sleep
+# Variable Pilot cores (32(2), 128(4), 512(32), 1024(64), 2048(128), 4096, 8192)
+#
+# Goals: A) Investigate the scale of things.
+#        B) Investigate the effect of 1 per node vs 32 per node
+#
+def exp7(repeat):
+
+    f = open('exp7.txt', 'a')
+    f.write('%s\n' % time.ctime())
+
+    agent_config = construct_agent_config(num_sub_agents=2)
+
+    sessions = {}
+
+    # Enable/Disable profiling
+    profiling=True
+
+    backend = 'LOCAL'
+
+    generations = 1
+
+    # The number of cores to acquire on the resource
+    #nodes_var = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    #nodes_var = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    #cores_var = [32, 128, 512, 1024, 2048, 4096]
+    nodes_var = [1]
+    #random.shuffle(nodes_var)
+
+    # Single core and multicore
+    #cu_cores_var = [1, resource_config[backend]['PPN']]
+    #random.shuffle(cu_cores_var)
+    cu_cores_var = [1]
+
+    # Maximum walltime for experiment
+    pilot_runtime = 10 # should we guesstimate this?
+
+    cu_sleep = 10
+
+    for iter in range(repeat):
+
+        for nodes in nodes_var:
+
+            pilot_cores = int(resource_config[backend]['PPN']) * nodes
+
+            for cu_cores in cu_cores_var:
+
+                # Don't need full node experiments for low number of nodes,
+                # as we have no equivalent in single core experiments
+                if nodes < cu_cores:
+                    continue
+
+                # keep core consumption equal
+                cu_count = (generations * pilot_cores) / cu_cores
+
+                #cu_sleep = max(60, cu_count / 5)
+
+                sid = run_experiment(
+                    backend=backend,
+                    pilot_cores=pilot_cores,
+                    pilot_runtime=pilot_runtime,
+                    cu_runtime=cu_sleep,
+                    cu_cores=cu_cores,
+                    cu_count=cu_count,
+                    profiling=profiling,
+                    agent_config=agent_config
+                )
+
+                sessions[sid] = {
+                    'backend': backend,
+                    'pilot_cores': pilot_cores,
+                    'pilot_runtime': pilot_runtime,
+                    'cu_runtime': cu_sleep,
+                    'cu_cores': cu_cores,
+                    'cu_count': cu_count,
+                    'profiling': profiling,
+                    'iteration': iter
+                }
+                f.write('%s - %s\n' % (sid, str(sessions[sid])))
+                f.flush()
+
+    f.close()
+    return sessions
+#
+#-------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+#
 if __name__ == "__main__":
 
     #sessions = exp1(3)
     #sessions = exp2(3)
     #sessions = exp3(3)
     #sessions = exp4(3)
-    sessions = exp5(1)
+    #sessions = exp5(1)
     #sessions = exp6(1)
+    sessions = exp7(1)
     print sessions
+
+    #pprint.pprint(construct_agent_config(num_sub_agents=2))
