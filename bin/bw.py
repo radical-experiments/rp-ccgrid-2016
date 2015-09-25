@@ -12,47 +12,6 @@ import radical.utils as ru
 import random
 import pprint
 
-# "Global" configs
-
-# agent_config = {
-#     "number_of_workers": {
-#         "StageinWorker"   : 1,
-#         "ExecWorker"      : 1,
-#         "StageoutWorker"  : 1,
-#         "UpdateWorker"    : 1
-#     },
-#     "blowup_factor": {
-#         "Agent"           : 1,
-#         "stagein_queue"   : 1,
-#         "StageinWorker"   : 1,
-#         "schedule_queue"  : 1,
-#         "Scheduler"       : 1,
-#         "execution_queue" : 1,
-#         "ExecWorker"      : 1,
-#         "watch_queue"     : 1,
-#         "ExecWatcher"     : 1,
-#         "stageout_queue"  : 1,
-#         "StageoutWorker"  : 1,
-#         "update_queue"    : 1,
-#         "UpdateWorker"    : 1
-#     },
-#     "drop_clones": {
-#         "Agent"           : 1,
-#         "stagein_queue"   : 1,
-#         "StageinWorker"   : 1,
-#         "schedule_queue"  : 1,
-#         "Scheduler"       : 1,
-#         "execution_queue" : 1,
-#         "ExecWorker"      : 1,
-#         "watch_queue"     : 1,
-#         "ExecWatcher"     : 1,
-#         "stageout_queue"  : 1,
-#         "StageoutWorker"  : 1,
-#         "update_queue"    : 1,
-#         "UpdateWorker"    : 1
-#     }
-# }
-
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local
 VIRTENV_MODE = "create" # create, use, update
