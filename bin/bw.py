@@ -7,6 +7,8 @@ import sys
 import time
 import os
 import radical.pilot as rp
+import saga
+import radical.utils as ru
 import random
 import pprint
 
@@ -195,6 +197,12 @@ def insert_exp_details(session, details):
     if session is None:
         raise Exception("No active session.")
 
+    details['software_stack'] = {
+        'rp': rp.version_detail,
+        'saga': saga.version_detail,
+        'ru': ru.version_detail
+    }
+
     result = session._dbs._s.update(
         {"_id": session._uid},
         {"$set" : {"experiment": details}}
@@ -292,7 +300,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
         # Add sub-agent to list of sub-agents
         layout["agent_0"]["sub_agents"].append(sub_agent_name)
 
-    # Add the complete contructed layout to the agent config now
+    # Add the complete constructed layout to the agent config now
     config["agent_layout"] = layout
 
     return config
