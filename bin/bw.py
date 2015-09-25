@@ -189,15 +189,16 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 
 #--------------------------------------------------------------------------
 #
-def insert_exp_details(session, details):
+def insert_metadata(session, metadata):
 
-    if not isinstance(details, dict):
-        raise Exception("Experiment details should be a dict")
+    if not isinstance(metadata, dict):
+        raise Exception("Session metadata should be a dict!")
 
     if session is None:
         raise Exception("No active session.")
 
-    details['software_stack'] = {
+    # Always record the radical software stack
+    metadata['radical_stack'] = {
         'rp': rp.version_detail,
         'saga': saga.version_detail,
         'ru': ru.version_detail
@@ -205,12 +206,8 @@ def insert_exp_details(session, details):
 
     result = session._dbs._s.update(
         {"_id": session._uid},
-        {"$set" : {"experiment": details}}
+        {"$set" : {"metadata": metadata}}
     )
-
-    # return the object id as a string
-    return str(result)
-
 
 def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
 
@@ -310,11 +307,24 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, profiling, agent_config):
+def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, profiling, agent_config, metadata=None):
 
     # Profiling
     if profiling:
         os.environ['RADICAL_PILOT_PROFILE'] = 'TRUE'
+
+    if not metadata:
+        metadata = {}
+
+    metadata.update({
+        'backend': backend,
+        'pilot_cores': pilot_cores,
+        'pilot_runtime': pilot_runtime,
+        'cu_runtime': cu_runtime,
+        'cu_cores': cu_cores,
+        'cu_count': cu_count,
+        'profiling': profiling
+    })
 
     # Create a new session. No need to try/except this: if session creation
     # fails, there is not much we can do anyways...
@@ -408,11 +418,10 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         print "need to exit now: %s" % e
 
     finally:
-        # Give the agent chance to write all.
-        time.sleep(5)
 
-        print "inserting meta data into session"
-        insert_exp_details(session, {'magic': agent_config})
+        if metadata:
+            print "Inserting meta data into session"
+            insert_metadata(session, metadata)
 
         print "closing session"
         session.close(cleanup=False, terminate=True)
@@ -921,7 +930,7 @@ def exp6(repeat):
 # Goals: A) Investigate the scale of things.
 #        B) Investigate the effect of 1 per node vs 32 per node
 #
-def exp7(repeat):
+def exp7(repetitions):
 
     f = open('exp7.txt', 'a')
     f.write('%s\n' % time.ctime())
@@ -934,7 +943,7 @@ def exp7(repeat):
         num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
     )
 
-    sessions = {}
+    sessions = []
 
     # Enable/Disable profiling
     profiling=True
@@ -960,7 +969,7 @@ def exp7(repeat):
 
     cu_sleep = 10
 
-    for iter in range(repeat):
+    for iter in range(repetitions):
 
         for nodes in nodes_var:
 
@@ -986,20 +995,22 @@ def exp7(repeat):
                     cu_cores=cu_cores,
                     cu_count=cu_count,
                     profiling=profiling,
-                    agent_config=agent_config
+                    agent_config=agent_config,
+                    metadata={
+                        'label': 'ultimate',
+                        'repetitions': repetitions,
+                        'iteration': iter,
+                        'generations': generations,
+                        'num_sub_agents': num_sub_agents,
+                        'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
+                    }
                 )
 
-                sessions[sid] = {
-                    'backend': backend,
-                    'pilot_cores': pilot_cores,
-                    'pilot_runtime': pilot_runtime,
-                    'cu_runtime': cu_sleep,
-                    'cu_cores': cu_cores,
-                    'cu_count': cu_count,
-                    'profiling': profiling,
-                    'iteration': iter
-                }
-                f.write('%s - %s\n' % (sid, str(sessions[sid])))
+                # Append sessionid to return value
+                sessions.append(sid)
+
+                # Record sessionid to file
+                f.write('%s\n' % sid)
                 f.flush()
 
     f.close()
