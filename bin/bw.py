@@ -385,7 +385,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         print "closing session"
         session.close(cleanup=False, terminate=True)
 
-        return session._uid
+        return session._uid, metadata
 #
 #------------------------------------------------------------------------------
 
@@ -894,15 +894,8 @@ def exp7(repetitions):
     f = open('exp7.txt', 'a')
     f.write('%s\n' % time.ctime())
 
-    num_sub_agents = 2
-    num_exec_instances_per_sub_agent = 4
-
-    agent_config = construct_agent_config(
-        num_sub_agents=num_sub_agents,
-        num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
-    )
-
-    sessions = []
+    num_sub_agents_var = [1, 2, 4]
+    num_exec_instances_per_sub_agent_var = [1]
 
     # Enable/Disable profiling
     profiling=True
@@ -926,51 +919,65 @@ def exp7(repetitions):
     # Maximum walltime for experiment
     pilot_runtime = 10 # should we guesstimate this?
 
+    # Duration of the payload
     cu_sleep = 10
+
+    # Variable to keep track of sessions
+    sessions = {}
 
     for iter in range(repetitions):
 
         for nodes in nodes_var:
 
+            # Pilot Desc takes cores, so we translate from nodes here
             pilot_cores = int(resource_config[backend]['PPN']) * nodes
 
             for cu_cores in cu_cores_var:
 
-                # Don't need full node experiments for low number of nodes,
-                # as we have no equivalent in single core experiments
-                if nodes < cu_cores:
-                    continue
+                for num_sub_agents in num_sub_agents_var:
 
-                # keep core consumption equal
-                cu_count = (generations * pilot_cores) / cu_cores
+                    for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
 
-                #cu_sleep = max(60, cu_count / 5)
+                        # Don't need full node experiments for low number of nodes,
+                        # as we have no equivalent in single core experiments
+                        if nodes < cu_cores:
+                            continue
 
-                sid = run_experiment(
-                    backend=backend,
-                    pilot_cores=pilot_cores,
-                    pilot_runtime=pilot_runtime,
-                    cu_runtime=cu_sleep,
-                    cu_cores=cu_cores,
-                    cu_count=cu_count,
-                    profiling=profiling,
-                    agent_config=agent_config,
-                    metadata={
-                        'label': 'ultimate',
-                        'repetitions': repetitions,
-                        'iteration': iter,
-                        'generations': generations,
-                        'num_sub_agents': num_sub_agents,
-                        'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
-                    }
-                )
+                        # keep core consumption equal
+                        cu_count = (generations * pilot_cores) / cu_cores
 
-                # Append sessionid to return value
-                sessions.append(sid)
+                        #cu_sleep = max(60, cu_count / 5)
 
-                # Record sessionid to file
-                f.write('%s\n' % sid)
-                f.flush()
+                        agent_config = construct_agent_config(
+                            num_sub_agents=num_sub_agents,
+                            num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
+                        )
+
+                        sid, meta = run_experiment(
+                            backend=backend,
+                            pilot_cores=pilot_cores,
+                            pilot_runtime=pilot_runtime,
+                            cu_runtime=cu_sleep,
+                            cu_cores=cu_cores,
+                            cu_count=cu_count,
+                            profiling=profiling,
+                            agent_config=agent_config,
+                            metadata={
+                                'label': 'ultimate',
+                                'repetitions': repetitions,
+                                'iteration': iter,
+                                'generations': generations,
+                                'num_sub_agents': num_sub_agents,
+                                'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
+                            }
+                        )
+
+                        # Append sessionid to return value
+                        sessions[sid] = meta
+
+                        # Record sessionid to file
+                        f.write('%s - %s - %s\n' % (sid, time.ctime(), str(meta)))
+                        f.flush()
 
     f.close()
     return sessions
