@@ -204,7 +204,7 @@ def insert_exp_details(session, details):
     return str(result)
 
 
-def construct_agent_config(num_sub_agents):
+def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
 
     config = {
 
@@ -284,7 +284,7 @@ def construct_agent_config(num_sub_agents):
 
         layout[sub_agent_name] = {
             "components": {
-                "AgentExecutingComponent": 1,
+                "AgentExecutingComponent": num_exec_instances_per_sub_agent,
             },
             "target": "node"
         }
@@ -918,7 +918,13 @@ def exp7(repeat):
     f = open('exp7.txt', 'a')
     f.write('%s\n' % time.ctime())
 
-    agent_config = construct_agent_config(num_sub_agents=2)
+    num_sub_agents = 2
+    num_exec_instances_per_sub_agent = 4
+
+    agent_config = construct_agent_config(
+        num_sub_agents=num_sub_agents,
+        num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
+    )
 
     sessions = {}
 
