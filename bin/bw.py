@@ -59,7 +59,6 @@ resource_config = {
         'RESOURCE': 'ncsa.bw',
         'LAUNCH_METHOD': "ORTE",
         'AGENT_SPAWNER': 'SHELL',
-    #nodes_var = [1]
         #'AGENT_SPAWNER': 'POPEN',
         #'QUEUE': 'debug', # Maximum 30 minutes
         'PPN': 32,
