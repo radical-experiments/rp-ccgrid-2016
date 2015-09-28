@@ -68,6 +68,14 @@ resource_config = {
             'module load openmpi/git'
         ]
     },
+    'BW': {
+        'RESOURCE': 'ncsa.bw',
+        'LAUNCH_METHOD': "ORTE",
+        'AGENT_SPAWNER': 'POPEN',
+        'PROJECT': 'gkd',
+        'QUEUE': 'debug', # Maximum 30 minutes
+        'PPN': 32
+    },
     'TITAN': {
         'RESOURCE': 'ornl.titan',
         'SCHEMA': 'local',
