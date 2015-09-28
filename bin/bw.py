@@ -7,8 +7,6 @@ import sys
 import time
 import os
 import radical.pilot as rp
-import saga
-import radical.utils as ru
 import random
 import pprint
 
@@ -146,27 +144,6 @@ def wait_queue_size_cb(umgr, wait_queue_size):
     print "[Callback]: wait_queue_size: %s." % wait_queue_size
 #------------------------------------------------------------------------------
 
-#--------------------------------------------------------------------------
-#
-def insert_metadata(session, metadata):
-
-    if not isinstance(metadata, dict):
-        raise Exception("Session metadata should be a dict!")
-
-    if session is None:
-        raise Exception("No active session.")
-
-    # Always record the radical software stack
-    metadata['radical_stack'] = {
-        'rp': rp.version_detail,
-        'saga': saga.version_detail,
-        'ru': ru.version_detail
-    }
-
-    result = session._dbs._s.update(
-        {"_id": session._uid},
-        {"$set" : {"metadata": metadata}}
-    )
 
 def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
 
@@ -380,7 +357,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 
         if metadata:
             print "Inserting meta data into session"
-            insert_metadata(session, metadata)
+            rp.utils.inject_metadata(session, metadata)
 
         print "closing session"
         session.close(cleanup=False, terminate=True)
