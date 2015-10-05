@@ -56,7 +56,9 @@ if __name__ == '__main__':
     # Read from file if specified, otherwise read from stdin
     f = open(sys.argv[1]) if len(sys.argv) > 1 else sys.stdin
     for line in f:
-        session_ids.append(line.strip())
+        session = line.strip()
+        if session:
+            session_ids.append(session)
 
     report.info("Session ids found on input:\n")
     report.plain("%s\n" % session_ids)
