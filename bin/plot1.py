@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import glob
 import pandas as pd
 
 EXPERIMENT_DIR = '/Users/mark/ipdps16/experiments'
@@ -21,6 +22,8 @@ import matplotlib as mp
 ###############################################################################
 # Get the pilots resource labels for this session
 def get_resources(unit_info_df, pilot_info_df, sid):
+
+    print "Plotting %s ..." % sid
 
     resources = {}
 
@@ -88,18 +91,32 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
                       fontsize=10)
     mp.pyplot.xlabel("Compute Units (ordered by agent arrival)")
     mp.pyplot.ylabel("Time (s)")
-    #mp.pyplot.ylim(-0.5)
+    mp.pyplot.ylim(0)
 
     mp.pyplot.savefig('plot1.pdf')
     mp.pyplot.savefig('%s_plot1.pdf' % sid)
+    mp.pyplot.close()
+
+###############################################################################
+#
+def find_sessions(json_dir):
+
+    session_paths = glob.glob('%s/rp.session.*json' % json_dir)
+    if not session_paths:
+        raise Exception("No session files found in directory %s" % json_dir)
+
+    session_files = [os.path.basename(e) for e in session_paths]
+
+    session_ids = [e.rsplit('.json')[0] for e in session_files]
+
+    print "Found sessions in %s: %s" % (json_dir, session_ids)
+
+    return session_ids
 
 
 ###############################################################################
 #
 if __name__ == '__main__':
-
-    #session_id = 'rp.session.netbook.mark.016708.0008'
-    #session_id = 'rp.session.titan-ext7.marksant1.016713.0001'
 
     session_ids = []
 
@@ -107,6 +124,9 @@ if __name__ == '__main__':
     f = open(sys.argv[1]) if len(sys.argv) > 1 else sys.stdin
     for line in f:
         session_ids.append(line.strip())
+
+    if not session_ids:
+        session_ids = find_sessions(JSON_DIR)
 
     unit_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
     pilot_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
