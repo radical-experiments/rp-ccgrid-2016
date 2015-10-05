@@ -120,7 +120,8 @@ def pilot_state_cb (pilot, state):
     print "[Callback]: ComputePilot '%s' state: %s." % (pilot.uid, state)
 
     if state == rp.FAILED:
-        sys.exit (1)
+        #sys.exit (1)
+        pass
 
 
 CNT = 0
