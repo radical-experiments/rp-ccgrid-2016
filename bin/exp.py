@@ -880,13 +880,14 @@ def exp7(repetitions):
     f = open('exp7.txt', 'a')
     f.write('%s\n' % time.ctime())
 
-    num_sub_agents_var = [1, 2, 4]
-    num_exec_instances_per_sub_agent_var = [1]
+    #num_sub_agents_var = [1, 2, 4]
+    num_sub_agents_var = [2]
+    num_exec_instances_per_sub_agent_var = [4]
 
     # Enable/Disable profiling
     profiling=True
 
-    backend = 'LOCAL'
+    backend = 'TITAN'
 
     generations = 1
 
