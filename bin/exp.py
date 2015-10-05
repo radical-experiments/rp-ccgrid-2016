@@ -29,8 +29,8 @@ resource_config = {
     'LOCAL': {
         'RESOURCE': 'local.localhost',
         'LAUNCH_METHOD': 'FORK',
-        #'AGENT_SPAWNER': 'POPEN',
-        'AGENT_SPAWNER': 'SHELL',
+        'AGENT_SPAWNER': 'POPEN',
+        #'AGENT_SPAWNER': 'SHELL',
         'PPN': 8
     },
     'APRUN': {
