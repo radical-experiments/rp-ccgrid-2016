@@ -800,8 +800,9 @@ def exp6(repeat):
 
     # The number of cores to acquire on the resource
     #nodes_var = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    #nodes_var = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    cores_var = [32, 128, 512, 1024, 2048, 4096]
+    nodes_var = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    #cores_var = [32, 128, 512, 1024, 2048, 4096]
+    # Disable nodes_var shuffle to get the some results quickly because of queuing time
     #random.shuffle(nodes_var)
 
     # Single core and multicore
