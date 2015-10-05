@@ -19,13 +19,17 @@ def collect(sid):
     # If we run from the titan headnode, collect over GO
     if 'rp.session.titan' in sid:
         access = 'go://olcf#dtn'
+        client_dir = 'go://olcf#dtn/ccs/home/marksant1/radical.pilot/tests'
+        target_dir = 'go://localhost%s' % TARGET_DIR
     else:
         # Default
         access = None
+        client_dir = CLIENT_DIR
+        target_dir = TARGET_DIR
 
     report.info("Collecting profiles for session: %s.\n" % sid)
-    sid_profiles = rpu.fetch_profiles(sid=sid, client=CLIENT_DIR,
-                                      tgt=TARGET_DIR, access=access,
+    sid_profiles = rpu.fetch_profiles(sid=sid, client=client_dir,
+                                      tgt=target_dir, access=access,
                                       skip_existing=True)
     print sid_profiles
 
