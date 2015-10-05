@@ -924,10 +924,16 @@ def exp7(repetitions):
 
                     for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
 
-                        pilot_nodes = nodes + num_sub_agents
+                        if exclusive_agent_nodes:
+                            pilot_nodes = nodes + num_sub_agents
+                        else:
+                            pilot_nodes = nodes
 
                         # Pilot Desc takes cores, so we translate from nodes here
                         pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
+
+                        # Number of cores available for CUs
+                        worker_cores = int(resource_config[backend]['PPN']) * nodes
 
                         # Don't need full node experiments for low number of nodes,
                         # as we have no equivalent in single core experiments
@@ -935,9 +941,7 @@ def exp7(repetitions):
                             continue
 
                         # keep core consumption equal
-                        cu_count = (generations * pilot_cores) / cu_cores
-
-                        #cu_sleep = max(60, cu_count / 5)
+                        cu_count = (generations * worker_cores) / cu_cores
 
                         agent_config = construct_agent_config(
                             num_sub_agents=num_sub_agents,
