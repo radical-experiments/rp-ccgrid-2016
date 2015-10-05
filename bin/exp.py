@@ -962,6 +962,7 @@ def exp7(repetitions):
                                 'repetitions': repetitions,
                                 'iteration': iter,
                                 'generations': generations,
+                                'exclusive_agent_nodes': exclusive_agent_nodes,
                                 'num_sub_agents': num_sub_agents,
                                 'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
                             }
