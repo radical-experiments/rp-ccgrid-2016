@@ -914,14 +914,16 @@ def exp7(repetitions):
 
         for nodes in nodes_var:
 
-            # Pilot Desc takes cores, so we translate from nodes here
-            pilot_cores = int(resource_config[backend]['PPN']) * nodes
-
             for cu_cores in cu_cores_var:
 
                 for num_sub_agents in num_sub_agents_var:
 
                     for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
+
+                        pilot_nodes = nodes + num_sub_agents
+
+                        # Pilot Desc takes cores, so we translate from nodes here
+                        pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
 
                         # Don't need full node experiments for low number of nodes,
                         # as we have no equivalent in single core experiments
