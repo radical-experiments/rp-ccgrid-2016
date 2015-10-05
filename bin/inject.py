@@ -19,12 +19,6 @@ RADICAL_PILOT_DBURL = None
 pd.set_option('display.width', 300)
 pd.set_option('io.hdf.default_format','table')
 
-#
-# Turn ID into a name that can be used as a python identifier.
-#
-def normalize_id(sid):
-    return sid.replace('.', '_')
-
 ###############################################################################
 # Convert from unicode to strings
 def convert(input):
@@ -76,9 +70,6 @@ def find_profiles(sid):
 #
 def inject(sid):
 
-    #norm_sid = normalize_id(sid)
-    norm_sid = sid
-
     sid_profiles = find_profiles(sid)
     print sid_profiles
     report.info("Combining profiles for session: %s.\n" % sid)
@@ -87,36 +78,32 @@ def inject(sid):
     for p in combined_profiles:
         uids.add(p['uid'])
 
-    print uids
-    #exit()
-
     report.info("Converting profiles to frames for session: %s.\n" % sid)
     frames = rpu.prof2frame(combined_profiles)
 
     report.info("Head of Combined DF for session %s:\n" % sid)
-    #print frames.head()
     print frames.entity.unique()
 
     ses_prof_fr, pilot_prof_fr, cu_prof_fr = rpu.split_frame(frames)
 
     report.info("Head of Session DF for session %s:\n" % sid)
-    ses_prof_fr.insert(0, 'sid', norm_sid)
+    ses_prof_fr.insert(0, 'sid', sid)
     print ses_prof_fr.head()
 
     report.info("Head of Pilot DF for session %s:\n" % sid)
-    pilot_prof_fr.insert(0, 'sid', norm_sid)
+    pilot_prof_fr.insert(0, 'sid', sid)
     print pilot_prof_fr.head()
 
     report.info("Head of CU DF for session %s:\n" % sid)
     rpu.add_states(cu_prof_fr)
     rpu.add_info(cu_prof_fr)
 
-    cu_prof_fr.insert(0, 'sid', norm_sid)
+    cu_prof_fr.insert(0, 'sid', sid)
     print cu_prof_fr.head()
 
     # transpose
     tr_cu_prof_fr = rpu.get_info_df(cu_prof_fr)
-    tr_cu_prof_fr.insert(0, 'sid', norm_sid)
+    tr_cu_prof_fr.insert(0, 'sid', sid)
     report.info("Head of Transposed CU DF for session %s:\n" % sid)
     print tr_cu_prof_fr.head()
 
@@ -150,8 +137,6 @@ def inject_all(session_ids, storage):
         raise Exception("Unknown storage type")
 
     for sid in session_ids:
-
-        norm_sid = normalize_id(sid)
 
         if storage == "void":
             inject(sid)
