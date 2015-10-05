@@ -984,6 +984,6 @@ if __name__ == "__main__":
     #sessions = exp5(1)
     #sessions = exp6(1)
     sessions = exp7(1)
-    print sessions
+    pprint.pprint(sessions)
 
-    #pprint.pprint(construct_agent_config(num_sub_agents=2))
+    #pprint.pprint(construct_agent_config(num_sub_agents=2, num_exec_instances_per_sub_agent=4))
