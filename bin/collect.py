@@ -19,7 +19,7 @@ def collect(sid):
     # If we run from the titan headnode, collect over GO
     if 'rp.session.titan' in sid:
         access = 'go://olcf#dtn'
-        client_dir = 'go://olcf#dtn/ccs/home/marksant1/radical.pilot/tests'
+        client_dir = 'go://olcf#dtn/ccs/home/marksant1/ipdps16/bin'
         target_dir = 'go://localhost%s' % TARGET_DIR
     else:
         # Default
