@@ -1,4 +1,5 @@
 import os
+import sys
 import glob
 import radical.pilot.utils as rpu
 import radical.utils as ru
@@ -208,6 +209,14 @@ if __name__ == '__main__':
 
     report = ru.Reporter("Inject profiling and json data into database.")
 
-    session_ids = find_sessions(JSON_DIR)
+    session_ids = []
+
+    # Read from file if specified, otherwise read from stdin
+    f = open(sys.argv[1]) if len(sys.argv) > 1 else sys.stdin
+    for line in f:
+        session_ids.append(line.strip())
+
+    if not session_ids:
+        session_ids = find_sessions(JSON_DIR)
 
     inject_all(session_ids, 'pickle')
