@@ -144,6 +144,8 @@ def inject_all(session_ids, storage):
         store = pd.HDFStore(os.path.join(HDF5_DIR, 'store.h5'))
     elif storage == 'pickle':
         pass
+    elif storage == "void":
+        pass
     else:
         raise Exception("Unknown storage type")
 
@@ -151,9 +153,14 @@ def inject_all(session_ids, storage):
 
         norm_sid = normalize_id(sid)
 
-        ses_info_fr, pilot_info_fr, unit_info_fr, \
-        ses_prof_fr, pilot_prof_fr, cu_prof_fr, tr_cu_prof_fr = \
-                inject(sid)
+        if storage == "void":
+            inject(sid)
+            continue
+        else:
+            ses_info_fr, pilot_info_fr, unit_info_fr, \
+            ses_prof_fr, pilot_prof_fr, cu_prof_fr, tr_cu_prof_fr = \
+                    inject(sid)
+
 
         ses_info_fr_all = ses_info_fr_all.append(ses_info_fr)
         pilot_info_fr_all = pilot_info_fr_all.append(pilot_info_fr)
@@ -185,6 +192,8 @@ def inject_all(session_ids, storage):
         cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
         tr_cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
 
+    elif storage == "void":
+        pass
 
 ###############################################################################
 #
