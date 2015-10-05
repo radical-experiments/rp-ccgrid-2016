@@ -877,8 +877,9 @@ def exp6(repeat):
 #
 def exp7(repetitions):
 
+    exclusive_agent_nodes  = True
+
     f = open('exp7.txt', 'a')
-    f.write('%s\n' % time.ctime())
 
     #num_sub_agents_var = [1, 2, 4]
     num_sub_agents_var = [2]
