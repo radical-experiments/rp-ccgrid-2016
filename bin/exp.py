@@ -950,7 +950,7 @@ def exp7(repetitions):
                             profiling=profiling,
                             agent_config=agent_config,
                             metadata={
-                                'label': 'ultimate',
+                                'label': 'exp7',
                                 'repetitions': repetitions,
                                 'iteration': iter,
                                 'generations': generations,
