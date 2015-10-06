@@ -65,7 +65,7 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
         # We sort the units based on the order they arrived at the agent
         tufs = tuf.sort('awo_get_u_pend')
 
-        (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line')
+        ax = (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line')
         labels.append("ExecWorkers: %d" % info['metadata.num_exec_instances_per_sub_agent'])
 
         # (tufs['aew_after_exec'] - tufs['aew_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
@@ -86,13 +86,16 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("Core utilisation overhead per CU for varying ExecWorkers.\n"
                     "%d CUs of %d core(s) with a %ss payload on a %d core pilot on %s.\n"
-                    "%d sub-agent with varying ExecWorker(s). All times are per CU."
+                    "%d sub-agent with varying ExecWorker(s). All times are per CU.\n"
+                    "RP: %s - RS: %s - RU: %s"
                    % (info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], info['metadata.pilot_cores'], resource_label,
-                      info['metadata.num_sub_agents']),
-                      fontsize=10)
+                      info['metadata.num_sub_agents'],
+                      info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
+                      ), fontsize=8)
     mp.pyplot.xlabel("Compute Units (ordered by agent arrival)")
     mp.pyplot.ylabel("Time (s)")
     mp.pyplot.ylim(0)
+    ax.get_xaxis().set_ticks([])
 
     mp.pyplot.savefig('plot2.pdf')
     #mp.pyplot.close()
