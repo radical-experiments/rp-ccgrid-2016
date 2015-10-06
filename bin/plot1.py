@@ -78,7 +78,7 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     (tufs['aew_work_u_pend'] - tufs['asc_put_u_pend']).plot(kind='line', color='green')
     labels.append("ExecWorker Queue")
 
-    (tufs['asoc_get_u_pend'] - tufs['aew_put_u_pend']).plot(kind='line', color='cyan')
+    ax = (tufs['asoc_get_u_pend'] - tufs['aew_put_u_pend']).plot(kind='line', color='cyan')
     labels.append("StageOut Queue")
 
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
@@ -94,6 +94,7 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     mp.pyplot.xlabel("Compute Units (ordered by agent arrival)")
     mp.pyplot.ylabel("Time (s)")
     mp.pyplot.ylim(0)
+    ax.get_xaxis().set_ticks([])
 
     mp.pyplot.savefig('plot1.pdf')
     mp.pyplot.savefig('%s_plot1.pdf' % sid)
