@@ -83,7 +83,11 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids, value):
         elif value == 'stageout':
             ax = (tufs['asoc_get_u_pend'] - tufs['aew_put_u_pend']).plot(kind='line')
 
+        else:
+            raise Exception("Value %s unknown" % value)
+
         labels.append("ExecWorkers: %d" % info['metadata.num_exec_instances_per_sub_agent'])
+
 
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("'%s' per CU for varying ExecWorkers.\n"
