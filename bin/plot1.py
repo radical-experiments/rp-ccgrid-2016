@@ -84,11 +84,13 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("%s (%s)\n"
                     "%d CUs of %d core(s) with a %ss payload on a %d core pilot on %s.\n"
-                    "%d sub-agent(s) with %d ExecWorker(s) each. All times are per CU."
+                    "%d sub-agent(s) with %d ExecWorker(s) each. All times are per CU.\n"
+                    "RP: %s - RS: %s - RU: %s"
                    % (sid, time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.gmtime(info['created'])),
                       info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], info['metadata.pilot_cores'], resource_label,
-                      info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent']),
-                      fontsize=10)
+                      info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
+                      info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
+                      ), fontsize=8)
     mp.pyplot.xlabel("Compute Units (ordered by agent arrival)")
     mp.pyplot.ylabel("Time (s)")
     mp.pyplot.ylim(0)
