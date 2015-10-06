@@ -96,7 +96,6 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     mp.pyplot.ylim(0)
     ax.get_xaxis().set_ticks([])
 
-    mp.pyplot.savefig('plot1.pdf')
     mp.pyplot.savefig('%s_plot1.pdf' % sid)
     mp.pyplot.close()
 
