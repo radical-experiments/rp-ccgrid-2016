@@ -82,7 +82,7 @@ resource_config = {
         'LAUNCH_METHOD': "ORTE",
         #'AGENT_SPAWNER': 'SHELL',
         'AGENT_SPAWNER': 'POPEN',
-        #'QUEUE': 'debug', # Maximum 60 minutes
+        'QUEUE': 'debug', # Maximum 60 minutes
         'PROJECT': 'csc168',
         'PPN': 16,
         'PRE_EXEC_PREPEND': [
@@ -881,9 +881,14 @@ def exp7(repetitions):
 
     f = open('exp7.txt', 'a')
 
-    #num_sub_agents_var = [1, 2, 4]
-    num_sub_agents_var = [2]
-    num_exec_instances_per_sub_agent_var = [4]
+    #num_sub_agents_var = [1, 2, 4, 8, 16, 32]
+    num_sub_agents_var = [2, 4, 8, 16, 32, 64]
+    random.shuffle(num_sub_agents_var)
+
+    #num_exec_instances_per_sub_agent_var = [1, 2, 4, 8, 16, 24]
+    #num_exec_instances_per_sub_agent_var = [1, 2, 16]
+    num_exec_instances_per_sub_agent_var = [1]
+    random.shuffle(num_exec_instances_per_sub_agent_var)
 
     # Enable/Disable profiling
     profiling=True
@@ -895,8 +900,10 @@ def exp7(repetitions):
     # The number of cores to acquire on the resource
     #nodes_var = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
     #nodes_var = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    # TODO: possibly increase this
+    nodes_var = [8]
     #cores_var = [32, 128, 512, 1024, 2048, 4096]
-    nodes_var = [4]
+    #nodes_var = [4]
     # Disable nodes_var shuffle to get the some results quickly because of queuing time
     #random.shuffle(nodes_var)
 
@@ -909,7 +916,7 @@ def exp7(repetitions):
     pilot_runtime = 10 # should we guesstimate this?
 
     # Duration of the payload
-    cu_sleep = 10
+    cu_sleep = 300
 
     # Variable to keep track of sessions
     sessions = {}
