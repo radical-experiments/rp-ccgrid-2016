@@ -28,10 +28,8 @@ def collect(sid):
         target_dir = TARGET_DIR
 
     report.info("Collecting profiles for session: %s.\n" % sid)
-    sid_profiles = rpu.fetch_profiles(sid=sid, client=client_dir,
-                                      tgt=target_dir, access=access,
-                                      skip_existing=True)
-    print sid_profiles
+    rpu.fetch_profiles(sid=sid, client=client_dir, tgt=target_dir,
+                       access=access, skip_existing=True)
 
     report.info("Collecting json for session: %s.\n" % sid)
     rpu.fetch_json(sid, tgt=JSON_DIR, skip_existing=True)
@@ -56,7 +54,9 @@ if __name__ == '__main__':
     # Read from file if specified, otherwise read from stdin
     f = open(sys.argv[1]) if len(sys.argv) > 1 else sys.stdin
     for line in f:
-        session_ids.append(line.strip())
+        session = line.strip()
+        if session:
+            session_ids.append(session)
 
     report.info("Session ids found on input:\n")
     report.plain("%s\n" % session_ids)
