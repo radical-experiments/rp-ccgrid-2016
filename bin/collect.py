@@ -6,7 +6,7 @@ import pandas as pd
 
 EXPERIMENT_DIR = '/Users/mark/ipdps16/experiments'
 
-CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'bin')
+CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'client')
 TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
 JSON_DIR = os.path.join(EXPERIMENT_DIR, 'data/json')
 
@@ -19,7 +19,7 @@ def collect(sid):
     # If we run from the titan headnode, collect over GO
     if 'rp.session.titan' in sid:
         access = 'go://olcf#dtn'
-        client_dir = 'go://olcf#dtn/ccs/home/marksant1/ipdps16/bin'
+        client_dir = 'go://olcf#dtn/ccs/home/marksant1/ipdps16/client'
         target_dir = 'go://localhost%s' % TARGET_DIR
     else:
         # Default
