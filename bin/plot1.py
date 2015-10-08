@@ -63,19 +63,19 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     # We sort the units based on the order they arrived at the agent
     tufs = tuf.sort('awo_get_u_pend')
 
-    (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line', color='red')
+    ax = (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line', color='red')
     labels.append("Core Occupation overhead")
 
-    (tufs['aew_after_exec'] - tufs['aew_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
-    labels.append('ORTE overhead')
+    ax = (tufs['aew_after_exec'] - tufs['aew_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
+    labels.append('LM overhead')
 
-    (tufs['aew_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
+    ax = (tufs['aew_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
     labels.append("Popen blackhole")
 
     (tufs['asc_get_u_pend'] - tufs['asic_put_u_pend']).plot(kind='line', color='blue')
     labels.append("Scheduler Queue")
 
-    (tufs['aew_work_u_pend'] - tufs['asc_put_u_pend']).plot(kind='line', color='green')
+    ax = (tufs['aew_work_u_pend'] - tufs['asc_put_u_pend']).plot(kind='line', color='green')
     labels.append("ExecWorker Queue")
 
     ax = (tufs['asoc_get_u_pend'] - tufs['aew_put_u_pend']).plot(kind='line', color='cyan')
