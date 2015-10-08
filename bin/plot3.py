@@ -45,7 +45,7 @@ def get_resources(unit_info_df, pilot_info_df, sid):
 ###############################################################################
 #
 # TODO: add concurrent CUs on right axis
-def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
+def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids, value, label=''):
 
     labels = []
 
@@ -65,30 +65,36 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
         # We sort the units based on the order they arrived at the agent
         tufs = tuf.sort('awo_get_u_pend')
 
-        ax = (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line')
+        if value == 'overhead':
+            ax = (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line')
+
+        elif value == 'orte':
+            ax = (tufs['aew_after_exec'] - tufs['aew_after_cd'] - info['metadata.cu_runtime']).plot(kind='line')
+
+        elif value == 'popen':
+            ax = (tufs['aew_start_script'] - tufs['aec_handover']).plot(kind='line')
+
+        elif value == 'scheduler':
+            ax = (tufs['asc_get_u_pend'] - tufs['asic_put_u_pend']).plot(kind='line')
+
+        elif value == 'execworker':
+            ax = (tufs['aew_work_u_pend'] - tufs['asc_put_u_pend']).plot(kind='line')
+
+        elif value == 'stageout':
+            ax = (tufs['asoc_get_u_pend'] - tufs['aew_put_u_pend']).plot(kind='line')
+
+        else:
+            raise Exception("Value %s unknown" % value)
+
         labels.append("Sub-Agents: %d" % info['metadata.num_sub_agents'])
 
-        # (tufs['aew_after_exec'] - tufs['aew_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
-        # labels.append('ORTE overhead')
-
-        # (tufs['aew_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
-        # labels.append("Popen blackhole")
-
-        # (tufs['asc_get_u_pend'] - tufs['asic_put_u_pend']).plot(kind='line', color='blue')
-        # labels.append("Scheduler Queue")
-
-        # (tufs['aew_work_u_pend'] - tufs['asc_put_u_pend']).plot(kind='line', color='green')
-        # labels.append("ExecWorker Queue")
-
-        # (tufs['asoc_get_u_pend'] - tufs['aew_put_u_pend']).plot(kind='line', color='cyan')
-        # labels.append("StageOut Queue")
-
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
-    mp.pyplot.title("Core utilisation overhead per CU for varying number of Sub-Agents.\n"
+    mp.pyplot.title("'%s' per CU for varying number of Sub-Agents.\n"
                     "%d CUs of %d core(s) with a %ss payload on a %d(+N*16) core pilot on %s.\n"
                     "Varying number of sub-agent with %d ExecWorker(s). All times are per CU.\n"
                     "RP: %s - RS: %s - RU: %s"
-                   % (info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], info['metadata.cu_count'], resource_label,
+                   % (value,
+                      info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], info['metadata.cu_count'], resource_label,
                       info['metadata.num_exec_instances_per_sub_agent'],
                       info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
                       ), fontsize=8)
@@ -97,8 +103,8 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
     mp.pyplot.ylim(0)
     ax.get_xaxis().set_ticks([])
 
-    mp.pyplot.savefig('plot3.pdf')
-    #mp.pyplot.close()
+    mp.pyplot.savefig('plot3_%s%s.pdf' % (value, label))
+    mp.pyplot.close()
 
 ###############################################################################
 #
@@ -134,6 +140,14 @@ if __name__ == '__main__':
         "rp.session.titan-ext7.marksant1.016714.0009", # 16
         "rp.session.titan-ext7.marksant1.016714.0013", # 32
         "rp.session.titan-ext7.marksant1.016714.0014", # 64
+        # "rp.session.titan-ext7.marksant1.016714.0015",
+        # "rp.session.titan-ext7.marksant1.016714.0017",
+        # "rp.session.titan-ext7.marksant1.016714.0018",
+        # "rp.session.titan-ext7.marksant1.016714.0019",
+        # "rp.session.titan-ext7.marksant1.016714.0020",
     ]
 
-    plot(tr_unit_prof_df, session_info_df, unit_info_df, pilot_info_df, session_ids)
+    label = '_16w'
+
+    for value in ['overhead', 'orte', 'popen', 'scheduler', 'execworker', 'stageout']:
+        plot(tr_unit_prof_df, session_info_df, unit_info_df, pilot_info_df, session_ids, value, label)
