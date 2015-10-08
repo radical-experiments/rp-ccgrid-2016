@@ -1,0 +1,23 @@
+#time,name,uid,state,event,msg
+0.0000,agent_1.AgentExecutingWatcher_POPEN.23:,,,sync abs,1444252002.88:1444252002.8:1444252002.84:ntp
+0.0851,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,pilot.0000,,run,
+2.2688,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,ExecutingPending,get,queue.agent_executing_queue.output
+2.2688,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,ExecutingPending,work start,
+2.2688,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,Executing,advance,
+2.2689,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,Executing,publish,
+2.2690,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,,exec,unit launch
+2.2690,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,,spawn,unit spawn
+2.2870,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,,command,launch script constructed
+2.3031,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,,command,stdout and stderr files created
+2.3317,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,,spawn,spawning passed to popen
+2.3319,agent_1.AgentExecutingWatcher_POPEN.23:MainThread,unit.000004,ExecutingPending,work done ,
+2.3941,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,unit.000004,,passed,ExecWatcher picked up unit
+302.8975,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,unit.000004,,exec,execution complete
+302.8981,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,unit.000004,,final,execution succeeded
+302.8981,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,unit.000004,AgentStagingOutputPending,advance,
+302.8982,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,unit.000004,AgentStagingOutputPending,publish,
+302.8986,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,unit.000004,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+316.1234,agent_1.AgentExecutingWatcher_POPEN.23:agent_1.AgentExecutingComponent_POPEN.23.child.subscriber,,,closing,
+316.1238,agent_1.AgentExecutingWatcher_POPEN.23:Watcher,pilot.0000,,stop,
+316.1238,agent_1.AgentExecutingWatcher_POPEN.23:agent_1.AgentExecutingComponent_POPEN.23.child.subscriber,,,finalize,
+316.1242,agent_1.AgentExecutingWatcher_POPEN.23:agent_1.AgentExecutingComponent_POPEN.23.child.subscriber,,,finalized,

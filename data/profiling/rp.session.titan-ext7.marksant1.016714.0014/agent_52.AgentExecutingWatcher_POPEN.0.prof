@@ -1,0 +1,23 @@
+#time,name,uid,state,event,msg
+0.0000,agent_52.AgentExecutingWatcher_POPEN.0:,,,sync abs,1444134597.38:1444134597.36:1444134597.36:sys
+0.0220,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,pilot.0000,,run,
+8.2641,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,ExecutingPending,get,queue.agent_executing_queue.output
+8.2641,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,ExecutingPending,work start,
+8.2641,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,Executing,advance,
+8.2643,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,Executing,publish,
+8.2645,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,,exec,unit launch
+8.2645,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,,spawn,unit spawn
+8.3695,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,,command,launch script constructed
+8.3835,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,,command,stdout and stderr files created
+8.4080,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,,spawn,spawning passed to popen
+8.4082,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000037,ExecutingPending,work done ,
+8.4246,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000037,,passed,ExecWatcher picked up unit
+113.8752,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000037,,exec,execution complete
+113.8759,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000037,,final,execution succeeded
+113.8759,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000037,AgentStagingOutputPending,advance,
+113.8761,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000037,AgentStagingOutputPending,publish,
+113.8767,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000037,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+122.1987,agent_52.AgentExecutingWatcher_POPEN.0:agent_52.AgentExecutingComponent_POPEN.0.child.subscriber,,,closing,
+122.1992,agent_52.AgentExecutingWatcher_POPEN.0:agent_52.AgentExecutingComponent_POPEN.0.child.subscriber,,,finalize,
+122.2441,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,pilot.0000,,stop,
+122.4986,agent_52.AgentExecutingWatcher_POPEN.0:agent_52.AgentExecutingComponent_POPEN.0.child.subscriber,,,finalized,

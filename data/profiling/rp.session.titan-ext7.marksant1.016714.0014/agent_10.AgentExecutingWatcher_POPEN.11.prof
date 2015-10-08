@@ -1,0 +1,24 @@
+#time,name,uid,state,event,msg
+0.0000,agent_10.AgentExecutingWatcher_POPEN.11:,,,sync abs,1444134598.3:1444134598.2:1444134598.2:sys
+0.1282,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,pilot.0000,,run,
+7.8099,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,ExecutingPending,get,queue.agent_executing_queue.output
+7.8099,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,ExecutingPending,work start,
+7.8100,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,Executing,advance,
+7.8101,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,Executing,publish,
+7.8103,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,,exec,unit launch
+7.8103,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,,spawn,unit spawn
+7.8924,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,,command,launch script constructed
+7.9257,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,,command,stdout and stderr files created
+7.9420,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,,spawn,spawning passed to popen
+7.9422,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,unit.000012,ExecutingPending,work done ,
+7.9914,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,unit.000012,,passed,ExecWatcher picked up unit
+113.7040,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,unit.000012,,exec,execution complete
+113.7049,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,unit.000012,,final,execution succeeded
+113.7049,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,unit.000012,AgentStagingOutputPending,advance,
+113.7050,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,unit.000012,AgentStagingOutputPending,publish,
+113.7057,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,unit.000012,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+121.3570,agent_10.AgentExecutingWatcher_POPEN.11:agent_10.AgentExecutingComponent_POPEN.11.child.subscriber,,,closing,
+121.3575,agent_10.AgentExecutingWatcher_POPEN.11:agent_10.AgentExecutingComponent_POPEN.11.child.subscriber,,,finalize,
+121.4050,agent_10.AgentExecutingWatcher_POPEN.11:MainThread,,,closing,
+121.4335,agent_10.AgentExecutingWatcher_POPEN.11:Watcher,pilot.0000,,stop,
+121.7346,agent_10.AgentExecutingWatcher_POPEN.11:agent_10.AgentExecutingComponent_POPEN.11.child.subscriber,,,finalized,

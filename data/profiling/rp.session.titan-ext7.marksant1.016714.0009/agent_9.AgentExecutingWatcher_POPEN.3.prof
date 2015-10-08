@@ -1,0 +1,23 @@
+#time,name,uid,state,event,msg
+0.0000,agent_9.AgentExecutingWatcher_POPEN.3:,,,sync abs,1444131340.24:1444131340.23:1444131340.23:sys
+0.0119,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,pilot.0002,,run,
+7.2411,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,ExecutingPending,get,queue.agent_executing_queue.output
+7.2412,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,ExecutingPending,work start,
+7.2412,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,Executing,advance,
+7.2414,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,Executing,publish,
+7.2416,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,,exec,unit launch
+7.2416,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,,spawn,unit spawn
+7.3730,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,,command,launch script constructed
+7.4398,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,,command,stdout and stderr files created
+7.4946,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,,spawn,spawning passed to popen
+7.4949,agent_9.AgentExecutingWatcher_POPEN.3:MainThread,unit.000366,ExecutingPending,work done ,
+7.4966,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,unit.000366,,passed,ExecWatcher picked up unit
+323.5732,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,unit.000366,,exec,execution complete
+323.6145,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,unit.000366,,final,execution succeeded
+323.6146,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,unit.000366,AgentStagingOutputPending,advance,
+323.6147,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,unit.000366,AgentStagingOutputPending,publish,
+323.6155,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,unit.000366,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+331.9034,agent_9.AgentExecutingWatcher_POPEN.3:agent_9.AgentExecutingComponent_POPEN.3.child.subscriber,,,closing,
+331.9039,agent_9.AgentExecutingWatcher_POPEN.3:agent_9.AgentExecutingComponent_POPEN.3.child.subscriber,,,finalize,
+332.0367,agent_9.AgentExecutingWatcher_POPEN.3:Watcher,pilot.0002,,stop,
+332.2296,agent_9.AgentExecutingWatcher_POPEN.3:agent_9.AgentExecutingComponent_POPEN.3.child.subscriber,,,finalized,

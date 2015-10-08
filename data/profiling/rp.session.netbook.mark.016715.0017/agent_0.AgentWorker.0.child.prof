@@ -1,0 +1,109 @@
+#time,name,uid,state,event,msg
+0.0000,agent_0.AgentWorker.0.child:,,,sync abs,1444215140.1:1444215140.02:1444215140.06:ntp
+0.0870,agent_0.AgentWorker.0.child:MainThread,,,initialize,
+1.3162,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,create,agent_1
+1.3312,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,created,agent_1
+1.3411,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,create,agent_2
+1.3534,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,created,agent_2
+8.8160,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,Agent setup done,
+9.8183,agent_0.AgentWorker.0.child:MainThread,,,initialized,
+10.1066,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000020,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000009,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000010,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000011,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000008,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000012,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000013,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000023,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000014,,get,bulk size: 24
+10.1066,agent_0.AgentWorker.0.child:MainThread,unit.000000,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000015,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000001,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000021,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000016,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000002,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000017,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000003,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000004,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000005,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000018,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000006,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000019,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000007,,get,bulk size: 24
+10.1067,agent_0.AgentWorker.0.child:MainThread,unit.000022,,get,bulk size: 24
+10.1069,agent_0.AgentWorker.0.child:MainThread,unit.000020,AgentStagingInputPending,publish,
+10.1074,agent_0.AgentWorker.0.child:MainThread,unit.000020,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1074,agent_0.AgentWorker.0.child:MainThread,unit.000009,AgentStagingInputPending,advance,
+10.1075,agent_0.AgentWorker.0.child:MainThread,unit.000009,AgentStagingInputPending,publish,
+10.1078,agent_0.AgentWorker.0.child:MainThread,unit.000009,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1078,agent_0.AgentWorker.0.child:MainThread,unit.000010,AgentStagingInputPending,advance,
+10.1078,agent_0.AgentWorker.0.child:MainThread,unit.000010,AgentStagingInputPending,publish,
+10.1081,agent_0.AgentWorker.0.child:MainThread,unit.000010,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1081,agent_0.AgentWorker.0.child:MainThread,unit.000011,AgentStagingInputPending,advance,
+10.1082,agent_0.AgentWorker.0.child:MainThread,unit.000011,AgentStagingInputPending,publish,
+10.1085,agent_0.AgentWorker.0.child:MainThread,unit.000011,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1085,agent_0.AgentWorker.0.child:MainThread,unit.000008,AgentStagingInputPending,advance,
+10.1085,agent_0.AgentWorker.0.child:MainThread,unit.000008,AgentStagingInputPending,publish,
+10.1088,agent_0.AgentWorker.0.child:MainThread,unit.000008,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1088,agent_0.AgentWorker.0.child:MainThread,unit.000012,AgentStagingInputPending,advance,
+10.1089,agent_0.AgentWorker.0.child:MainThread,unit.000012,AgentStagingInputPending,publish,
+10.1092,agent_0.AgentWorker.0.child:MainThread,unit.000012,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1092,agent_0.AgentWorker.0.child:MainThread,unit.000013,AgentStagingInputPending,advance,
+10.1092,agent_0.AgentWorker.0.child:MainThread,unit.000013,AgentStagingInputPending,publish,
+10.1095,agent_0.AgentWorker.0.child:MainThread,unit.000013,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1095,agent_0.AgentWorker.0.child:MainThread,unit.000023,AgentStagingInputPending,advance,
+10.1096,agent_0.AgentWorker.0.child:MainThread,unit.000023,AgentStagingInputPending,publish,
+10.1099,agent_0.AgentWorker.0.child:MainThread,unit.000023,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1099,agent_0.AgentWorker.0.child:MainThread,unit.000014,AgentStagingInputPending,advance,
+10.1100,agent_0.AgentWorker.0.child:MainThread,unit.000014,AgentStagingInputPending,publish,
+10.1103,agent_0.AgentWorker.0.child:MainThread,unit.000014,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1103,agent_0.AgentWorker.0.child:MainThread,unit.000000,AgentStagingInputPending,advance,
+10.1103,agent_0.AgentWorker.0.child:MainThread,unit.000000,AgentStagingInputPending,publish,
+10.1106,agent_0.AgentWorker.0.child:MainThread,unit.000000,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1106,agent_0.AgentWorker.0.child:MainThread,unit.000015,AgentStagingInputPending,advance,
+10.1107,agent_0.AgentWorker.0.child:MainThread,unit.000015,AgentStagingInputPending,publish,
+10.1110,agent_0.AgentWorker.0.child:MainThread,unit.000015,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1110,agent_0.AgentWorker.0.child:MainThread,unit.000001,AgentStagingInputPending,advance,
+10.1110,agent_0.AgentWorker.0.child:MainThread,unit.000001,AgentStagingInputPending,publish,
+10.1113,agent_0.AgentWorker.0.child:MainThread,unit.000001,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1113,agent_0.AgentWorker.0.child:MainThread,unit.000021,AgentStagingInputPending,advance,
+10.1114,agent_0.AgentWorker.0.child:MainThread,unit.000021,AgentStagingInputPending,publish,
+10.1116,agent_0.AgentWorker.0.child:MainThread,unit.000021,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1117,agent_0.AgentWorker.0.child:MainThread,unit.000016,AgentStagingInputPending,advance,
+10.1117,agent_0.AgentWorker.0.child:MainThread,unit.000016,AgentStagingInputPending,publish,
+10.1120,agent_0.AgentWorker.0.child:MainThread,unit.000016,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1120,agent_0.AgentWorker.0.child:MainThread,unit.000002,AgentStagingInputPending,advance,
+10.1120,agent_0.AgentWorker.0.child:MainThread,unit.000002,AgentStagingInputPending,publish,
+10.1123,agent_0.AgentWorker.0.child:MainThread,unit.000002,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1123,agent_0.AgentWorker.0.child:MainThread,unit.000017,AgentStagingInputPending,advance,
+10.1124,agent_0.AgentWorker.0.child:MainThread,unit.000017,AgentStagingInputPending,publish,
+10.1126,agent_0.AgentWorker.0.child:MainThread,unit.000017,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1127,agent_0.AgentWorker.0.child:MainThread,unit.000003,AgentStagingInputPending,advance,
+10.1127,agent_0.AgentWorker.0.child:MainThread,unit.000003,AgentStagingInputPending,publish,
+10.1130,agent_0.AgentWorker.0.child:MainThread,unit.000003,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1130,agent_0.AgentWorker.0.child:MainThread,unit.000004,AgentStagingInputPending,advance,
+10.1131,agent_0.AgentWorker.0.child:MainThread,unit.000004,AgentStagingInputPending,publish,
+10.1133,agent_0.AgentWorker.0.child:MainThread,unit.000004,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1133,agent_0.AgentWorker.0.child:MainThread,unit.000005,AgentStagingInputPending,advance,
+10.1134,agent_0.AgentWorker.0.child:MainThread,unit.000005,AgentStagingInputPending,publish,
+10.1136,agent_0.AgentWorker.0.child:MainThread,unit.000005,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1137,agent_0.AgentWorker.0.child:MainThread,unit.000018,AgentStagingInputPending,advance,
+10.1137,agent_0.AgentWorker.0.child:MainThread,unit.000018,AgentStagingInputPending,publish,
+10.1140,agent_0.AgentWorker.0.child:MainThread,unit.000018,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1140,agent_0.AgentWorker.0.child:MainThread,unit.000006,AgentStagingInputPending,advance,
+10.1141,agent_0.AgentWorker.0.child:MainThread,unit.000006,AgentStagingInputPending,publish,
+10.1144,agent_0.AgentWorker.0.child:MainThread,unit.000006,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1144,agent_0.AgentWorker.0.child:MainThread,unit.000019,AgentStagingInputPending,advance,
+10.1144,agent_0.AgentWorker.0.child:MainThread,unit.000019,AgentStagingInputPending,publish,
+10.1147,agent_0.AgentWorker.0.child:MainThread,unit.000019,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1147,agent_0.AgentWorker.0.child:MainThread,unit.000007,AgentStagingInputPending,advance,
+10.1148,agent_0.AgentWorker.0.child:MainThread,unit.000007,AgentStagingInputPending,publish,
+10.1150,agent_0.AgentWorker.0.child:MainThread,unit.000007,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+10.1150,agent_0.AgentWorker.0.child:MainThread,unit.000022,AgentStagingInputPending,advance,
+10.1151,agent_0.AgentWorker.0.child:MainThread,unit.000022,AgentStagingInputPending,publish,
+10.1154,agent_0.AgentWorker.0.child:MainThread,unit.000022,AgentStagingInputPending,put,queue.agent_staging_input_queue.input
+628.5243,agent_0.AgentWorker.0.child:MainThread,,,closing,
+628.5654,agent_0.AgentWorker.0.child:MainThread,,,finalize,
+628.5655,agent_0.AgentWorker.0.child:MainThread,pilot.0000,,stop,
+628.5728,agent_0.AgentWorker.0.child:MainThread,,,finalized,
