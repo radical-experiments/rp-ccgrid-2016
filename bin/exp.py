@@ -28,14 +28,14 @@ resource_config = {
 
     'LOCAL': {
         'RESOURCE': 'local.localhost',
-        'LAUNCH_METHOD': 'FORK',
+        'TASK_LAUNCH_METHOD': 'FORK',
         'AGENT_SPAWNER': 'POPEN',
         #'AGENT_SPAWNER': 'SHELL',
         'PPN': 8
     },
     'APRUN': {
         'RESOURCE': 'ncsa.bw',
-        'LAUNCH_METHOD': 'APRUN',
+        'TASK_LAUNCH_METHOD': 'APRUN',
         'AGENT_SPAWNER': 'SHELL',
         #'AGENT_SPAWNER': 'POPEN',
         'QUEUE': 'debug', # Maximum 30 minutes
@@ -43,8 +43,8 @@ resource_config = {
     },
     'CCM': {
         'RESOURCE': 'ncsa.bw_ccm',
-        #'LAUNCH_METHOD': 'SSH',
-        'LAUNCH_METHOD': 'MPIRUN',
+        #'TASK_LAUNCH_METHOD': 'SSH',
+        'TASK_LAUNCH_METHOD': 'MPIRUN',
         #'AGENT_SPAWNER': 'SHELL',
         'AGENT_SPAWNER': 'POPEN',
         'QUEUE': 'debug', # Maximum 30 minutes
@@ -57,7 +57,7 @@ resource_config = {
     },
     'ORTE': {
         'RESOURCE': 'ncsa.bw',
-        'LAUNCH_METHOD': "ORTE",
+        'TASK_LAUNCH_METHOD': "ORTE",
         'AGENT_SPAWNER': 'SHELL',
         #'AGENT_SPAWNER': 'POPEN',
         #'QUEUE': 'debug', # Maximum 30 minutes
@@ -70,7 +70,7 @@ resource_config = {
     },
     'BW': {
         'RESOURCE': 'ncsa.bw',
-        'LAUNCH_METHOD': "ORTE",
+        'TASK_LAUNCH_METHOD': "ORTE",
         'AGENT_SPAWNER': 'POPEN',
         'PROJECT': 'gkd',
         'QUEUE': 'debug', # Maximum 30 minutes
@@ -79,7 +79,7 @@ resource_config = {
     'TITAN': {
         'RESOURCE': 'ornl.titan',
         'SCHEMA': 'local',
-        'LAUNCH_METHOD': "ORTE",
+        'TASK_LAUNCH_METHOD': "ORTE",
         #'AGENT_SPAWNER': 'SHELL',
         'AGENT_SPAWNER': 'POPEN',
         'QUEUE': 'debug', # Maximum 60 minutes
@@ -94,10 +94,10 @@ resource_config = {
     'STAMPEDE': {
         'RESOURCE': 'xsede.stampede',
         #'SCHEMA': 'local',
-        #'LAUNCH_METHOD': "ORTE",
-        #'AGENT_SPAWNER': 'SHELL',
-        #'AGENT_SPAWNER': 'POPEN',
-        #'QUEUE': 'debug', # Maximum 30 minutes
+        #'TASK_LAUNCH_METHOD': "ORTE",
+        'AGENT_SPAWNER': 'POPEN',
+        'TARGET': 'node',
+        'QUEUE': 'development',
         'PROJECT': 'TG-MCB090174',
         'PPN': 16,
         'PRE_EXEC_PREPEND': [
@@ -306,11 +306,19 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     # Insert pre_execs at the beginning in reverse order
     if 'PRE_EXEC_PREPEND' in resource_config[backend]:
         for entry in resource_config[backend]['PRE_EXEC_PREPEND'][::-1]:
-            new_cfg.pre_bootstrap.insert(0, entry)
+            new_cfg.pre_bootstrap_1.insert(0, entry)
 
-    # Change launch method
-    if 'LAUNCH_METHOD' in resource_config[backend]:
-        new_cfg.task_launch_method = resource_config[backend]['LAUNCH_METHOD']
+    # Change task launch method
+    if 'TASK_LAUNCH_METHOD' in resource_config[backend]:
+        new_cfg.task_launch_method = resource_config[backend]['TASK_LAUNCH_METHOD']
+
+    # Change MPI launch method
+    if 'MPI_LAUNCH_METHOD' in resource_config[backend]:
+        new_cfg.mpi_launch_method = resource_config[backend]['MPI_LAUNCH_METHOD']
+
+    # Change agent launch method
+    if 'AGENT_LAUNCH_METHOD' in resource_config[backend]:
+        new_cfg.agent_launch_method = resource_config[backend]['AGENT_LAUNCH_METHOD']
 
     # Change method to spawn tasks
     if 'AGENT_SPAWNER' in resource_config[backend]:
