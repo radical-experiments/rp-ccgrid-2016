@@ -275,6 +275,8 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     # Profiling
     if profiling:
         os.environ['RADICAL_PILOT_PROFILE'] = 'TRUE'
+    else:
+        os.environ.pop('RADICAL_PILOT_PROFILE', None)
 
     if not metadata:
         metadata = {}
