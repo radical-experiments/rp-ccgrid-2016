@@ -172,7 +172,7 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 #------------------------------------------------------------------------------
 
 
-def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
+def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, target):
 
     config = {
 
@@ -254,7 +254,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent):
             "components": {
                 "AgentExecutingComponent": num_exec_instances_per_sub_agent,
             },
-            "target": "node"
+            "target": target
         }
 
         # Add sub-agent to list of sub-agents
@@ -982,6 +982,7 @@ def exp7(repetitions):
                         agent_config = construct_agent_config(
                             num_sub_agents=num_sub_agents,
                             num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
+                            target=resource_config[backend]['TARGET']
                         )
 
                         sid, meta = run_experiment(
