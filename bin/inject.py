@@ -1,6 +1,7 @@
 import os
 import sys
 import glob
+import radical.pilot.states as rps
 import radical.pilot.utils as rpu
 import radical.utils as ru
 import pandas as pd
@@ -97,6 +98,19 @@ def inject(sid):
     report.info("Head of CU DF for session %s:\n" % sid)
     rpu.add_states(cu_prof_fr)
     rpu.add_info(cu_prof_fr)
+
+    # Add a column with the number of concurrent Executing units
+    spec = {
+        'in': [
+            {'state': rps.EXECUTING, 'event': 'advance'}
+        ],
+        'out' : [
+            {'state':rps.AGENT_STAGING_OUTPUT_PENDING, 'event': 'advance'},
+            {'state':rps.FAILED, 'event': 'advance'},
+            {'state':rps.CANCELED, 'event': 'advance'}
+        ]
+    }
+    rpu.add_concurrency (cu_prof_fr, 'concurrently_executing', spec)
 
     cu_prof_fr.insert(0, 'sid', sid)
     print cu_prof_fr.head()
