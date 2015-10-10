@@ -60,6 +60,7 @@ def find_profiles(sid):
 
     session_dir = os.path.join(TARGET_DIR, sid)
     profile_paths = glob.glob('%s/*.prof' % session_dir)
+    profile_paths.extend(glob.glob('%s/pilot.*/*.prof' % session_dir))
     if not profile_paths:
         raise Exception("No session files found in directory %s" % session_dir)
 
