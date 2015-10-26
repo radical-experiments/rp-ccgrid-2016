@@ -124,7 +124,20 @@ resource_config = {
             'module list',
             'ls -l /usr/lib64/',
         ]
-    }
+    },
+    'ARCHER': {
+        'RESOURCE': 'epsrc.archer',
+        'TARGET': 'node',
+        'TASK_LAUNCH_METHOD': "ORTE",
+        'QUEUE': 'short', # Jobs can range from 1-8 nodes (24-192 cores) and can have a maximum walltime of 20 minutes.
+        'PROJECT': 'e290',
+        'PPN': 24,
+        'PRE_EXEC_PREPEND': [
+            #'module use --append /u/sciteam/marksant/privatemodules',
+            #'module load use.own',
+            #'module load openmpi/git'
+        ]
+    },
 }
 
 
