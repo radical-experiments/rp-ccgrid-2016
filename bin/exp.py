@@ -31,6 +31,7 @@ resource_config = {
         'TASK_LAUNCH_METHOD': 'FORK',
         'AGENT_SPAWNER': 'POPEN',
         #'AGENT_SPAWNER': 'SHELL',
+        'TARGET': 'local',
         'PPN': 8
     },
     'APRUN': {
