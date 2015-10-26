@@ -421,68 +421,28 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 #------------------------------------------------------------------------------
 #
 # Variable CU duration (0, 1, 10, 30, 60, 120)
-# Fixed backend (ORTE)
 # Fixed CU count (1024)
 # Fixed CU cores (1)
 # CU = /bin/sleep
 # Fixed Pilot cores (256)
 #
-# Goal: investigate the relative overhead of ORTE in relation to the runtime of the CU
+# Goal: investigate the relative overhead of LM in relation to the runtime of the CU
 #
-def exp1(repeat):
+def exp1():
 
-    agent_config = {}
-    agent_config['number_of_workers'] = {}
-    agent_config['number_of_workers']['ExecWorker'] = 1
+    # "exp1"
+    # Variable CU duration (0, 1, 10, 30, 60, 120)
+    # Fixed backend (ORTE)
+    # Fixed CU count (1024)
+    # Fixed CU cores (1)
+    # Fixed Pilot nodes (256)
+    sessions = iterate_experiment(
+        backend='LOCAL',
+        repetitions=1,
+        cu_count=16,
+        cu_duration_var=[0, 1, 10], #, 30, 60, 120]
+    )
 
-    sessions = {}
-
-    # Enable/Disable profiling
-    profiling=True
-
-    backend = 'ORTE'
-
-    cu_cores = 1
-
-    # The number of cores to acquire on the resource
-    nodes = 8
-    pilot_cores = int(resource_config[backend]['PPN']) * nodes
-
-    # Maximum walltime for experiment
-    pilot_runtime = 30 # should we guesstimate this?
-
-    cu_count = 512
-
-    for iter in range(repeat):
-
-        runtimes = [0, 1, 10, 30, 60, 120, 300, 600]
-        random.shuffle(runtimes)
-        for cu_sleep in runtimes:
-
-            sid = run_experiment(
-                backend=backend,
-                pilot_cores=pilot_cores,
-                pilot_runtime=pilot_runtime,
-                cu_runtime=cu_sleep,
-                cu_cores=cu_cores,
-                cu_count=cu_count,
-                profiling=profiling,
-                agent_config=agent_config
-            )
-
-            sessions[sid] = {
-                'backend': backend,
-                'pilot_cores': pilot_cores,
-                'pilot_runtime': pilot_runtime,
-                'cu_runtime': cu_sleep,
-                'cu_cores': cu_cores,
-                'cu_count': cu_count,
-                'profiling': profiling,
-                'iteration': iter,
-                'number_of_workers': agent_config['number_of_workers']['ExecWorker']
-        }
-
-    return sessions
 #
 #-------------------------------------------------------------------------------
 
@@ -917,7 +877,7 @@ def exp6(repeat):
 # Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling
 # Static: cu=/bin/sleep
 #
-def exp7(
+def iterate_experiment(
         backend,
         repetitions=1,
         exclusive_agent_nodes=True,
@@ -1037,7 +997,7 @@ def exp7(
 #
 if __name__ == "__main__":
 
-    sessions = exp7(
+    sessions = iterate_experiment(
         backend='LOCAL',
         repetitions=2,
         generations=1,
@@ -1045,15 +1005,3 @@ if __name__ == "__main__":
     )
     pprint.pprint(sessions)
 
-    # "exp1"
-    # Variable CU duration (0, 1, 10, 30, 60, 120)
-    # Fixed backend (ORTE)
-    # Fixed CU count (1024)
-    # Fixed CU cores (1)
-    # Fixed Pilot nodes (256)
-    sessions = exp7(
-        backend='LOCAL',
-        repetitions=1,
-        cu_count=16,
-        cu_duration_var=[0, 1, 10], #, 30, 60, 120]
-    )
