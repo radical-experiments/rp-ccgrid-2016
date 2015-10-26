@@ -552,10 +552,10 @@ def iterate_experiment(
 #
 # Goal: investigate the relative overhead of LM in relation to the runtime of the CU
 #
-def exp1():
+def exp1(backend):
 
     sessions = iterate_experiment(
-        backend='LOCAL',
+        backend=backend,
         label = inspect.currentframe().f_code.co_name,
         repetitions=1,
         cu_count=16,
@@ -577,11 +577,11 @@ def exp1():
 #
 # Goal: Investigate the relative overhead of small tasks compared to larger tasks
 #
-def exp2():
+def exp2(backend):
 
     sessions = iterate_experiment(
         repetitions=1,
-        backend='LOCAL',
+        backend=backend,
         label = inspect.currentframe().f_code.co_name,
         cu_duration_var=[60],
         cu_cores_var=[1,2,4,8,16,32,64,128,256],
@@ -604,11 +604,11 @@ def exp2():
 #
 # Goal: Investigate the effect of number of exec workers
 #
-def exp3():
+def exp3(backend):
 
     sessions = iterate_experiment(
         repetitions=1,
-        backend='LOCAL',
+        backend=backend,
         label = inspect.currentframe().f_code.co_name,
         cu_duration_var=[0],
         cu_cores_var=[1],
@@ -906,10 +906,10 @@ def exp6(repeat):
 #
 # Investigate the performance of RP with different SUB-AGENT setups.
 #
-def exp7():
+def exp7(backend):
 
     sessions = iterate_experiment(
-        backend='LOCAL',
+        backend=backend,
         label = inspect.currentframe().f_code.co_name,
         repetitions=1,
         generations=1,
@@ -929,7 +929,7 @@ def exp7():
 #
 # Investigate the performance of RP with different SUB-AGENT setups.
 #
-def exp8():
+def exp8(backend):
 
     sessions = []
 
@@ -952,7 +952,7 @@ def exp8():
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--resource', dest = 'resource', help = 'resource to run on', default = "LOCAL")
+    parser.add_argument('--backend', dest = 'backend', help = 'Backend to run on', default = "LOCAL")
     parser.add_argument('--run', nargs = '*', dest = 'experiments', help = 'Experiments to run')
     parser.add_argument('--list', action="store_true", help = 'List experiments')
 
@@ -974,16 +974,16 @@ if __name__ == "__main__":
             print "Experiment %s not implemented!" % r
             exit(1)
 
-    if args.resource not in resource_config:
-        print 'Resource "%s" not in resource config!' % args.resource
+    if args.backend not in resource_config:
+        print 'Backend "%s" not in resource config!' % args.backend
         exit(1)
-    resource = args.resource
+    backend = args.backend
 
-    print 'Running on %s' % resource
+    print 'Running on %s' % backend
     print 'Requested experiments: %s' % requested
 
     for r in requested:
-        sessions = locals()[r]()
+        sessions = locals()[r](backend)
         pprint.pprint(sessions)
 #
 #------------------------------------------------------------------------------
