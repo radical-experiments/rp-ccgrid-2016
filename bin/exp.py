@@ -428,9 +428,9 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 #
 def iterate_experiment(
         backend,
+        label,
         repetitions=1,
         exclusive_agent_nodes=True,
-        label=None,
         cu_cores_var=[1], # Number of cores per CU to iterate over
         cu_duration_var=[0], # Duration of the payload
         cu_count=None, # By default calculate the number of cores based on cores
@@ -443,9 +443,6 @@ def iterate_experiment(
         pilot_runtime=10, # Maximum walltime for experiment TODO: guesstimate?
         profiling=True # Enable/Disable profiling
 ):
-
-    if not label:
-        label = 'exp7'
 
     f = open('%s.txt' % label, 'a')
 
@@ -557,6 +554,7 @@ def exp1():
 
     sessions = iterate_experiment(
         backend='LOCAL',
+        label='exp1',
         repetitions=1,
         cu_count=16,
         cu_duration_var=[0, 1, 10], #, 30, 60, 120]
@@ -582,6 +580,7 @@ def exp2(repeat):
     sessions = iterate_experiment(
         repetitions=1,
         backend='LOCAL',
+        label='exp2',
         cu_duration_var=[60],
         cu_cores_var=[1,2,4,8,16,32,64,128,256],
         generations=1,
@@ -951,6 +950,7 @@ def exp7():
 
     sessions = iterate_experiment(
         backend='LOCAL',
+        label='exp7',
         repetitions=1,
         generations=1,
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
