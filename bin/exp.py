@@ -912,9 +912,10 @@ def exp6(repeat):
 # Investigate the performance of RP with different SUB-AGENT setups.
 # Pilot generally operates on nodes, and not on cores here.
 #
-# Iterable: [cu_cores_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
-# Quantitative: repetitions, cu_duration, [cu_count | generations], pilot_runtime
+# Iterable: [cu_cores_var, cu_duration_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
+# Quantitative: repetitions, [cu_count | generations], pilot_runtime
 # Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling
+# Static: cu=/bin/sleep
 #
 def exp7(
         backend,
@@ -922,7 +923,7 @@ def exp7(
         exclusive_agent_nodes=True,
         label=None,
         cu_cores_var=[1], # Number of cores per CU to iterate over
-        cu_duration=0, # Duration of the payload
+        cu_duration_var=[0], # Duration of the payload
         cu_count=None, # By default calculate the number of cores based on cores
         generations=1, # Multiple the number of
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
@@ -954,73 +955,75 @@ def exp7(
 
         for nodes in nodes_var:
 
-            for cu_cores in cu_cores_var:
+            for cu_duration in cu_duration_var:
 
-                # Allow to specify FULL node, that translates into the PPN
-                if cu_cores == 'FULL':
-                    cu_cores = int(resource_config[backend]['PPN'])
+                for cu_cores in cu_cores_var:
 
-                for num_sub_agents in num_sub_agents_var:
+                    # Allow to specify FULL node, that translates into the PPN
+                    if cu_cores == 'FULL':
+                        cu_cores = int(resource_config[backend]['PPN'])
 
-                    for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
+                    for num_sub_agents in num_sub_agents_var:
 
-                        if exclusive_agent_nodes:
-                            # Allocate some extra nodes for the sub-agents
-                            pilot_nodes = nodes + num_sub_agents
-                        else:
-                            # "steal" from the nodes that are available for CUs
-                            pilot_nodes = nodes
+                        for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
 
-                        # Pilot Desc takes cores, so we translate from nodes here
-                        pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
+                            if exclusive_agent_nodes:
+                                # Allocate some extra nodes for the sub-agents
+                                pilot_nodes = nodes + num_sub_agents
+                            else:
+                                # "steal" from the nodes that are available for CUs
+                                pilot_nodes = nodes
 
-                        # Number of cores available for CUs
-                        worker_cores = int(resource_config[backend]['PPN']) * nodes
+                            # Pilot Desc takes cores, so we translate from nodes here
+                            pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
 
-                        # Don't need full node experiments for low number of nodes,
-                        # as we have no equivalent in single core experiments
-                        if skip_few_nodes and nodes < cu_cores:
-                                continue
+                            # Number of cores available for CUs
+                            worker_cores = int(resource_config[backend]['PPN']) * nodes
 
-                        # Check if fixed cu_count was specified
-                        if not cu_count:
-                            # keep core consumption equal
-                            cu_count = (generations * worker_cores) / cu_cores
+                            # Don't need full node experiments for low number of nodes,
+                            # as we have no equivalent in single core experiments
+                            if skip_few_nodes and nodes < cu_cores:
+                                    continue
 
-                        # Create and agent layout
-                        agent_config = construct_agent_config(
-                            num_sub_agents=num_sub_agents,
-                            num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
-                            target=resource_config[backend]['TARGET']
-                        )
+                            # Check if fixed cu_count was specified
+                            if not cu_count:
+                                # keep core consumption equal
+                                cu_count = (generations * worker_cores) / cu_cores
 
-                        # Fire!!
-                        sid, meta = run_experiment(
-                            backend=backend,
-                            pilot_cores=pilot_cores,
-                            pilot_runtime=pilot_runtime,
-                            cu_runtime=cu_duration,
-                            cu_cores=cu_cores,
-                            cu_count=cu_count,
-                            profiling=profiling,
-                            agent_config=agent_config,
-                            metadata={
-                                'label': label,
-                                'repetitions': repetitions,
-                                'iteration': iter,
-                                'generations': generations,
-                                'exclusive_agent_nodes': exclusive_agent_nodes,
-                                'num_sub_agents': num_sub_agents,
-                                'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
-                            }
-                        )
+                            # Create and agent layout
+                            agent_config = construct_agent_config(
+                                num_sub_agents=num_sub_agents,
+                                num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
+                                target=resource_config[backend]['TARGET']
+                            )
 
-                        # Append session id to return value
-                        sessions[sid] = meta
+                            # Fire!!
+                            sid, meta = run_experiment(
+                                backend=backend,
+                                pilot_cores=pilot_cores,
+                                pilot_runtime=pilot_runtime,
+                                cu_runtime=cu_duration,
+                                cu_cores=cu_cores,
+                                cu_count=cu_count,
+                                profiling=profiling,
+                                agent_config=agent_config,
+                                metadata={
+                                    'label': label,
+                                    'repetitions': repetitions,
+                                    'iteration': iter,
+                                    'generations': generations,
+                                    'exclusive_agent_nodes': exclusive_agent_nodes,
+                                    'num_sub_agents': num_sub_agents,
+                                    'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
+                                }
+                            )
 
-                        # Record session id to file
-                        f.write('%s - %s - %s\n' % (sid, time.ctime(), str(meta)))
-                        f.flush()
+                            # Append session id to return value
+                            sessions[sid] = meta
+
+                            # Record session id to file
+                            f.write('%s - %s - %s\n' % (sid, time.ctime(), str(meta)))
+                            f.flush()
 
     f.close()
     return sessions
