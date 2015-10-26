@@ -10,6 +10,7 @@ import radical.pilot as rp
 import random
 import pprint
 import inspect
+import argparse
 
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local
@@ -964,10 +965,67 @@ def exp7():
 #-------------------------------------------------------------------------------
 
 
+#-------------------------------------------------------------------------------
+#
+# Single resource experiment.
+#
+# Investigate the performance of RP with different SUB-AGENT setups.
+#
+def exp8():
+
+    sessions = []
+
+    # sessions = iterate_experiment(
+    #     backend='TITAN',
+    #     label = inspect.currentframe().f_code.co_name,
+    #     repetitions=1,
+    #     generations=1,
+    #     num_sub_agents_var=[1], # Number of sub-agents to iterate over
+    #     num_exec_instances_per_sub_agent_var=[1, 2, 4, 8, 16], # Number of workers per sub-agent to iterate over
+    #     nodes_var=[16] # The number of nodes to allocate for running CUs
+    # )
+    return sessions
+#
+#-------------------------------------------------------------------------------
+
+
 #------------------------------------------------------------------------------
 #
 if __name__ == "__main__":
 
-    sessions = exp1()
-    sessions = exp7()
-    pprint.pprint(sessions)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--resource', dest = 'resource', help = 'resource to run on', default = "LOCAL")
+    parser.add_argument('--run', nargs = '*', dest = 'experiments', help = 'Experiments to run')
+    parser.add_argument('--list', action="store_true", help = 'List experiments')
+
+    args = parser.parse_args()
+
+    experiments = [exp for exp in locals().copy() if exp.startswith('exp')]
+
+    if args.list:
+        print 'Implemented experiments: %s' % experiments
+        exit(0)
+
+    if not args.experiments:
+        print 'Must specify which experiment(s) to run!'
+        exit(1)
+    requested = args.experiments
+
+    for r in requested:
+        if r not in experiments:
+            print "Experiment %s not implemented!" % r
+            exit(1)
+
+    if args.resource not in resource_config:
+        print 'Resource "%s" not in resource config!' % args.resource
+        exit(1)
+    resource = args.resource
+
+    print 'Running on %s' % resource
+    print 'Requested experiments: %s' % requested
+
+    for r in requested:
+        sessions = locals()[r]()
+        pprint.pprint(sessions)
+#
+#------------------------------------------------------------------------------
