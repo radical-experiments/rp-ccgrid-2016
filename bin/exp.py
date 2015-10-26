@@ -78,11 +78,12 @@ resource_config = {
     },
     'TITAN': {
         'RESOURCE': 'ornl.titan',
+        'TARGET': 'node',
         'SCHEMA': 'local',
         'TASK_LAUNCH_METHOD': "ORTE",
         #'AGENT_SPAWNER': 'SHELL',
         'AGENT_SPAWNER': 'POPEN',
-        'QUEUE': 'debug', # Maximum 60 minutes
+        #'QUEUE': 'debug', # Maximum 60 minutes
         'PROJECT': 'csc168',
         'PPN': 16,
         'PRE_EXEC_PREPEND': [
