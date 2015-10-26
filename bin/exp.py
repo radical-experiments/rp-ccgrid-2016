@@ -987,8 +987,8 @@ def exp7(repetitions):
 
                         # Don't need full node experiments for low number of nodes,
                         # as we have no equivalent in single core experiments
-                        if nodes < cu_cores:
-                            continue
+                        #if nodes < cu_cores:
+                        #    continue
 
                         # keep core consumption equal
                         cu_count = (generations * worker_cores) / cu_cores
