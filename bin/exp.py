@@ -419,9 +419,6 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 
 #------------------------------------------------------------------------------
 #
-# Single resource experiment.
-#
-# Investigate the performance of RP with different SUB-AGENT setups.
 # Pilot generally operates on nodes, and not on cores here.
 #
 # Iterable: [cu_cores_var, cu_duration_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
@@ -558,18 +555,13 @@ def iterate_experiment(
 #
 def exp1():
 
-    # "exp1"
-    # Variable CU duration (0, 1, 10, 30, 60, 120)
-    # Fixed backend (ORTE)
-    # Fixed CU count (1024)
-    # Fixed CU cores (1)
-    # Fixed Pilot nodes (256)
     sessions = iterate_experiment(
         backend='LOCAL',
         repetitions=1,
         cu_count=16,
         cu_duration_var=[0, 1, 10], #, 30, 60, 120]
     )
+    return sessions
 
 #
 #-------------------------------------------------------------------------------
