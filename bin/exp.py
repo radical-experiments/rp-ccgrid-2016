@@ -929,7 +929,7 @@ def exp7(
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
         num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
         nodes_var=[1], # The number of nodes to allocate for running CUs
-        sort_nodes=True,
+        sort_nodes_var=True,
         skip_few_nodes=False, # skip if nodes < cu_cores
         pilot_runtime=10, # Maximum walltime for experiment TODO: guesstimate?
         profiling=True # Enable/Disable profiling
@@ -941,11 +941,14 @@ def exp7(
     f = open('%s.txt' % label, 'a')
 
     # Shuffle some of the input parameters for statistical sanity
-    random.shuffle(num_sub_agents_var)
     random.shuffle(cu_cores_var)
+    random.shuffle(cu_duration_var)
+    random.shuffle(num_sub_agents_var)
     random.shuffle(num_exec_instances_per_sub_agent_var)
 
-    if sort_nodes:
+    # Allows to skip sorting the number of nodes,
+    # so that the smallest pilots runs first.
+    if sort_nodes_var:
         random.shuffle(nodes_var)
 
     # Variable to keep track of sessions
@@ -1034,18 +1037,23 @@ def exp7(
 #
 if __name__ == "__main__":
 
-    #sessions = exp1(3)
-    #sessions = exp2(3)
-    #sessions = exp3(3)
-    #sessions = exp4(3)
-    #sessions = exp5(1)
-    #sessions = exp6(1)
     sessions = exp7(
         backend='LOCAL',
-        repetitions=1,
+        repetitions=2,
         generations=1,
-        sort_nodes=False, # Disable nodes_var shuffle to get the some results quickly because of queuing time
+        sort_nodes_var=False # Disable nodes_var shuffle to get the some results quickly because of queuing time
     )
     pprint.pprint(sessions)
 
-    #pprint.pprint(construct_agent_config(num_sub_agents=2, num_exec_instances_per_sub_agent=4))
+    # "exp1"
+    # Variable CU duration (0, 1, 10, 30, 60, 120)
+    # Fixed backend (ORTE)
+    # Fixed CU count (1024)
+    # Fixed CU cores (1)
+    # Fixed Pilot nodes (256)
+    sessions = exp7(
+        backend='LOCAL',
+        repetitions=1,
+        cu_count=16,
+        cu_duration_var=[0, 1, 10], #, 30, 60, 120]
+    )
