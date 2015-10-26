@@ -943,21 +943,30 @@ def exp6(repeat):
 
 #-------------------------------------------------------------------------------
 #
+# Single resource experiment.
+#
+# Investigate the performance of RP with different SUB-AGENT setups.
+#
 def exp7():
 
     sessions = iterate_experiment(
         backend='LOCAL',
-        repetitions=2,
+        repetitions=1,
         generations=1,
+        num_sub_agents_var=[1], # Number of sub-agents to iterate over
+        num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
+        nodes_var=[1], # The number of nodes to allocate for running CUs
         sort_nodes_var=False # Disable nodes_var shuffle to get the some results quickly because of queuing time
     )
     return sessions
 #
 #-------------------------------------------------------------------------------
 
+
 #------------------------------------------------------------------------------
 #
 if __name__ == "__main__":
 
+    sessions = exp1()
     sessions = exp7()
     pprint.pprint(sessions)
