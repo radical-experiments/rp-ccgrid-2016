@@ -417,6 +417,134 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 #------------------------------------------------------------------------------
 
 
+#------------------------------------------------------------------------------
+#
+# Single resource experiment.
+#
+# Investigate the performance of RP with different SUB-AGENT setups.
+# Pilot generally operates on nodes, and not on cores here.
+#
+# Iterable: [cu_cores_var, cu_duration_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
+# Quantitative: repetitions, [cu_count | generations], pilot_runtime
+# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling
+# Static: cu=/bin/sleep
+#
+def iterate_experiment(
+        backend,
+        repetitions=1,
+        exclusive_agent_nodes=True,
+        label=None,
+        cu_cores_var=[1], # Number of cores per CU to iterate over
+        cu_duration_var=[0], # Duration of the payload
+        cu_count=None, # By default calculate the number of cores based on cores
+        generations=1, # Multiple the number of
+        num_sub_agents_var=[1], # Number of sub-agents to iterate over
+        num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
+        nodes_var=[1], # The number of nodes to allocate for running CUs
+        sort_nodes_var=True,
+        skip_few_nodes=False, # skip if nodes < cu_cores
+        pilot_runtime=10, # Maximum walltime for experiment TODO: guesstimate?
+        profiling=True # Enable/Disable profiling
+):
+
+    if not label:
+        label = 'exp7'
+
+    f = open('%s.txt' % label, 'a')
+
+    # Shuffle some of the input parameters for statistical sanity
+    random.shuffle(cu_cores_var)
+    random.shuffle(cu_duration_var)
+    random.shuffle(num_sub_agents_var)
+    random.shuffle(num_exec_instances_per_sub_agent_var)
+
+    # Allows to skip sorting the number of nodes,
+    # so that the smallest pilots runs first.
+    if sort_nodes_var:
+        random.shuffle(nodes_var)
+
+    # Variable to keep track of sessions
+    sessions = {}
+
+    for iter in range(repetitions):
+
+        for nodes in nodes_var:
+
+            for cu_duration in cu_duration_var:
+
+                for cu_cores in cu_cores_var:
+
+                    # Allow to specify FULL node, that translates into the PPN
+                    if cu_cores == 'FULL':
+                        cu_cores = int(resource_config[backend]['PPN'])
+
+                    for num_sub_agents in num_sub_agents_var:
+
+                        for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
+
+                            if exclusive_agent_nodes:
+                                # Allocate some extra nodes for the sub-agents
+                                pilot_nodes = nodes + num_sub_agents
+                            else:
+                                # "steal" from the nodes that are available for CUs
+                                pilot_nodes = nodes
+
+                            # Pilot Desc takes cores, so we translate from nodes here
+                            pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
+
+                            # Number of cores available for CUs
+                            worker_cores = int(resource_config[backend]['PPN']) * nodes
+
+                            # Don't need full node experiments for low number of nodes,
+                            # as we have no equivalent in single core experiments
+                            if skip_few_nodes and nodes < cu_cores:
+                                continue
+
+                            # Check if fixed cu_count was specified
+                            if not cu_count:
+                                # keep core consumption equal
+                                cu_count = (generations * worker_cores) / cu_cores
+
+                            # Create and agent layout
+                            agent_config = construct_agent_config(
+                                num_sub_agents=num_sub_agents,
+                                num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
+                                target=resource_config[backend]['TARGET']
+                            )
+
+                            # Fire!!
+                            sid, meta = run_experiment(
+                                backend=backend,
+                                pilot_cores=pilot_cores,
+                                pilot_runtime=pilot_runtime,
+                                cu_runtime=cu_duration,
+                                cu_cores=cu_cores,
+                                cu_count=cu_count,
+                                profiling=profiling,
+                                agent_config=agent_config,
+                                metadata={
+                                    'label': label,
+                                    'repetitions': repetitions,
+                                    'iteration': iter,
+                                    'generations': generations,
+                                    'exclusive_agent_nodes': exclusive_agent_nodes,
+                                    'num_sub_agents': num_sub_agents,
+                                    'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
+                                }
+                            )
+
+                            # Append session id to return value
+                            sessions[sid] = meta
+
+                            # Record session id to file
+                            f.write('%s - %s - %s\n' % (sid, time.ctime(), str(meta)))
+                            f.flush()
+
+    f.close()
+    return sessions
+#
+#-------------------------------------------------------------------------------
+
 
 #------------------------------------------------------------------------------
 #
@@ -865,130 +993,17 @@ def exp6(repeat):
 #
 #-------------------------------------------------------------------------------
 
-#------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
 #
-# Single resource experiment.
-#
-# Investigate the performance of RP with different SUB-AGENT setups.
-# Pilot generally operates on nodes, and not on cores here.
-#
-# Iterable: [cu_cores_var, cu_duration_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
-# Quantitative: repetitions, [cu_count | generations], pilot_runtime
-# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling
-# Static: cu=/bin/sleep
-#
-def iterate_experiment(
-        backend,
-        repetitions=1,
-        exclusive_agent_nodes=True,
-        label=None,
-        cu_cores_var=[1], # Number of cores per CU to iterate over
-        cu_duration_var=[0], # Duration of the payload
-        cu_count=None, # By default calculate the number of cores based on cores
-        generations=1, # Multiple the number of
-        num_sub_agents_var=[1], # Number of sub-agents to iterate over
-        num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
-        nodes_var=[1], # The number of nodes to allocate for running CUs
-        sort_nodes_var=True,
-        skip_few_nodes=False, # skip if nodes < cu_cores
-        pilot_runtime=10, # Maximum walltime for experiment TODO: guesstimate?
-        profiling=True # Enable/Disable profiling
-):
+def exp7():
 
-    if not label:
-        label = 'exp7'
-
-    f = open('%s.txt' % label, 'a')
-
-    # Shuffle some of the input parameters for statistical sanity
-    random.shuffle(cu_cores_var)
-    random.shuffle(cu_duration_var)
-    random.shuffle(num_sub_agents_var)
-    random.shuffle(num_exec_instances_per_sub_agent_var)
-
-    # Allows to skip sorting the number of nodes,
-    # so that the smallest pilots runs first.
-    if sort_nodes_var:
-        random.shuffle(nodes_var)
-
-    # Variable to keep track of sessions
-    sessions = {}
-
-    for iter in range(repetitions):
-
-        for nodes in nodes_var:
-
-            for cu_duration in cu_duration_var:
-
-                for cu_cores in cu_cores_var:
-
-                    # Allow to specify FULL node, that translates into the PPN
-                    if cu_cores == 'FULL':
-                        cu_cores = int(resource_config[backend]['PPN'])
-
-                    for num_sub_agents in num_sub_agents_var:
-
-                        for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
-
-                            if exclusive_agent_nodes:
-                                # Allocate some extra nodes for the sub-agents
-                                pilot_nodes = nodes + num_sub_agents
-                            else:
-                                # "steal" from the nodes that are available for CUs
-                                pilot_nodes = nodes
-
-                            # Pilot Desc takes cores, so we translate from nodes here
-                            pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
-
-                            # Number of cores available for CUs
-                            worker_cores = int(resource_config[backend]['PPN']) * nodes
-
-                            # Don't need full node experiments for low number of nodes,
-                            # as we have no equivalent in single core experiments
-                            if skip_few_nodes and nodes < cu_cores:
-                                    continue
-
-                            # Check if fixed cu_count was specified
-                            if not cu_count:
-                                # keep core consumption equal
-                                cu_count = (generations * worker_cores) / cu_cores
-
-                            # Create and agent layout
-                            agent_config = construct_agent_config(
-                                num_sub_agents=num_sub_agents,
-                                num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
-                                target=resource_config[backend]['TARGET']
-                            )
-
-                            # Fire!!
-                            sid, meta = run_experiment(
-                                backend=backend,
-                                pilot_cores=pilot_cores,
-                                pilot_runtime=pilot_runtime,
-                                cu_runtime=cu_duration,
-                                cu_cores=cu_cores,
-                                cu_count=cu_count,
-                                profiling=profiling,
-                                agent_config=agent_config,
-                                metadata={
-                                    'label': label,
-                                    'repetitions': repetitions,
-                                    'iteration': iter,
-                                    'generations': generations,
-                                    'exclusive_agent_nodes': exclusive_agent_nodes,
-                                    'num_sub_agents': num_sub_agents,
-                                    'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
-                                }
-                            )
-
-                            # Append session id to return value
-                            sessions[sid] = meta
-
-                            # Record session id to file
-                            f.write('%s - %s - %s\n' % (sid, time.ctime(), str(meta)))
-                            f.flush()
-
-    f.close()
+    sessions = iterate_experiment(
+        backend='LOCAL',
+        repetitions=2,
+        generations=1,
+        sort_nodes_var=False # Disable nodes_var shuffle to get the some results quickly because of queuing time
+    )
     return sessions
 #
 #-------------------------------------------------------------------------------
@@ -997,11 +1012,5 @@ def iterate_experiment(
 #
 if __name__ == "__main__":
 
-    sessions = iterate_experiment(
-        backend='LOCAL',
-        repetitions=2,
-        generations=1,
-        sort_nodes_var=False # Disable nodes_var shuffle to get the some results quickly because of queuing time
-    )
+    sessions = exp7()
     pprint.pprint(sessions)
-
