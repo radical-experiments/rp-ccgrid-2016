@@ -4,7 +4,7 @@ import radical.pilot.utils as rpu
 import radical.utils as ru
 import pandas as pd
 
-EXPERIMENT_DIR = '/Users/mark/ipdps16/experiments'
+EXPERIMENT_DIR = '/Users/mark/ccgrid16/experiments'
 
 CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'client')
 TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
@@ -19,7 +19,7 @@ def collect(sid):
     # If we run from the titan headnode, collect over GO
     if 'rp.session.titan' in sid:
         access = 'go://olcf#dtn'
-        client_dir = 'go://olcf#dtn/ccs/home/marksant1/ipdps16/client'
+        client_dir = 'go://olcf#dtn/ccs/home/marksant1/ccgrid16/client'
         target_dir = 'go://localhost%s' % TARGET_DIR
     else:
         # Default
