@@ -922,7 +922,9 @@ def exp7(repetitions):
 
     exclusive_agent_nodes  = True
 
-    f = open('exp7.txt', 'a')
+    label = 'exp7'
+
+    f = open('%s.txt' % label, 'a')
 
     #num_sub_agents_var = [1, 2, 4, 8, 16, 32]
     num_sub_agents_var = [2, 4, 8, 16, 32, 64]
@@ -1009,7 +1011,7 @@ def exp7(repetitions):
                             profiling=profiling,
                             agent_config=agent_config,
                             metadata={
-                                'label': 'exp7',
+                                'label': label,
                                 'repetitions': repetitions,
                                 'iteration': iter,
                                 'generations': generations,
