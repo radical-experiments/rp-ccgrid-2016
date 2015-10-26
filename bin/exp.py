@@ -594,69 +594,27 @@ def exp2():
 
 #------------------------------------------------------------------------------
 #
+# Single backend
 # Fixed CU duration (0s)
-# Fixed backend (ORTE)
 # Fixed CU count (500)
 # Fixed CU cores (1)
 # CU = /bin/sleep
-# Fixed Pilot cores (256)
+# Fixed Pilot nodes (16)
 # Variable number of exec workers (1-8)
 #
 # Goal: Investigate the effect of number of exec workers
 #
-def exp3(repeat):
+def exp3():
 
-    agent_config = {}
-    agent_config['number_of_workers'] = {}
-
-    sessions = {}
-
-    # Enable/Disable profiling
-    profiling=True
-
-    backend = 'TITAN'
-
-    cu_cores = 1
-
-    # The number of cores to acquire on the resource
-    nodes = 8
-    pilot_cores = int(resource_config[backend]['PPN']) * nodes
-
-    # Maximum walltime for experiment
-    pilot_runtime = 30 # should we guesstimate this?
-
-    cu_count = 512
-    cu_sleep = 0
-
-    for iter in range(repeat):
-
-        workers_range = range(1,9)
-        random.shuffle(workers_range)
-        for workers in workers_range:
-            agent_config['number_of_workers']['ExecWorker'] = workers
-
-            sid = run_experiment(
-                backend=backend,
-                pilot_cores=pilot_cores,
-                pilot_runtime=pilot_runtime,
-                cu_runtime=cu_sleep,
-                cu_cores=cu_cores,
-                cu_count=cu_count,
-                profiling=profiling,
-                agent_config=agent_config
-            )
-
-            sessions[sid] = {
-                'backend': backend,
-                'pilot_cores': pilot_cores,
-                'pilot_runtime': pilot_runtime,
-                'cu_runtime': cu_sleep,
-                'cu_cores': cu_cores,
-                'cu_count': cu_count,
-                'profiling': profiling,
-                'iteration': iter,
-                'number_of_workers': agent_config['number_of_workers']['ExecWorker']
-            }
+    sessions = iterate_experiment(
+        repetitions=1,
+        backend='LOCAL',
+        label = inspect.currentframe().f_code.co_name,
+        cu_duration_var=[0],
+        cu_cores_var=[1],
+        cu_count=[500],
+        nodes_var=[16]
+    )
 
     return sessions
 #
@@ -849,7 +807,7 @@ def exp5(repeat):
 #------------------------------------------------------------------------------
 #
 # Variable CU duration (0, 600, 3600)
-# Fixed backend (ORTE)
+# Single backend
 # Variable CU count (1 generations)
 # Variable CU cores = pilot cores
 # CU = /bin/sleep
@@ -952,7 +910,7 @@ def exp7():
 
     sessions = iterate_experiment(
         backend='LOCAL',
-        label='exp7',
+        label = inspect.currentframe().f_code.co_name,
         repetitions=1,
         generations=1,
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
