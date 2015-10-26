@@ -9,6 +9,7 @@ import os
 import radical.pilot as rp
 import random
 import pprint
+import inspect
 
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local
@@ -554,7 +555,7 @@ def exp1():
 
     sessions = iterate_experiment(
         backend='LOCAL',
-        label='exp1',
+        label = inspect.currentframe().f_code.co_name,
         repetitions=1,
         cu_count=16,
         cu_duration_var=[0, 1, 10], #, 30, 60, 120]
@@ -575,12 +576,12 @@ def exp1():
 #
 # Goal: Investigate the relative overhead of small tasks compared to larger tasks
 #
-def exp2(repeat):
+def exp2():
 
     sessions = iterate_experiment(
         repetitions=1,
         backend='LOCAL',
-        label='exp2',
+        label = inspect.currentframe().f_code.co_name,
         cu_duration_var=[60],
         cu_cores_var=[1,2,4,8,16,32,64,128,256],
         generations=1,
