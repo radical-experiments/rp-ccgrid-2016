@@ -556,7 +556,7 @@ def exp1(backend):
 
     sessions = iterate_experiment(
         backend=backend,
-        label = inspect.currentframe().f_code.co_name,
+        label=inspect.currentframe().f_code.co_name,
         repetitions=1,
         cu_count=16,
         cu_duration_var=[0, 1, 10], #, 30, 60, 120]
@@ -582,7 +582,7 @@ def exp2(backend):
     sessions = iterate_experiment(
         repetitions=1,
         backend=backend,
-        label = inspect.currentframe().f_code.co_name,
+        label=inspect.currentframe().f_code.co_name,
         cu_duration_var=[60],
         cu_cores_var=[1,2,4,8,16,32,64,128,256],
         generations=1,
@@ -609,7 +609,7 @@ def exp3(backend):
     sessions = iterate_experiment(
         repetitions=1,
         backend=backend,
-        label = inspect.currentframe().f_code.co_name,
+        label=inspect.currentframe().f_code.co_name,
         cu_duration_var=[0],
         cu_cores_var=[1],
         cu_count=[500],
@@ -910,7 +910,7 @@ def exp7(backend):
 
     sessions = iterate_experiment(
         backend=backend,
-        label = inspect.currentframe().f_code.co_name,
+        label=inspect.currentframe().f_code.co_name,
         repetitions=1,
         generations=1,
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
@@ -934,8 +934,8 @@ def exp8(backend):
     sessions = []
 
     # sessions = iterate_experiment(
-    #     backend='TITAN',
-    #     label = inspect.currentframe().f_code.co_name,
+    #     backend=backend,
+    #     label=inspect.currentframe().f_code.co_name,
     #     repetitions=1,
     #     generations=1,
     #     num_sub_agents_var=[1], # Number of sub-agents to iterate over
