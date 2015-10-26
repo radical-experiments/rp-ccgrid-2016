@@ -83,7 +83,7 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
 
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("%s (%s)\n"
-                    "%d CUs of %d core(s) with a %ss payload on a %d core pilot on %s.\n"
+                    "%d CUs of %d core(s) with a %ds payload on a %d core pilot on %s.\n"
                     "%d sub-agent(s) with %d ExecWorker(s) each. All times are per CU.\n"
                     "RP: %s - RS: %s - RU: %s"
                    % (sid, time.strftime("%a, %d %b %Y %H:%M:%S +0000", time.gmtime(info['created'])),
