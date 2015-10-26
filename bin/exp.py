@@ -142,11 +142,9 @@ resource_config = {
     },
 }
 
-
-
 #------------------------------------------------------------------------------
 #
-def pilot_state_cb (pilot, state):
+def pilot_state_cb(pilot, state):
 
     if not pilot:
         return
@@ -161,7 +159,7 @@ def pilot_state_cb (pilot, state):
 CNT = 0
 #------------------------------------------------------------------------------
 #
-def unit_state_cb (unit, state):
+def unit_state_cb(unit, state):
 
     if not unit:
         return
@@ -911,11 +909,12 @@ def exp6(repeat):
 #
 # Single resource experiment.
 #
-# Generally operates on nodes
+# Investigate the performance of RP with different SUB-AGENT setups.
+# Pilot generally operates on nodes, and not on cores here.
 #
-# Loops over: [cu_cores_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var ]
-# Quantiatives: repetitions, cu_duration, [cu_count | generations], pilot_runtime
-# Config entries: backend, exclusive_agent_nodes, label, sort_nodes, profiling
+# Iterable: [cu_cores_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
+# Quantitative: repetitions, cu_duration, [cu_count | generations], pilot_runtime
+# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling
 #
 def exp7(
         backend,
