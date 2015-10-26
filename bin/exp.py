@@ -569,69 +569,24 @@ def exp1():
 
 #------------------------------------------------------------------------------
 #
+# Single backend
 # Fixed CU duration (60)
-# Fixed backend (ORTE)
-# Variable CU count (4-1024)
 # Variable CU cores (1-256)
-# CU = /bin/sleep
-# Fixed Pilot cores (256)
+# Variable CU count (1024-4)
+# Fixed Pilot nodes (8)
 #
 # Goal: Investigate the relative overhead of small tasks compared to larger tasks
 #
 def exp2(repeat):
 
-    agent_config = {}
-    agent_config['number_of_workers'] = {}
-    agent_config['number_of_workers']['ExecWorker'] = 1
-
-    sessions = {}
-
-    # Enable/Disable profiling
-    profiling=True
-
-    backend = 'ORTE'
-
-    cu_sleep = 60
-
-    # The number of cores to acquire on the resource
-    nodes = 8
-    pilot_cores = int(resource_config[backend]['PPN']) * nodes
-
-    # Maximum walltime for experiment
-    pilot_runtime = 30 # should we guesstimate this?
-
-    for iter in range(repeat):
-
-        cu_cores_var = [1, 2, 4, 8, 16, 32, 64, 128, 256]
-        random.shuffle(cu_cores_var)
-        for cu_cores in cu_cores_var:
-
-            # keep core consumption equal (4 generations)
-            cu_count = (4 * pilot_cores) / cu_cores
-
-            sid = run_experiment(
-                backend=backend,
-                pilot_cores=pilot_cores,
-                pilot_runtime=pilot_runtime,
-                cu_runtime=cu_sleep,
-                cu_cores=cu_cores,
-                cu_count=cu_count,
-                profiling=profiling,
-                agent_config=agent_config
-            )
-
-            sessions[sid] = {
-                'backend': backend,
-                'pilot_cores': pilot_cores,
-                'pilot_runtime': pilot_runtime,
-                'cu_runtime': cu_sleep,
-                'cu_cores': cu_cores,
-                'cu_count': cu_count,
-                'profiling': profiling,
-                'iteration': iter,
-                'number_of_workers': agent_config['number_of_workers']['ExecWorker']
-            }
-
+    sessions = iterate_experiment(
+        repetitions=1,
+        backend='LOCAL',
+        cu_duration_var=[60],
+        cu_cores_var=[1,2,4,8,16,32,64,128,256],
+        generations=1,
+        nodes_var=[16]
+    )
     return sessions
 #
 #-------------------------------------------------------------------------------
