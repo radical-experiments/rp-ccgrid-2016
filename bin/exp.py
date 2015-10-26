@@ -909,60 +909,44 @@ def exp6(repeat):
 
 #------------------------------------------------------------------------------
 #
-# Variable CU duration (0, 600, 3600)
-# Fixed backend (ORTE)
-# Variable CU count (1 generations)
-# Variable CU cores = pilot cores
-# CU = /bin/sleep
-# Variable Pilot cores (32(2), 128(4), 512(32), 1024(64), 2048(128), 4096, 8192)
+# Single resource experiment.
 #
-# Goals: A) Investigate the scale of things.
-#        B) Investigate the effect of 1 per node vs 32 per node
+# Generally operates on nodes
 #
-def exp7(repetitions):
+# Loops over: [cu_cores_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var ]
+# Quantiatives: repetitions, cu_duration, [cu_count | generations], pilot_runtime
+# Config entries: backend, exclusive_agent_nodes, label, sort_nodes, profiling
+#
+def exp7(
+        backend,
+        repetitions=1,
+        exclusive_agent_nodes=True,
+        label=None,
+        cu_cores_var=[1], # Number of cores per CU to iterate over
+        cu_duration=0, # Duration of the payload
+        cu_count=None, # By default calculate the number of cores based on cores
+        generations=1, # Multiple the number of
+        num_sub_agents_var=[1], # Number of sub-agents to iterate over
+        num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
+        nodes_var=[1], # The number of nodes to allocate for running CUs
+        sort_nodes=True,
+        skip_few_nodes=False, # skip if nodes < cu_cores
+        pilot_runtime=10, # Maximum walltime for experiment TODO: guesstimate?
+        profiling=True # Enable/Disable profiling
+):
 
-    exclusive_agent_nodes  = True
-
-    label = 'exp7'
+    if not label:
+        label = 'exp7'
 
     f = open('%s.txt' % label, 'a')
 
-    #num_sub_agents_var = [1, 2, 4, 8, 16, 32]
-    num_sub_agents_var = [2, 4, 8, 16, 32, 64]
+    # Shuffle some of the input parameters for statistical sanity
     random.shuffle(num_sub_agents_var)
-
-    #num_exec_instances_per_sub_agent_var = [1, 2, 4, 8, 16, 24]
-    #num_exec_instances_per_sub_agent_var = [1, 2, 16]
-    num_exec_instances_per_sub_agent_var = [1]
+    random.shuffle(cu_cores_var)
     random.shuffle(num_exec_instances_per_sub_agent_var)
 
-    # Enable/Disable profiling
-    profiling=True
-
-    backend = 'TITAN'
-
-    generations = 1
-
-    # The number of cores to acquire on the resource
-    #nodes_var = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    #nodes_var = [4, 8, 16, 32, 64, 128, 256, 512, 1024]
-    # TODO: possibly increase this
-    nodes_var = [8]
-    #cores_var = [32, 128, 512, 1024, 2048, 4096]
-    #nodes_var = [4]
-    # Disable nodes_var shuffle to get the some results quickly because of queuing time
-    #random.shuffle(nodes_var)
-
-    # Single core and multicore
-    #cu_cores_var = [1, resource_config[backend]['PPN']]
-    #random.shuffle(cu_cores_var)
-    cu_cores_var = [1]
-
-    # Maximum walltime for experiment
-    pilot_runtime = 10 # should we guesstimate this?
-
-    # Duration of the payload
-    cu_sleep = 300
+    if sort_nodes:
+        random.shuffle(nodes_var)
 
     # Variable to keep track of sessions
     sessions = {}
@@ -973,13 +957,19 @@ def exp7(repetitions):
 
             for cu_cores in cu_cores_var:
 
+                # Allow to specify FULL node, that translates into the PPN
+                if cu_cores == 'FULL':
+                    cu_cores = int(resource_config[backend]['PPN'])
+
                 for num_sub_agents in num_sub_agents_var:
 
                     for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
 
                         if exclusive_agent_nodes:
+                            # Allocate some extra nodes for the sub-agents
                             pilot_nodes = nodes + num_sub_agents
                         else:
+                            # "steal" from the nodes that are available for CUs
                             pilot_nodes = nodes
 
                         # Pilot Desc takes cores, so we translate from nodes here
@@ -990,23 +980,27 @@ def exp7(repetitions):
 
                         # Don't need full node experiments for low number of nodes,
                         # as we have no equivalent in single core experiments
-                        #if nodes < cu_cores:
-                        #    continue
+                        if skip_few_nodes and nodes < cu_cores:
+                                continue
 
-                        # keep core consumption equal
-                        cu_count = (generations * worker_cores) / cu_cores
+                        # Check if fixed cu_count was specified
+                        if not cu_count:
+                            # keep core consumption equal
+                            cu_count = (generations * worker_cores) / cu_cores
 
+                        # Create and agent layout
                         agent_config = construct_agent_config(
                             num_sub_agents=num_sub_agents,
                             num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
                             target=resource_config[backend]['TARGET']
                         )
 
+                        # Fire!!
                         sid, meta = run_experiment(
                             backend=backend,
                             pilot_cores=pilot_cores,
                             pilot_runtime=pilot_runtime,
-                            cu_runtime=cu_sleep,
+                            cu_runtime=cu_duration,
                             cu_cores=cu_cores,
                             cu_count=cu_count,
                             profiling=profiling,
@@ -1022,10 +1016,10 @@ def exp7(repetitions):
                             }
                         )
 
-                        # Append sessionid to return value
+                        # Append session id to return value
                         sessions[sid] = meta
 
-                        # Record sessionid to file
+                        # Record session id to file
                         f.write('%s - %s - %s\n' % (sid, time.ctime(), str(meta)))
                         f.flush()
 
@@ -1044,7 +1038,12 @@ if __name__ == "__main__":
     #sessions = exp4(3)
     #sessions = exp5(1)
     #sessions = exp6(1)
-    sessions = exp7(1)
+    sessions = exp7(
+        backend='LOCAL',
+        repetitions=1,
+        generations=1,
+        sort_nodes=False, # Disable nodes_var shuffle to get the some results quickly because of queuing time
+    )
     pprint.pprint(sessions)
 
     #pprint.pprint(construct_agent_config(num_sub_agents=2, num_exec_instances_per_sub_agent=4))
