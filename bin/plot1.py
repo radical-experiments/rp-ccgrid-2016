@@ -4,7 +4,7 @@ import time
 import glob
 import pandas as pd
 
-EXPERIMENT_DIR = '/Users/mark/ipdps16/experiments'
+EXPERIMENT_DIR = '/Users/mark/ccgrid16/experiments'
 
 CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'bin')
 TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
