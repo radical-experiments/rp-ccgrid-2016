@@ -78,9 +78,6 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     ax = (tufs['aec_work_u_pend'] - tufs['asc_put_u_pend']).plot(kind='line', color='green')
     labels.append("ExecWorker Queue")
 
-    ax = (tufs['asoc_get_u_pend'] - tufs['aec_put_u_pend']).plot(kind='line', color='cyan')
-    labels.append("StageOut Queue")
-
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("%s (%s)\n"
                     "%d CUs of %d core(s) with a %ds payload on a %d core pilot on %s.\n"
