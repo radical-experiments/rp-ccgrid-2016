@@ -123,10 +123,21 @@ resource_config = {
             #'module use --append /u/sciteam/marksant/privatemodules',
             #'module load use.own',
             #'module load openmpi/git'
-            'which cc',
-            'ldd `which cc`',
-            'module list',
-            'ls -l /usr/lib64/',
+        ]
+    },
+    'COMET_ORTE': {
+        'RESOURCE': 'xsede.comet_orte',
+        #'TASK_LAUNCH_METHOD': "MPIRUN_RSH",
+        #'AGENT_LAUNCH_METHOD': "SSH",
+        'AGENT_SPAWNER': 'POPEN',
+        'TARGET': 'node',
+        'QUEUE': 'compute', # Maximum 72 nodes (1728 cores) / 48 hours
+        'PROJECT': 'TG-MCB090174',
+        'PPN': 24,
+        'PRE_EXEC_PREPEND': [
+            #'module use --append /u/sciteam/marksant/privatemodules',
+            #'module load use.own',
+            #'module load openmpi/git'
         ]
     },
     'ARCHER': {
