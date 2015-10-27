@@ -70,7 +70,7 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     labels.append('LM overhead')
 
     ax = (tufs['aew_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
-    labels.append("Popen blackhole")
+    labels.append("Spawner overhead")
 
     (tufs['asc_get_u_pend'] - tufs['asic_put_u_pend']).plot(kind='line', color='blue')
     labels.append("Scheduler Queue")
