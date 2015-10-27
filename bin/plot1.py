@@ -66,10 +66,10 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     ax = (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line', color='red')
     labels.append("Core Occupation overhead")
 
-    ax = (tufs['aew_after_exec'] - tufs['aew_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
+    ax = (tufs['aec_after_exec'] - tufs['aec_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
     labels.append('LM overhead')
 
-    ax = (tufs['aew_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
+    ax = (tufs['aec_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
     labels.append("Spawner overhead")
 
     (tufs['asc_get_u_pend'] - tufs['asic_put_u_pend']).plot(kind='line', color='blue')
