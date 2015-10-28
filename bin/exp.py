@@ -299,7 +299,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, profiling, agent_config, metadata=None):
+def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, cu_mpi, profiling, agent_config, cancel_on_all_started=False, metadata=None):
 
     # Profiling
     if profiling:
@@ -398,10 +398,18 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
             cud.executable     = "/bin/sh"
             cud.arguments      = ["-c", "date && hostname -f && sleep %d && date" % cu_runtime]
             cud.cores          = cu_cores
+            cud.mpi            = cu_mpi
             cuds.append(cud)
 
         units = umgr.submit_units(cuds)
-        umgr.wait_units()
+
+        # If we are only interested in startup times, we can cancel once that
+        # has been achieved, which might save us some cpu hours.
+        if cancel_on_all_started:
+            wait_states = [rp.EXECUTING, rp.DONE, rp.FAILED, rp.CANCELED]
+        else:
+            wait_states = [rp.DONE, rp.FAILED, rp.CANCELED]
+        umgr.wait_units(state=wait_states)
 
         for cu in units:
             print "* Task %s state %s, exit code: %s, started: %s, finished: %s" \
@@ -449,18 +457,25 @@ def iterate_experiment(
         exclusive_agent_nodes=True,
         cu_cores_var=[1], # Number of cores per CU to iterate over
         cu_duration_var=[0], # Duration of the payload
+        cancel_on_all_started=False, # Quit once everything is started.
         cu_count=None, # By default calculate the number of cores based on cores
+        cu_mpi=False, # Which launch method to use
         generations=1, # Multiple the number of
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
         num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
         nodes_var=[1], # The number of nodes to allocate for running CUs
         sort_nodes_var=True,
         skip_few_nodes=False, # skip if nodes < cu_cores
-        pilot_runtime=10, # Maximum walltime for experiment TODO: guesstimate?
+        pilot_runtime=30, # Maximum walltime for experiment TODO: guesstimate?
         profiling=True # Enable/Disable profiling
 ):
 
     f = open('%s.txt' % label, 'a')
+
+    # While it technically works, it is less useful to use this combination,
+    # and might therefore mean a misunderstanding.
+    if generations > 1 and cancel_on_all_started:
+        raise Exception("cancel_on_all_started not supported for multiple generations")
 
     # Shuffle some of the input parameters for statistical sanity
     random.shuffle(cu_cores_var)
@@ -480,24 +495,24 @@ def iterate_experiment(
 
         for nodes in nodes_var:
 
-            for cu_duration in cu_duration_var:
+            for cu_cores in cu_cores_var:
 
-                for cu_cores in cu_cores_var:
+                # Allow to specify FULL node, that translates into the PPN
+                if cu_cores == 'FULL':
+                    cu_cores = int(resource_config[backend]['PPN'])
 
-                    # Allow to specify FULL node, that translates into the PPN
-                    if cu_cores == 'FULL':
-                        cu_cores = int(resource_config[backend]['PPN'])
+                for num_sub_agents in num_sub_agents_var:
 
-                    for num_sub_agents in num_sub_agents_var:
+                    for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
 
-                        for num_exec_instances_per_sub_agent in num_exec_instances_per_sub_agent_var:
+                        if exclusive_agent_nodes:
+                            # Allocate some extra nodes for the sub-agents
+                            pilot_nodes = nodes + num_sub_agents
+                        else:
+                            # "steal" from the nodes that are available for CUs
+                            pilot_nodes = nodes
 
-                            if exclusive_agent_nodes:
-                                # Allocate some extra nodes for the sub-agents
-                                pilot_nodes = nodes + num_sub_agents
-                            else:
-                                # "steal" from the nodes that are available for CUs
-                                pilot_nodes = nodes
+                        for cu_duration in cu_duration_var:
 
                             # Pilot Desc takes cores, so we translate from nodes here
                             pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
@@ -528,8 +543,10 @@ def iterate_experiment(
                                 pilot_cores=pilot_cores,
                                 pilot_runtime=pilot_runtime,
                                 cu_runtime=cu_duration,
+                                cancel_on_all_started=cancel_on_all_started,
                                 cu_cores=cu_cores,
                                 cu_count=cu_count,
+                                cu_mpi=cu_mpi,
                                 profiling=profiling,
                                 agent_config=agent_config,
                                 metadata={
