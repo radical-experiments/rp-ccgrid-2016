@@ -530,6 +530,11 @@ def iterate_experiment(
                                 # keep core consumption equal
                                 cu_count = (generations * worker_cores) / cu_cores
 
+                            if cu_duration == 'GUESSTIMATE':
+                                cus_per_gen = worker_cores / cu_cores
+                                cu_duration = 60 + cus_per_gen / num_sub_agents
+                                print "CU_DURATION GUESSTIMATED at %d seconds" % cu_duration
+
                             # Create and agent layout
                             agent_config = construct_agent_config(
                                 num_sub_agents=num_sub_agents,
