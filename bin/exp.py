@@ -526,9 +526,12 @@ def iterate_experiment(
                                 continue
 
                             # Check if fixed cu_count was specified
-                            if not cu_count:
+                            # Note: make a copy because of the loop
+                            if cu_count:
+                                this_cu_count = cu_count
+                            else:
                                 # keep core consumption equal
-                                cu_count = (generations * worker_cores) / cu_cores
+                                this_cu_count = (generations * worker_cores) / cu_cores
 
                             if cu_duration == 'GUESSTIMATE':
                                 cus_per_gen = worker_cores / cu_cores
@@ -550,7 +553,7 @@ def iterate_experiment(
                                 cu_runtime=cu_duration,
                                 cancel_on_all_started=cancel_on_all_started,
                                 cu_cores=cu_cores,
-                                cu_count=cu_count,
+                                cu_count=this_cu_count,
                                 cu_mpi=cu_mpi,
                                 profiling=profiling,
                                 agent_config=agent_config,
