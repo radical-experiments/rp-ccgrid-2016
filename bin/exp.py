@@ -11,6 +11,7 @@ import random
 import pprint
 import inspect
 import argparse
+import tempfile
 
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local
@@ -357,6 +358,10 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     new_cfg.rp_version = RP_VERSION
     new_cfg.virtenv_mode = VIRTENV_MODE
 
+    # Barrier
+    if start_barrier:
+        new_cfg.pre_bootstrap_1.append("export RADICAL_PILOT_BARRIER=$PWD/staging_area/%s" % start_barrier)
+
     # now add the entry back.  As we did not change the config name, this will
     # replace the original configuration.  A completely new configuration would
     # need a unique name.
@@ -402,6 +407,23 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
             cuds.append(cud)
 
         units = umgr.submit_units(cuds)
+
+        # With the current un-bulkyness of the client <-> mongodb interaction,
+        # it is difficult to really test the agent if queuing time is too short.
+        # This barrier waits with starting the agent until all units have
+        # reached the database.
+        if start_barrier:
+            umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
+            tmp_fd, tmp_name = tempfile.mkstemp()
+            os.write(tmp_fd, "Hello World!\n")
+            os.close(tmp_fd)
+            sd_pilot = {
+                'source': 'file://%s' % tmp_name,
+                'target': 'staging:///%s' % start_barrier,
+                'action': rp.TRANSFER
+            }
+            pilot.stage_in(sd_pilot)
+            os.remove(tmp_name)
 
         # If we are only interested in startup times, we can cancel once that
         # has been achieved, which might save us some cpu hours.
@@ -548,6 +570,7 @@ def iterate_experiment(
                             # Fire!!
                             sid, meta = run_experiment(
                                 backend=backend,
+                                start_barrier=label,
                                 pilot_cores=pilot_cores,
                                 pilot_runtime=pilot_runtime,
                                 cu_runtime=cu_duration,
