@@ -119,8 +119,7 @@ resource_config = {
         'AGENT_SPAWNER': 'POPEN',
         'TARGET': 'node',
         'QUEUE': 'compute', # Maximum 72 nodes (1728 cores) / 48 hours
-        #'PROJECT': 'TG-MCB090174', # RADICAL
-        'PROJECT': 'TG-MCB150124', # CECAM
+        'PROJECT': 'TG-MCB090174', # RADICAL
         'PPN': 24,
         'PRE_EXEC_PREPEND': [
             #'module use --append /u/sciteam/marksant/privatemodules',
@@ -135,8 +134,7 @@ resource_config = {
         'AGENT_SPAWNER': 'POPEN',
         'TARGET': 'node',
         'QUEUE': 'compute', # Maximum 72 nodes (1728 cores) / 48 hours
-        #'PROJECT': 'TG-MCB090174', # RADICAL
-        'PROJECT': 'TG-MCB150124', # CECAM
+        'PROJECT': 'TG-MCB090174', # RADICAL
         'PPN': 24,
         'PRE_EXEC_PREPEND': [
             #'module use --append /u/sciteam/marksant/privatemodules',
