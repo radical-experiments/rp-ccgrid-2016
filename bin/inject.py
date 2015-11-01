@@ -98,7 +98,54 @@ def inject(sid):
 
     report.info("Head of CU DF for session %s:\n" % sid)
     rpu.add_states(cu_prof_fr)
+    print cu_prof_fr.head()
+    report.info("Head of CU DF for session %s (after states added):\n" % sid)
     rpu.add_info(cu_prof_fr)
+    print cu_prof_fr.head()
+    report.info("Head of CU DF for session %s (after info added):\n" % sid)
+    print cu_prof_fr.head()
+
+
+    report.info("Head of CU DF for session %s (after concurrency added):\n" % sid)
+
+    # Add a column with the number of concurrent populating the database
+    spec = {
+        'in': [
+            {'state': rps.STAGING_INPUT, 'event': 'advance'}
+        ],
+        'out' : [
+            {'state':rps.AGENT_STAGING_INPUT_PENDING, 'event': 'advance'},
+            {'state':rps.FAILED, 'event': 'advance'},
+            {'state':rps.CANCELED, 'event': 'advance'}
+        ]
+    }
+    rpu.add_concurrency (cu_prof_fr, 'cc_populating', spec)
+
+    # Add a column with the number of concurrent staging in units
+    spec = {
+        'in': [
+            {'state': rps.AGENT_STAGING_INPUT, 'event': 'advance'}
+        ],
+        'out' : [
+            {'state':rps.ALLOCATING_PENDING, 'event': 'advance'},
+            {'state':rps.FAILED, 'event': 'advance'},
+            {'state':rps.CANCELED, 'event': 'advance'}
+        ]
+    }
+    rpu.add_concurrency (cu_prof_fr, 'cc_stage_in', spec)
+
+    # Add a column with the number of concurrent scheduling units
+    spec = {
+        'in': [
+            {'state': rps.ALLOCATING, 'event': 'advance'}
+        ],
+        'out' : [
+            {'state':rps.EXECUTING_PENDING, 'event': 'advance'},
+            {'state':rps.FAILED, 'event': 'advance'},
+            {'state':rps.CANCELED, 'event': 'advance'}
+        ]
+    }
+    rpu.add_concurrency (cu_prof_fr, 'cc_sched', spec)
 
     # Add a column with the number of concurrent Executing units
     spec = {
@@ -111,10 +158,29 @@ def inject(sid):
             {'state':rps.CANCELED, 'event': 'advance'}
         ]
     }
-    rpu.add_concurrency (cu_prof_fr, 'concurrently_executing', spec)
+    rpu.add_concurrency (cu_prof_fr, 'cc_exec', spec)
 
+    # Add a column with the number of concurrent Executing units
+    spec = {
+        'in': [
+            {'state': rps.AGENT_STAGING_OUTPUT, 'event': 'advance'}
+        ],
+        'out' : [
+            {'state':rps.PENDING_OUTPUT_STAGING, 'event': 'advance'},
+            {'state':rps.FAILED, 'event': 'advance'},
+            {'state':rps.CANCELED, 'event': 'advance'}
+        ]
+    }
+    rpu.add_concurrency (cu_prof_fr, 'cc_stage_out', spec)
+
+    print cu_prof_fr.head()
+
+    report.info("Head of CU DF for session %s (after sid added):\n" % sid)
     cu_prof_fr.insert(0, 'sid', sid)
     print cu_prof_fr.head()
+
+    report.info("CU DF columns for session %s:\n" % sid)
+    print cu_prof_fr['info'].unique()
 
     # transpose
     tr_cu_prof_fr = rpu.get_info_df(cu_prof_fr)
