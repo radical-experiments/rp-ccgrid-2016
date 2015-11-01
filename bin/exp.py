@@ -413,7 +413,6 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         if start_barrier:
             umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
             tmp_fd, tmp_name = tempfile.mkstemp()
-            os.write(tmp_fd, "Hello World!\n")
             os.close(tmp_fd)
             sd_pilot = {
                 'source': 'file://%s' % tmp_name,
