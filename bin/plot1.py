@@ -23,8 +23,6 @@ import matplotlib as mp
 # Get the pilots resource labels for this session
 def get_resources(unit_info_df, pilot_info_df, sid):
 
-    print "Plotting %s ..." % sid
-
     resources = {}
 
     # Get all units and all pilots for session
@@ -43,6 +41,58 @@ def get_resources(unit_info_df, pilot_info_df, sid):
 
 
 ###############################################################################
+# Get the pilots spawners for this session
+def get_spawners(unit_info_df, pilot_info_df, sid):
+
+    spawners = {}
+
+    # Get all units and all pilots for session
+    unit_info = unit_info_df[unit_info_df['sid'] == sid]
+    pilot_info = pilot_info_df[pilot_info_df['sid'] == sid]
+
+    pilots_in_session = unit_info['pilot'].unique()
+
+    for pilot_id in pilots_in_session:
+        pilot = pilot_info.loc[pilot_id]
+        spawner = pilot['agent_config.spawner']
+
+        spawners[pilot_id] = spawner
+
+    return spawners
+
+
+###############################################################################
+# Get the pilots launch methods for this session
+def get_lm(unit_info_df, pilot_info_df, sid, mpi):
+
+    lms = {}
+
+    # Get all units and all pilots for session
+    unit_info = unit_info_df[unit_info_df['sid'] == sid]
+    pilot_info = pilot_info_df[pilot_info_df['sid'] == sid]
+
+    pilots_in_session = unit_info['pilot'].unique()
+
+    for pilot_id in pilots_in_session:
+        pilot = pilot_info.loc[pilot_id]
+        if mpi:
+            lm = pilot['agent_config.mpi_launch_method']
+        else:
+            lm = pilot['agent_config.task_launch_method']
+        lms[pilot_id] = lm
+
+    return lms
+
+###############################################################################
+# Get the value of MPI for the first CU (assuming all equal)
+def get_mpi(unit_info_df, sid):
+
+    # Get all units and all pilots for session
+    unit_info = unit_info_df[unit_info_df['sid'] == sid]
+    return unit_info.iloc[0]['description.mpi']
+
+
+###############################################################################
 #
 # TODO: add concurrent CUs on right axis
 def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
@@ -51,6 +101,20 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
 
     # Legend info
     info = info_df.loc[sid]
+
+    mpi = get_mpi(unit_info_df, sid)
+    #mpi = True
+    # For this call assume that there is only one pilot per session
+    lms = get_lm(unit_info_df, pilot_info_df, sid, mpi)
+    assert len(lms) == 1
+    launch_method = lms.values()[0]
+
+    # For this call assume that there is only one pilot per session
+    spawners = get_spawners(unit_info_df, pilot_info_df, sid)
+    assert len(spawners) == 1
+    spawner = spawners.values()[0]
+
+    #exit()
 
     # For this call assume that there is only one pilot per session
     resources = get_resources(unit_info_df, pilot_info_df, sid)
