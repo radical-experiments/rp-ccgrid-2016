@@ -124,17 +124,22 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
     # Get only the entries for this session
     tuf = tr_unit_prof_df[tr_unit_prof_df['sid'] == sid]
 
-    # We sort the units based on the order they arrived at the agent
-    tufs = tuf.sort('awo_get_u_pend')
+    tuf = tuf[tuf['Done'].notnull()]
+
+    # We sort the units based on the order ...
+    #tufs = tuf.sort('awo_get_u_pend') # they arrived at the agent
+    #tufs = tuf.sort('aec_work_u_pend') # they are picked up by an EW
+    tufs = tuf.sort('asc_put_u_pend') # they are scheduled
+    #tufs = tuf.sort('asc_get_u_pend') # the are picked up by the scheduler
 
     ax = (tufs['asc_released'] - tufs['asc_allocated'] - info['metadata.cu_runtime']).plot(kind='line', color='red')
     labels.append("Core Occupation overhead")
 
     ax = (tufs['aec_after_exec'] - tufs['aec_after_cd'] - info['metadata.cu_runtime']).plot(kind='line', color='orange')
-    labels.append('LM overhead')
+    labels.append('%s LaunchMethod (%s)' % ('MPI' if mpi else 'Task', launch_method))
 
     ax = (tufs['aec_start_script'] - tufs['aec_handover']).plot(kind='line', color='black')
-    labels.append("Spawner overhead")
+    labels.append("Spawner (%s)" % spawner)
 
     (tufs['asc_get_u_pend'] - tufs['asic_put_u_pend']).plot(kind='line', color='blue')
     labels.append("Scheduler Queue")
