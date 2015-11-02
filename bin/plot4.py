@@ -5,13 +5,7 @@ import glob
 import pandas as pd
 import radical.pilot as rp
 
-EXPERIMENT_DIR = '/Users/mark/ccgrid16/experiments'
-
-CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'bin')
-TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
-JSON_DIR   = os.path.join(EXPERIMENT_DIR, 'data/json')
-HDF5_DIR   = os.path.join(EXPERIMENT_DIR, 'data/hdf5')
-PICKLE_DIR = os.path.join(EXPERIMENT_DIR, 'data/pickle')
+from common import PICKLE_DIR, JSON_DIR
 
 # Global Pandas settings
 pd.set_option('display.width', 180)

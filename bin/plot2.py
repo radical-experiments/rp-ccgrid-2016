@@ -4,13 +4,7 @@ import time
 import glob
 import pandas as pd
 
-EXPERIMENT_DIR = '/Users/mark/ipdps16/experiments'
-
-CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'bin')
-TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
-JSON_DIR   = os.path.join(EXPERIMENT_DIR, 'data/json')
-HDF5_DIR   = os.path.join(EXPERIMENT_DIR, 'data/hdf5')
-PICKLE_DIR = os.path.join(EXPERIMENT_DIR, 'data/pickle')
+from common import PICKLE_DIR
 
 # Global Pandas settings
 pd.set_option('display.width', 180)

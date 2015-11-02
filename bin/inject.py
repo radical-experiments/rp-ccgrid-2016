@@ -6,18 +6,10 @@ import radical.pilot.utils as rpu
 import radical.utils as ru
 import pandas as pd
 
-EXPERIMENT_DIR = '/Users/mark/ccgrid16/experiments'
-
-CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'bin')
-TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
-JSON_DIR   = os.path.join(EXPERIMENT_DIR, 'data/json')
-HDF5_DIR   = os.path.join(EXPERIMENT_DIR, 'data/hdf5')
-PICKLE_DIR = os.path.join(EXPERIMENT_DIR, 'data/pickle')
-
-RADICAL_PILOT_DBURL = None
+from common import JSON_DIR, TARGET_DIR, PICKLE_DIR, HDF5_DIR
 
 # Global Pandas settings
-pd.set_option('display.width', 300)
+pd.set_option('display.width', 1000)
 pd.set_option('io.hdf.default_format','table')
 
 ###############################################################################

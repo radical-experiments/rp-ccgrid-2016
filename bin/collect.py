@@ -4,13 +4,7 @@ import radical.pilot.utils as rpu
 import radical.utils as ru
 import pandas as pd
 
-EXPERIMENT_DIR = '/Users/mark/ccgrid16/experiments'
-
-CLIENT_DIR = os.path.join(EXPERIMENT_DIR, 'client')
-TARGET_DIR = os.path.join(EXPERIMENT_DIR, 'data/profiling')
-JSON_DIR = os.path.join(EXPERIMENT_DIR, 'data/json')
-
-RADICAL_PILOT_DBURL = None
+from common import TARGET_DIR, CLIENT_DIR, JSON_DIR
 
 ###############################################################################
 #
