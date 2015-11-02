@@ -301,7 +301,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, cu_mpi, profiling, agent_config, cancel_on_all_started=False, metadata=None):
+def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, cu_mpi, profiling, agent_config, cancel_on_all_started=False, start_barrier=None, metadata=None):
 
     # Profiling
     if profiling:
