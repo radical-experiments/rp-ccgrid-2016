@@ -3,9 +3,13 @@
 __copyright__ = "Copyright 2015, http://radical.rutgers.edu"
 __license__   = "MIT"
 
+import os
+
+os.environ['RADICAL_SAGA_LOG_TGT'] = 'exp_saga.log'
+os.environ['RADICAL_PILOT_LOG_TGT'] = 'exp_rp.log'
+
 import sys
 import time
-import os
 import radical.pilot as rp
 import random
 import pprint
