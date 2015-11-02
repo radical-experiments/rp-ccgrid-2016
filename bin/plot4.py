@@ -65,72 +65,45 @@ def plot(unit_prof_df, tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, si
     #
     populating_df = unit_prof_df[
         (unit_prof_df.cc_populating >= 0) &
-        #(
-        #(unit_prof_df.state == rp.states.AGENT_STAGING_INPUT_PENDING)
-        #(unit_prof_df.state == rp.states.AGENT_STAGING_INPUT)
-        #(unit_prof_df.state == rp.states.ALLOCATING_PENDING)
-        #) &
         (unit_prof_df.event == 'advance') &
         (unit_prof_df.sid == sid)
         ][['time', 'cc_populating']]
-    #pulling_df['time'] = pd.to_datetime(pulling_df['time'], unit='ms')
 
     #
     # Staging in
     #
     stage_in_df = unit_prof_df[
         (unit_prof_df.cc_stage_in >= 0) &
-        #(
-            #(unit_prof_df.state == rp.states.AGENT_STAGING_INPUT_PENDING)
-            #(unit_prof_df.state == rp.states.AGENT_STAGING_INPUT)
-            #(unit_prof_df.state == rp.states.ALLOCATING_PENDING)
-        #) &
         (unit_prof_df.event == 'advance') &
         (unit_prof_df.sid == sid)
         ][['time', 'cc_stage_in']]
-    #stage_in_df['time'] = pd.to_datetime(stage_in_df['time'], unit='ms')
 
     #
     # Scheduling
     #
     sched_df = unit_prof_df[
         (unit_prof_df.cc_sched >= 0) &
-        #(
-        #    (unit_prof_df.state == rp.states.ALLOCATING) |
-        #    (unit_prof_df.state == rp.states.EXECUTING_PENDING)
-        #) &
         (unit_prof_df.event == 'advance') &
         (unit_prof_df.sid == sid)
         ][['time', 'cc_sched']]
-    #sched_df['time'] = pd.to_datetime(sched_df['time'], unit='ms')
 
     #
     # Executing
     #
     exec_df = unit_prof_df[
         (unit_prof_df.cc_exec >= 0) &
-        #(
-        #    (unit_prof_df.state == rp.states.EXECUTING) |
-        #    (unit_prof_df.state == rp.states.AGENT_STAGING_OUTPUT_PENDING)
-        #) &
         (unit_prof_df.event == 'advance') &
         (unit_prof_df.sid == sid)
         ][['time', 'cc_exec']]
-    #exec_df['time'] = pd.to_datetime(exec_df['time'], unit='s')
 
     #
     # Staging out
     #
     stage_out_df = unit_prof_df[
         (unit_prof_df.cc_stage_out >= 0) &
-        #(
-        #    (unit_prof_df.state == rp.states.AGENT_STAGING_OUTPUT_PENDING) |
-        #    (unit_prof_df.state == rp.states.AGENT_STAGING_OUTPUT)
-        #) &
         (unit_prof_df.event == 'advance') &
         (unit_prof_df.sid == sid)
         ][['time', 'cc_stage_out']]
-    #stage_out_df['time'] = pd.to_datetime(stage_out_df['time'], unit='s')
 
     print sched_df.head()
 
@@ -149,53 +122,6 @@ def plot(unit_prof_df, tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, si
     print df.head()
 
     df.plot(colormap='Paired')
-
-
-    #exit()
-
-    # df = unit_prof_df[
-    #     (unit_prof_df.cc_stage_in >= 0) &
-    #     (
-    #         (unit_prof_df.state == rp.states.AGENT_STAGING_INPUT_PENDING) |
-    #         (unit_prof_df.state == rp.states.AGENT_STAGING_INPUT)
-    #     ) &
-    #     (unit_prof_df.event == 'advance') &
-    #     (unit_prof_df.sid == sid)
-    #     ]
-    #df.plot(x='time', y='cc_stage_in')
-
-    # unit_prof_df[
-    #     (
-    #         (unit_prof_df.cc_sched >= 0) |
-    #         (unit_prof_df.cc_exec >= 0) |
-    #         (unit_prof_df.cc_stage_in >= 0) |
-    #         (unit_prof_df.cc_stage_out >= 0)
-    #     ) &
-    #     (
-    #         (unit_prof_df.event == 'advance') &
-    #         (unit_prof_df.sid == sid)
-    #     )
-    # ].plot(x='time', y=['cc_sched', 'cc_exec', 'cc_stage_in', 'cc_stage_out'])
-
-    # Add a column with the number of concurrent Executing units
-    #spec = {
-    #}
-    #cal = rp.utils.calibrate_frame(unit_info_df, spec)
-
-    #print df.head()
-#    mp.pyplot.savefig('plot4.pdf')
-
-    #print unit_prof_df.concurrently_running.unique()
-    #print unit_prof_df[unit_prof_df.concurrently_executing >= 0]
-    #print unit_prof_df[(unit_prof_df.state == rp.states.EXECUTING) & (unit_prof_df.uid == 'unit.000000')]
-    #print unit_prof_df[(unit_prof_df.state == rp.states.AGENT_STAGING_OUTPUT_PENDING)]
-    #print unit_prof_df[(unit_prof_df.uid == 'unit.000000')]
-
-    # orte_ttc[runtime].append(df['ewa_complete'].max() - df['a_to_s'].min())
-
-    #labels.append("ExecWorkers: %d" % info['metadata.num_exec_instances_per_sub_agent'])
-    #labels = ['sched', 'exec', 'stage in', 'stage out']
-
 
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("Concurrent Compute Units per Component.\n"
