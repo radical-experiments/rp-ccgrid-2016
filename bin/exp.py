@@ -168,12 +168,13 @@ def pilot_state_cb(pilot, state):
     if not pilot:
         return
 
-    print "[Callback]: ComputePilot '%s' state: %s." % (pilot.uid, state)
+    report.warn("\n[Callback]: ComputePilot '%s' state: %s." % (pilot.uid, state))
 
     if state == rp.FAILED:
-        #sys.exit (1)
-        pass
+        raise rp.PilotException("Pilot %s failed (CB)" % pilot.uid)
 
+    if state == rp.CANCELED:
+        raise rp.PilotException("Pilot %s canceled (CB)" % pilot.uid)
 
 CNT = 0
 #------------------------------------------------------------------------------
@@ -393,7 +394,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         pilot = pmgr.submit_pilots(pdesc)
 
         umgr = rp.UnitManager(session=session, scheduler=SCHEDULER)
-        umgr.register_callback(unit_state_cb, rp.UNIT_STATE)
+        #umgr.register_callback(unit_state_cb, rp.UNIT_STATE)
         umgr.register_callback(wait_queue_size_cb, rp.WAIT_QUEUE_SIZE)
         umgr.add_pilots(pilot)
 
@@ -433,12 +434,15 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         umgr.wait_units(state=wait_states)
 
         for cu in units:
-            print "* Task %s state %s, exit code: %s, started: %s, finished: %s" \
-                % (cu.uid, cu.state, cu.exit_code, cu.start_time, cu.stop_time)
+            report.plain("* Task %s state %s, exit code: %s, started: %s, finished: %s" \
+                % (cu.uid, cu.state, cu.exit_code, cu.start_time, cu.stop_time))
+
+
+    except rp.PilotException as e:
+        session._logger.exception("Caught a Pilot Exception, cleaning up ...")
 
     except Exception as e:
-        # Something unexpected happened in the pilot code above
-        print "caught Exception: %s" % e
+        session._logger.exception("caught exception")
         raise
 
     except (KeyboardInterrupt, SystemExit) as e:
