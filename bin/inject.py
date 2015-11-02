@@ -192,19 +192,45 @@ def inject(sid):
 #
 def inject_all(session_ids, storage):
 
-    ses_info_fr_all = pd.DataFrame()
-    pilot_info_fr_all = pd.DataFrame()
-    unit_info_fr_all = pd.DataFrame()
-    ses_prof_fr_all = pd.DataFrame()
-    pilot_prof_fr_all = pd.DataFrame()
-    cu_prof_fr_all = pd.DataFrame()
-    tr_cu_prof_fr_all = pd.DataFrame()
+    if storage == 'pickle':
 
-    if storage == 'hdf5':
-        store = pd.HDFStore(os.path.join(HDF5_DIR, 'store.h5'))
-    elif storage == 'pickle':
-        pass
+        try:
+            ses_info_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
+        except IOError:
+            ses_info_fr_all = pd.DataFrame()
+
+        try:
+            pilot_info_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
+        except IOError:
+            pilot_info_fr_all = pd.DataFrame()
+
+        try:
+            unit_info_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
+        except IOError:
+            unit_info_fr_all = pd.DataFrame()
+
+        try:
+            ses_prof_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'session_prof.pkl'))
+        except IOError:
+            ses_prof_fr_all = pd.DataFrame()
+
+        try:
+            pilot_prof_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_prof.pkl'))
+        except IOError:
+            pilot_prof_fr_all = pd.DataFrame()
+
+        try:
+            cu_prof_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
+        except IOError:
+            cu_prof_fr_all = pd.DataFrame()
+
+        try:
+            tr_cu_prof_fr_all = pd.read_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
+        except IOError:
+            tr_cu_prof_fr_all = pd.DataFrame()
+
     elif storage == "void":
+        # Only for testing
         pass
     else:
         raise Exception("Unknown storage type")
@@ -215,43 +241,70 @@ def inject_all(session_ids, storage):
             inject(sid)
             continue
         else:
-            ses_info_fr, pilot_info_fr, unit_info_fr, \
-            ses_prof_fr, pilot_prof_fr, cu_prof_fr, tr_cu_prof_fr = \
-                    inject(sid)
 
+            skip = False
 
-        ses_info_fr_all = ses_info_fr_all.append(ses_info_fr)
-        pilot_info_fr_all = pilot_info_fr_all.append(pilot_info_fr)
-        unit_info_fr_all = unit_info_fr_all.append(unit_info_fr)
-        ses_prof_fr_all = ses_prof_fr_all.append(ses_prof_fr)
-        pilot_prof_fr_all = pilot_prof_fr_all.append(pilot_prof_fr)
-        cu_prof_fr_all = cu_prof_fr_all.append(cu_prof_fr)
-        tr_cu_prof_fr_all = tr_cu_prof_fr_all.append(tr_cu_prof_fr)
+            if len(ses_info_fr_all) and sid in ses_info_fr_all.index:
+                report.warn("Session %s already in ses_info_fr_all.\n" % sid)
+                skip = True
 
-    if storage == 'hdf5':
+            if 'sid' in pilot_info_fr_all and (pilot_info_fr_all['sid'] == sid).any():
+                report.warn("Session %s already in pilot_info_fr_all.\n" % sid)
+                skip = True
+            elif skip:
+                report.error("Session %s not already in pilot_info_fr_all.\n" % sid)
 
-        store.append('session_info', ses_info_fr_all)
-        store.append('pilot_info', pilot_info_fr_all.convert_objects())
-        store.append('unit_info', unit_info_fr_all)
-        store.append('session_prof', ses_prof_fr_all)
-        store.append('pilot_prof', pilot_prof_fr_all)
-        store.append('unit_prof', cu_prof_fr_all)
-        store.append('tr_unit_prof', tr_cu_prof_fr_all.convert_objects())
+            if 'sid' in unit_info_fr_all and (unit_info_fr_all['sid'] == sid).any():
+                report.warn("Session %s already in unit_info_fr_all.\n" % sid)
+                skip = True
+            elif skip:
+                report.error("Session %s not already in unit_info_fr_all.\n" % sid)
 
-        store.close()
+            if 'sid' in ses_prof_fr_all and (ses_prof_fr_all['sid'] == sid).any():
+                report.warn("Session %s already in ses_prof_fr_all.\n" % sid)
+                skip = True
+            elif skip:
+                report.error("Session %s not already in ses_prof_fr_all.\n" % sid)
 
-    elif storage == 'pickle':
+            if 'sid' in pilot_prof_fr_all and (pilot_prof_fr_all['sid'] == sid).any():
+                report.warn("Session %s already in pilot_prof_fr_all.\n" % sid)
+                skip = True
+            elif skip:
+                report.error("Session %s not already in pilot_prof_fr_all.\n" % sid)
 
-        ses_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
-        pilot_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
-        unit_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
-        ses_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_prof.pkl'))
-        pilot_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_prof.pkl'))
-        cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
-        tr_cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
+            if 'sid' in cu_prof_fr_all and (cu_prof_fr_all['sid'] == sid).any():
+                report.warn("Session %s already in cu_prof_fr_all.\n" % sid)
+                skip = True
+            elif skip:
+                report.error("Session %s not already in cu_prof_fr_all.\n" % sid)
 
-    elif storage == "void":
-        pass
+            if 'sid' in tr_cu_prof_fr_all and (tr_cu_prof_fr_all['sid'] == sid).any():
+                report.warn("Session %s already in tr_cu_prof_fr_all.\n" % sid)
+                skip = True
+            elif skip:
+                report.error("Session %s not already in tr_cu_prof_fr_all.\n" % sid)
+
+            if not skip:
+                ses_info_fr, pilot_info_fr, unit_info_fr, \
+                ses_prof_fr, pilot_prof_fr, cu_prof_fr, tr_cu_prof_fr = \
+                        inject(sid)
+
+                ses_info_fr_all = ses_info_fr_all.append(ses_info_fr)
+                pilot_info_fr_all = pilot_info_fr_all.append(pilot_info_fr)
+                unit_info_fr_all = unit_info_fr_all.append(unit_info_fr)
+                ses_prof_fr_all = ses_prof_fr_all.append(ses_prof_fr)
+                pilot_prof_fr_all = pilot_prof_fr_all.append(pilot_prof_fr)
+                cu_prof_fr_all = cu_prof_fr_all.append(cu_prof_fr)
+                tr_cu_prof_fr_all = tr_cu_prof_fr_all.append(tr_cu_prof_fr)
+
+                ses_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
+                pilot_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
+                unit_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
+                ses_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_prof.pkl'))
+                pilot_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_prof.pkl'))
+                cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
+                tr_cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
+
 
 ###############################################################################
 #
