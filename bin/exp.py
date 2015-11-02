@@ -1019,6 +1019,8 @@ def exp8(backend):
 #
 if __name__ == "__main__":
 
+    report.title('Experiment Driver (RP version %s)' % rp.version)
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--backend', dest = 'backend', help = 'Backend to run on', default = "LOCAL")
     parser.add_argument('--run', nargs = '*', dest = 'experiments', help = 'Experiments to run')
@@ -1029,26 +1031,26 @@ if __name__ == "__main__":
     experiments = [exp for exp in locals().copy() if exp.startswith('exp')]
 
     if args.list:
-        print 'Implemented experiments: %s' % experiments
+        report.info('Implemented experiments: %s\n' % experiments)
         exit(0)
 
     if not args.experiments:
-        print 'Must specify which experiment(s) to run!'
+        report.error('Must specify which experiment(s) to run!\n')
         exit(1)
     requested = args.experiments
 
     for r in requested:
         if r not in experiments:
-            print "Experiment %s not implemented!" % r
+            report.error("Experiment %s not implemented!\n" % r)
             exit(1)
 
     if args.backend not in resource_config:
-        print 'Backend "%s" not in resource config!' % args.backend
+        report.error('Backend "%s" not in resource config!\n' % args.backend)
         exit(1)
     backend = args.backend
 
-    print 'Running on %s' % backend
-    print 'Requested experiments: %s' % requested
+    report.info('Running on backend "%s"\n' % backend)
+    report.info('Requested experiments: %s\n' % requested)
 
     for r in requested:
         sessions = locals()[r](backend)
