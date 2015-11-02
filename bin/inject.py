@@ -9,7 +9,7 @@ import pandas as pd
 from common import JSON_DIR, TARGET_DIR, PICKLE_DIR, HDF5_DIR
 
 # Global Pandas settings
-pd.set_option('display.width', 1000)
+pd.set_option('display.width', 200)
 pd.set_option('io.hdf.default_format','table')
 
 ###############################################################################
@@ -96,7 +96,6 @@ def inject(sid):
     print cu_prof_fr.head()
     report.info("Head of CU DF for session %s (after info added):\n" % sid)
     print cu_prof_fr.head()
-
 
     report.info("Head of CU DF for session %s (after concurrency added):\n" % sid)
 
