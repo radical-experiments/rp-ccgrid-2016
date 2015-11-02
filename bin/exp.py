@@ -662,15 +662,14 @@ def exp2(backend):
 
 #------------------------------------------------------------------------------
 #
+# Goal: Investigate the effect of number of number of ExecWorkers for a single sub-agent
+#
 # Single backend
-# Fixed CU duration (0s)
-# Fixed CU count (500)
+# Fixed CU duration (60s)
 # Fixed CU cores (1)
 # CU = /bin/sleep
 # Fixed Pilot nodes (16)
 # Variable number of exec workers (1-8)
-#
-# Goal: Investigate the effect of number of exec workers
 #
 def exp3(backend):
 
@@ -678,10 +677,12 @@ def exp3(backend):
         repetitions=1,
         backend=backend,
         label=inspect.currentframe().f_code.co_name,
-        cu_duration_var=[0],
+        cu_duration_var=[0, 60],
+        generations=5,
         cu_cores_var=[1],
-        cu_count=[500],
-        nodes_var=[16]
+        nodes_var=[16],
+        num_exec_instances_per_sub_agent_var=[1, 2, 4, 8, 16, 24],
+        num_sub_agents_var=[1]
     )
 
     return sessions
@@ -980,10 +981,12 @@ def exp7(backend):
         backend=backend,
         label=inspect.currentframe().f_code.co_name,
         repetitions=1,
-        generations=1,
+        generations=5,
+        cu_mpi=True,
+        cu_duration_var=[10],
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
         num_exec_instances_per_sub_agent_var=[1], # Number of workers per sub-agent to iterate over
-        nodes_var=[1], # The number of nodes to allocate for running CUs
+        nodes_var=[10], # The number of nodes to allocate for running CUs
         sort_nodes_var=False # Disable nodes_var shuffle to get the some results quickly because of queuing time
     )
     return sessions
@@ -995,21 +998,28 @@ def exp7(backend):
 #
 # Single resource experiment.
 #
-# Investigate the performance of RP with different SUB-AGENT setups.
+# Goal: determine degree of scaling with adding execworkers/sub-agents
+#
+# I think scaling with exec workers, and specifically to what problem size
+# this behaves kinda linear and also that this scaling is independent
+# from CU size (scalar / mpi)
 #
 def exp8(backend):
 
-    sessions = []
-
-    # sessions = iterate_experiment(
-    #     backend=backend,
-    #     label=inspect.currentframe().f_code.co_name,
-    #     repetitions=1,
-    #     generations=1,
-    #     num_sub_agents_var=[1], # Number of sub-agents to iterate over
-    #     num_exec_instances_per_sub_agent_var=[1, 2, 4, 8, 16], # Number of workers per sub-agent to iterate over
-    #     nodes_var=[16] # The number of nodes to allocate for running CUs
-    # )
+    sessions = iterate_experiment(
+        backend=backend,
+        label=inspect.currentframe().f_code.co_name,
+        repetitions=1,
+        generations=5,
+        #cu_duration_var=['GUESSTIMATE'],
+        cu_duration_var=[60],
+        num_sub_agents_var=[1], # Number of sub-agents to iterate over
+        #num_sub_agents_var=[1, 2, 4, 8, 16, 32], # Number of sub-agents to iterate over
+        #num_exec_instances_per_sub_agent_var=[1, 2, 4, 8, 16, 24], # Number of workers per sub-agent to iterate over
+        num_exec_instances_per_sub_agent_var=[1],
+        #nodes_var=[1, 2, 4, 8, 16, 32, 48] # The number of nodes to allocate for running CUs
+        nodes_var=[10],
+    )
     return sessions
 #
 #-------------------------------------------------------------------------------
