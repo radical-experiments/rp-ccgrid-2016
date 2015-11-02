@@ -1,0 +1,59 @@
+#time,name,uid,state,event,msg
+0.0000,agent_1.AgentExecutingComponent_POPEN.0.child:,,,sync abs,1446045803.35:1446045803.34:1446045803.34:ntp
+0.0102,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,initialize,
+3.0178,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,pilot.0000,,run,
+3.0233,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,initialized,
+20.1621,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,ExecutingPending,get,queue.agent_executing_queue.output
+20.1621,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,ExecutingPending,work start,
+20.1622,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,Executing,advance,
+20.1623,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,Executing,publish,
+20.2627,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,,exec,unit launch
+20.2627,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,,spawn,unit spawn
+20.2739,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,,command,launch script constructed
+20.2820,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,,command,stdout and stderr files created
+20.2970,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,,spawn,spawning passed to popen
+20.2971,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000005,ExecutingPending,work done ,
+20.3507,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000005,,passed,ExecWatcher picked up unit
+23.3906,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,ExecutingPending,get,queue.agent_executing_queue.output
+23.3906,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,ExecutingPending,work start,
+23.3906,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,Executing,advance,
+23.3907,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,Executing,publish,
+23.4912,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,,exec,unit launch
+23.4912,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,,spawn,unit spawn
+23.5098,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,,command,launch script constructed
+23.5170,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,,command,stdout and stderr files created
+23.5248,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,,spawn,spawning passed to popen
+23.5250,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000041,ExecutingPending,work done ,
+23.5576,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000041,,passed,ExecWatcher picked up unit
+26.6471,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,ExecutingPending,get,queue.agent_executing_queue.output
+26.6471,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,ExecutingPending,work start,
+26.6472,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,Executing,advance,
+26.6473,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,Executing,publish,
+26.7477,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,,exec,unit launch
+26.7477,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,,spawn,unit spawn
+26.7609,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,,command,launch script constructed
+26.7680,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,,command,stdout and stderr files created
+26.7737,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,,spawn,spawning passed to popen
+26.7738,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,unit.000013,ExecutingPending,work done ,
+26.8644,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000013,,passed,ExecWatcher picked up unit
+128.7856,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000005,,exec,execution complete
+128.7864,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000005,,final,execution succeeded
+128.7864,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000005,AgentStagingOutputPending,advance,
+128.7865,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000005,AgentStagingOutputPending,publish,
+128.8871,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000005,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+131.8934,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000041,,exec,execution complete
+131.8938,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000041,,final,execution succeeded
+131.8938,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000041,AgentStagingOutputPending,advance,
+131.8939,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000041,AgentStagingOutputPending,publish,
+131.9945,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000041,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+135.2010,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000013,,exec,execution complete
+135.2014,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000013,,final,execution succeeded
+135.2015,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000013,AgentStagingOutputPending,advance,
+135.2016,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000013,AgentStagingOutputPending,publish,
+135.3020,agent_1.AgentExecutingComponent_POPEN.0.child:Watcher,unit.000013,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+160.6725,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,closing,
+161.6570,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,not_yet_finalized,
+161.6570,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,finalize,
+161.6571,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,finalized,
+161.6571,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,stopped,
+161.6571,agent_1.AgentExecutingComponent_POPEN.0.child:MainThread,,,QED,

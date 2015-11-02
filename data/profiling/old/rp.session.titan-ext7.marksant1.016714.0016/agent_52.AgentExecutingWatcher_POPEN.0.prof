@@ -1,0 +1,30 @@
+#time,name,uid,state,event,msg
+0.0000,agent_52.AgentExecutingWatcher_POPEN.0:,,,sync abs,1444139813.74:1444139813.7:1444139813.7:sys
+0.0555,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,,,initialized,
+0.0557,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,pilot.0001,,run,
+4.2383,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,ExecutingPending,get,queue.agent_executing_queue.output
+4.2383,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,ExecutingPending,work start,
+4.2384,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,Executing,advance,
+4.2385,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,Executing,publish,
+4.2387,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,,exec,unit launch
+4.2388,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,,spawn,unit spawn
+4.2953,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,,command,launch script constructed
+4.3115,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,,command,stdout and stderr files created
+4.3248,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,,spawn,spawning passed to popen
+4.3250,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000254,ExecutingPending,work done ,
+4.3440,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000254,,passed,ExecWatcher picked up unit
+5.0787,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,ExecutingPending,get,queue.agent_executing_queue.output
+5.0787,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,ExecutingPending,work start,
+5.0788,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,Executing,advance,
+5.0790,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,Executing,publish,
+5.0793,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,,exec,unit launch
+5.0794,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,,spawn,unit spawn
+5.1421,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,,command,launch script constructed
+5.1619,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,,command,stdout and stderr files created
+5.1758,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,,spawn,spawning passed to popen
+5.1761,agent_52.AgentExecutingWatcher_POPEN.0:MainThread,unit.000138,ExecutingPending,work done ,
+5.2628,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,unit.000138,,passed,ExecWatcher picked up unit
+14.1383,agent_52.AgentExecutingWatcher_POPEN.0:agent_52.AgentExecutingComponent_POPEN.0.child.subscriber,,,closing,
+14.1390,agent_52.AgentExecutingWatcher_POPEN.0:agent_52.AgentExecutingComponent_POPEN.0.child.subscriber,,,finalize,
+14.2176,agent_52.AgentExecutingWatcher_POPEN.0:Watcher,pilot.0001,,stop,
+14.2670,agent_52.AgentExecutingWatcher_POPEN.0:agent_52.AgentExecutingComponent_POPEN.0.child.subscriber,,,finalized,

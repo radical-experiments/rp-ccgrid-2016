@@ -1,0 +1,27 @@
+#time,name,uid,state,event,msg
+0.0000,agent_0.AgentStagingOutputComponent.0.child:,,,sync abs,1444139789.08:1444139789.05:1444139789.06:ntp
+0.0290,agent_0.AgentStagingOutputComponent.0.child:MainThread,,,initialize,
+2.0365,agent_0.AgentStagingOutputComponent.0.child:MainThread,,,initialized,
+33.1855,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,AgentStagingOutputPending,get,queue.agent_staging_output_queue.output
+33.1855,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,AgentStagingOutputPending,work start,
+33.1856,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,AgentStagingOutput,advance,
+33.1858,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,AgentStagingOutput,publish,
+30.3281,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,,script,start_script
+30.4018,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,,script,after_cd
+33.0721,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,,script,after_exec
+33.3383,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,Failed,advance,
+33.3386,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,Failed,publish,
+33.3386,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000161,AgentStagingOutputPending,work done ,
+33.3398,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,AgentStagingOutputPending,get,queue.agent_staging_output_queue.output
+33.3398,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,AgentStagingOutputPending,work start,
+33.3398,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,AgentStagingOutput,advance,
+33.3400,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,AgentStagingOutput,publish,
+30.3335,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,,script,start_script
+30.4304,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,,script,after_cd
+33.1384,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,,script,after_exec
+34.0932,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,Failed,advance,
+34.0934,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,Failed,publish,
+34.0934,agent_0.AgentStagingOutputComponent.0.child:MainThread,unit.000207,AgentStagingOutputPending,work done ,
+38.7507,agent_0.AgentStagingOutputComponent.0.child:agent_0.AgentStagingOutputComponent.0.child.subscriber,,,closing,
+38.7513,agent_0.AgentStagingOutputComponent.0.child:agent_0.AgentStagingOutputComponent.0.child.subscriber,,,finalize,
+38.7515,agent_0.AgentStagingOutputComponent.0.child:agent_0.AgentStagingOutputComponent.0.child.subscriber,,,finalized,

@@ -1,0 +1,5059 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0001", 
+            "agent_config": {
+                "agent_launch_method": "SSH", 
+                "agent_layout": {
+                    "agent_0": {
+                        "bridges": [
+                            "agent_staging_input_queue", 
+                            "agent_scheduling_queue", 
+                            "agent_executing_queue", 
+                            "agent_staging_output_queue", 
+                            "agent_unschedule_pubsub", 
+                            "agent_reschedule_pubsub", 
+                            "agent_command_pubsub", 
+                            "agent_state_pubsub"
+                        ], 
+                        "components": {
+                            "AgentExecutingComponent": 0, 
+                            "AgentSchedulingComponent": 1, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "pull_units": true, 
+                        "sub_agents": [
+                            "agent_1"
+                        ], 
+                        "target": "local"
+                    }, 
+                    "agent_1": {
+                        "components": {
+                            "AgentExecutingComponent": 16
+                        }, 
+                        "target": "node"
+                    }
+                }, 
+                "bulk_collection_time": 1.0, 
+                "clone": {
+                    "AgentExecutingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentWorker": {
+                        "input": 1, 
+                        "output": 1
+                    }
+                }, 
+                "cores": 72, 
+                "cores_per_node": 24, 
+                "db_poll_sleeptime": 0.1, 
+                "debug": "DEBUG", 
+                "drop": {
+                    "AgentExecutingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentWorker": {
+                        "input": 1, 
+                        "output": 1
+                    }
+                }, 
+                "heartbeat_interval": 10, 
+                "lrms": "SLURM", 
+                "max_io_loglength": 1024, 
+                "mongodb_url": "mongodb://ec2-54-221-194-147.compute-1.amazonaws.com:24242/mark/", 
+                "mpi_launch_method": "MPIRUN_RSH", 
+                "pilot_id": "pilot.0001", 
+                "runtime": 10, 
+                "scheduler": "CONTINUOUS", 
+                "session_id": "rp.session.netbook.mark.016735.0011", 
+                "spawner": "POPEN", 
+                "staging_area": "staging_area", 
+                "staging_scheme": "staging", 
+                "task_launch_method": "SSH"
+            }, 
+            "callbackhistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1445977018.77799
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1445977019.778843
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1445977038.885916
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1445977067.266552
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1445977093.332801
+                }
+            ], 
+            "commands": [], 
+            "cores_per_node": null, 
+            "description": {
+                "_config": {
+                    "agent_layout": {
+                        "agent_0": {
+                            "bridges": [
+                                "agent_staging_input_queue", 
+                                "agent_scheduling_queue", 
+                                "agent_executing_queue", 
+                                "agent_staging_output_queue", 
+                                "agent_unschedule_pubsub", 
+                                "agent_reschedule_pubsub", 
+                                "agent_command_pubsub", 
+                                "agent_state_pubsub"
+                            ], 
+                            "components": {
+                                "AgentExecutingComponent": 0, 
+                                "AgentSchedulingComponent": 1, 
+                                "AgentStagingInputComponent": 1, 
+                                "AgentStagingOutputComponent": 1
+                            }, 
+                            "pull_units": true, 
+                            "sub_agents": [
+                                "agent_1"
+                            ], 
+                            "target": "local"
+                        }, 
+                        "agent_1": {
+                            "components": {
+                                "AgentExecutingComponent": 16
+                            }, 
+                            "target": "node"
+                        }
+                    }, 
+                    "bulk_collection_time": 1.0, 
+                    "clone": {
+                        "AgentExecutingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentSchedulingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingInputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingOutputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentWorker": {
+                            "input": 1, 
+                            "output": 1
+                        }
+                    }, 
+                    "db_poll_sleeptime": 0.1, 
+                    "drop": {
+                        "AgentExecutingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentSchedulingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingInputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingOutputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentWorker": {
+                            "input": 1, 
+                            "output": 1
+                        }
+                    }, 
+                    "heartbeat_interval": 10, 
+                    "max_io_loglength": 1024, 
+                    "staging_area": "staging_area", 
+                    "staging_scheme": "staging"
+                }, 
+                "access_schema": null, 
+                "cleanup": false, 
+                "cores": 72, 
+                "exit_on_error": false, 
+                "memory": null, 
+                "project": "TG-MCB150124", 
+                "queue": "compute", 
+                "resource": "xsede.comet", 
+                "runtime": 10, 
+                "sandbox": null
+            }, 
+            "finished": 1445977092.601409, 
+            "global_sandbox": "/home/marksant/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1445977021.070448
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (<saga.filesystem.directory.Directory object at 0x104b371d0>).", 
+                    "timestamp": 1445977021.070895
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/utils/radical.utils-v0.37-2-gee75da5-devel.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/).", 
+                    "timestamp": 1445977023.384415
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/saga/saga-python-v0.37-2-g4ef5f6d-devel.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/).", 
+                    "timestamp": 1445977025.608895
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.37.10-74-gadf839f-fix-shutdown-race.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/).", 
+                    "timestamp": 1445977027.557169
+                }, 
+                {
+                    "message": "Writing agent configuration to file '/var/folders/49/k1pw9n4j02j3nwm7mb003yy80000gn/T/rp_agent_cfg_aj_Vhq.json'.", 
+                    "timestamp": 1445977030.632536
+                }, 
+                {
+                    "message": "Copying agent configuration file 'file://localhost/var/folders/49/k1pw9n4j02j3nwm7mb003yy80000gn/T/rp_agent_cfg_aj_Vhq.json' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/).", 
+                    "timestamp": 1445977030.633935
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Project': 'TG-MCB150124', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/', 'Queue': 'compute', 'Environment': {'RADICAL_PILOT_PROFILE': 'TRUE'}, 'WallTimeLimit': 10, 'Arguments': ['-l bootstrap_1.sh', \" -d 'radical.utils-v0.37-2-gee75da5-devel.tar.gz:saga-python-v0.37-2-g4ef5f6d-devel.tar.gz:radical.pilot-v0.37.10-74-gadf839f-fix-shutdown-race.tar.gz' -m 'create' -p 'pilot.0001' -r 'local' -s 'rp.session.netbook.mark.016735.0011' -v '/home/marksant/radical.pilot.sandbox/ve_comet' -a 'multicore' -e 'module load python' -w 'export PATH=$PATH' -w 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH'\"], 'ProcessesPerHost': 24, 'Error': 'bootstrap_1.err', 'Output': 'bootstrap_1.out', 'TotalCPUCount': 72}", 
+                    "timestamp": 1445977034.425003
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [slurm+ssh://comet.sdsc.xsede.org/]-[1205052]", 
+                    "timestamp": 1445977037.975293
+                }, 
+                {
+                    "message": "CANCEL received. Terminating.", 
+                    "timestamp": 1445977092.601409
+                }, 
+                {
+                    "message": "real 1445977092.643730 sec | user 0.889 sec | system 0.236 sec | mem 45020.00 kB", 
+                    "timestamp": 1445977092.601409
+                }
+            ], 
+            "logfile": null, 
+            "nodes": null, 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "pmgr.0001", 
+            "saga_job_id": "[slurm+ssh://comet.sdsc.xsede.org/]-[1205052]", 
+            "sagajobid": null, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "started": 1445977066.63057, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1445977018.500531
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1445977018.537737
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1445977037.975421
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1445977066.63057
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1445977092.601409
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977018.500531, 
+            "unit_ids": [
+                "unit.000070", 
+                "unit.000071", 
+                "unit.000094", 
+                "unit.000077", 
+                "unit.000053", 
+                "unit.000072", 
+                "unit.000050", 
+                "unit.000054", 
+                "unit.000093", 
+                "unit.000073", 
+                "unit.000055", 
+                "unit.000074", 
+                "unit.000065", 
+                "unit.000056", 
+                "unit.000083", 
+                "unit.000075", 
+                "unit.000084", 
+                "unit.000092", 
+                "unit.000089", 
+                "unit.000069", 
+                "unit.000091", 
+                "unit.000078", 
+                "unit.000095", 
+                "unit.000058", 
+                "unit.000068", 
+                "unit.000060", 
+                "unit.000079", 
+                "unit.000064", 
+                "unit.000061", 
+                "unit.000080", 
+                "unit.000087", 
+                "unit.000062", 
+                "unit.000048", 
+                "unit.000076", 
+                "unit.000063", 
+                "unit.000088", 
+                "unit.000082", 
+                "unit.000090", 
+                "unit.000051", 
+                "unit.000052", 
+                "unit.000066", 
+                "unit.000059", 
+                "unit.000067", 
+                "unit.000049", 
+                "unit.000085", 
+                "unit.000086", 
+                "unit.000057", 
+                "unit.000081"
+            ], 
+            "unitmanager": "umgr.0001"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "pmgr.0001", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.netbook.mark.016735.0011", 
+        "connected": 1445977016.418442, 
+        "created": 1445977016.418442, 
+        "metadata": {
+            "backend": "COMET", 
+            "cu_cores": 1, 
+            "cu_count": 48, 
+            "cu_runtime": 3600, 
+            "exclusive_agent_nodes": true, 
+            "generations": 1, 
+            "iteration": 0, 
+            "label": "exp8", 
+            "num_exec_instances_per_sub_agent": 16, 
+            "num_sub_agents": 1, 
+            "pilot_cores": 72, 
+            "pilot_runtime": 10, 
+            "profiling": true, 
+            "radical_stack": {
+                "rp": "v0.37.10-74-gadf839f@fix-shutdown_race", 
+                "rs": "v0.37-2-g4ef5f6d@devel", 
+                "ru": "v0.37-2-gee75da5@devel"
+            }, 
+            "repetitions": 1
+        }, 
+        "name": "rp.session.netbook.mark.016735.0011"
+    }, 
+    "umgr": [
+        {
+            "_id": "umgr.0001", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "direct_submission"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000070", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977021.734779
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977022.641946
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000070", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.0248
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977022.471065
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977022.471065
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.202301
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977077.303571
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977077.413581
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977077.516644
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977077.617289
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977077.722275
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.0248, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000071", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977021.903894
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977022.6434
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000071", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.025813
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977022.471539
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977022.471539
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.301359
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977077.514912
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977077.618575
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977077.721129
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977077.82065
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977077.923835
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.025813, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000094", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977022.074731
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977022.987187
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000094", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.053164
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977022.813534
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977022.813534
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.401704
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977077.720074
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977077.823453
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977077.92494
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977078.025791
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977078.128353
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.053164, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000077", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977022.244416
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977022.986669
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000077", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.031692
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977022.814042
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977022.814042
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.502261
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977077.925946
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977078.031675
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977078.132979
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977078.281926
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977078.336764
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.031692, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000053", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977022.413615
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977023.325448
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000053", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977019.99864
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977023.156232
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977023.156232
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.602993
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977078.133977
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977078.28295
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977078.339813
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977078.440402
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977078.543465
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977019.99864, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000072", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977022.591168
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977023.33285
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000072", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.026779
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977023.161743
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977023.161743
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.703494
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977078.340786
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977078.444554
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977078.545838
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977078.646372
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977078.749404
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.026779, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000050", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977022.767847
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977023.667572
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000050", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977019.993527
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977023.494274
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977023.494274
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.80437
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977078.546846
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977078.652197
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977078.753308
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977078.854038
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977078.957223
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977019.993527, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000054", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977022.938632
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977023.674355
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000054", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.000269
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977023.503575
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977023.503575
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977077.905085
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977078.754279
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977078.88376
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977078.985169
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977079.085728
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977079.188721
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.000269, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000093", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977023.10815
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977024.005885
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000093", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.05187
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977023.837082
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977023.837082
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.005905
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977078.986166
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977079.089935
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977079.190929
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977079.291547
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977079.454715
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.05187, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000073", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977023.278998
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977024.020826
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000073", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.027744
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977023.848829
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977023.848829
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.106449
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977079.19197
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977079.296276
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977079.397507
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977079.498263
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977079.601102
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.027744, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000055", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977023.447334
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977024.349419
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000055", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.001793
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977024.177016
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977024.177016
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.207213
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977079.398475
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977079.501441
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977079.602682
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977079.703151
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977079.806135
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.001793, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000074", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977023.6165
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977024.362842
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000074", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.028753
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977024.190918
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977024.190918
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.307417
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977079.603706
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977079.708659
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977079.809906
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977079.910533
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977080.014079
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.028753, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000065", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977023.788159
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977024.690075
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000065", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.018652
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977024.521307
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977024.521307
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.408155
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977079.810873
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977079.915645
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977080.016689
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977080.117456
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977080.292946
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.018652, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000056", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977023.959081
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977024.703466
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000056", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.003816
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977024.53248
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977024.53248
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.508608
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977080.017659
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977080.121455
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977080.294065
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977080.323541
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977080.426222
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.003816, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000083", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977024.130186
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977025.034073
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000083", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.039119
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977024.860424
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977024.860424
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.609105
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977080.295019
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977080.328507
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977080.430032
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977080.530545
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977080.665287
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.039119, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000075", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977024.299486
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977025.043227
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000075", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.029715
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977024.872721
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977024.872721
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.709884
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977080.431144
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977080.53367
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977080.634908
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977080.735638
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977080.838383
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.029715, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000084", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977024.473976
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977025.376484
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000084", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.040376
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977025.205496
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977025.205496
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.810597
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977080.635937
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977080.738715
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977080.839948
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977080.94056
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977081.042572
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.040376, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000092", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977024.643896
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977025.383457
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000092", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.050594
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977025.212884
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977025.212884
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977078.911193
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977080.840922
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977080.945731
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977081.046967
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977081.147775
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977081.300165
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.050594, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000089", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977024.813274
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977025.724969
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000089", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.046778
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977025.546024
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977025.546024
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.011848
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977081.047958
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977081.151696
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977081.301187
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977081.353319
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977081.455308
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.046778, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000069", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977024.987572
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977025.725581
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000069", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.023757
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977025.55232
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977025.55232
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.112365
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977081.302374
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977081.357488
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977081.458505
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977081.559195
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977081.661319
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.023757, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000091", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977025.156259
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977026.068489
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000091", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.049301
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977025.894308
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977025.894308
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.212839
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977081.459423
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977081.563564
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977081.664687
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977081.765556
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977081.867503
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.049301, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000078", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977025.325425
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977026.069913
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000078", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.032745
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977025.898451
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977025.898451
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.313472
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977081.665655
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977081.777464
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977081.878582
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977081.97951
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977082.082279
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.032745, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000095", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977025.494724
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977026.407411
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000095", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.054423
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977026.237524
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977026.237524
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.413763
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977081.879544
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977081.982689
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977082.085084
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977082.184888
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977082.286808
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.054423, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000058", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977025.664754
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977026.411636
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000058", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.008135
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977026.242118
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977026.242118
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.514214
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977082.084022
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977082.189626
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977082.361582
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977082.391617
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977082.493566
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.008135, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000068", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977025.835449
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977026.852055
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000068", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.022725
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977026.577518
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977026.577518
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.614664
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977082.362614
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977082.39442
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977082.496115
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977082.596607
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977082.699028
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.022725, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000060", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977026.004924
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977026.852755
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000060", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.011876
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977026.587831
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977026.587831
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.715296
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977082.497119
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977082.601639
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977082.702977
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977082.803586
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977082.905809
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.011876, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000079", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977026.17511
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977027.329203
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000079", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.034016
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977027.156835
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977027.156835
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.81578
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977082.703976
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977082.806608
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977082.907872
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977083.008515
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977083.111005
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.034016, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000064", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977026.344524
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977027.592334
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000064", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.017346
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977027.421249
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977027.421249
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977079.916678
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977082.908941
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977083.013718
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977083.1152
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977083.215952
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977083.31836
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.017346, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000061", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977026.514223
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977027.673235
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000061", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.013332
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977027.498652
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977027.498652
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.018619
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977083.116203
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977083.218498
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977083.392823
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977083.420679
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977083.523473
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.013332, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000080", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977026.683955
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977027.933825
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000080", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.035298
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977027.762155
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977027.762155
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.118517
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977083.393853
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977083.425692
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977083.528334
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977083.627711
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977083.730111
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.035298, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000087", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977026.854818
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977028.014468
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000087", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.044212
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977027.842483
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977027.842483
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.218166
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977083.527312
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977083.631972
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977083.734026
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977083.833918
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977083.936249
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.044212, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000062", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977027.509346
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977028.273114
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000062", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.014714
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977028.10343
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977028.10343
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.31855
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977083.73297
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977083.83763
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977083.940037
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977084.039989
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977084.14212
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.014714, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000048", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977027.679775
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977028.35688
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000048", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977019.989884
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977028.186506
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977028.186506
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.419256
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977083.938985
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977084.043783
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977084.145138
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977084.24563
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977084.348171
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977019.989884, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000076", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977027.851652
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977028.617794
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000076", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.030684
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977028.445737
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977028.445737
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.519803
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977084.146132
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977084.249863
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977084.425261
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977084.45164
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977084.553785
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.030684, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000063", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977028.020021
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977028.699194
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000063", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.016036
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977028.528033
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977028.528033
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.620279
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977084.426276
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977084.455535
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977084.557966
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977084.657891
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977084.760317
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.016036, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000088", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977028.191862
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977028.954867
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000088", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.045515
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977028.785972
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977028.785972
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.720889
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977084.556925
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977084.661551
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977084.763928
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977084.863829
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977084.966012
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.045515, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000082", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977028.365771
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977029.041021
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000082", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.037852
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977028.871188
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977028.871188
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.821588
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977084.762878
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977084.867708
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977084.970107
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977085.069849
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977085.171919
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.037852, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000090", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977028.535193
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977029.302461
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000090", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.048042
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977029.125778
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977029.125778
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977080.922222
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977084.96905
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977085.073988
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977085.175052
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977085.275736
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977085.377992
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.048042, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000051", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977028.707697
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977029.381995
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000051", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977019.99528
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977029.210674
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977029.210674
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.022775
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977085.176118
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977085.279774
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977085.452559
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977085.481676
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977085.583921
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977019.99528, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000052", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977028.877531
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977029.640016
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000052", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977019.997015
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977029.470271
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977029.470271
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.123438
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977085.453581
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977085.48546
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977085.587226
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977085.687908
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977085.78998
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977019.997015, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000066", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977029.047111
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977029.722628
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000066", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.019995
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977029.550677
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977029.550677
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.223923
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977085.58821
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977085.691543
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977085.793372
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977085.893717
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977085.996164
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.019995, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000059", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977029.217606
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977029.979096
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000059", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.010149
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977029.809348
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977029.809348
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.32423
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977085.794371
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977085.897711
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977086.000299
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977086.099777
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977086.202122
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.010149, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000067", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977029.388441
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977030.087711
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000067", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.02168
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977029.891291
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977029.891291
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.424711
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977085.999236
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977086.103682
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977086.205068
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977086.305786
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977086.407953
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.02168, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000049", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977029.55705
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977030.318407
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000049", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977019.991774
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977030.148455
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977030.148455
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.525411
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977086.206071
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977086.309754
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977086.483269
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977086.511551
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977086.614032
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977019.991774, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000085", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977029.725774
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977030.453874
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000085", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.041641
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977030.267944
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977030.267944
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.625889
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977086.484302
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977086.515659
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977086.618185
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977086.717785
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977086.820188
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.041641, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000086", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977029.894998
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977030.662507
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000086", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.042902
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977030.494332
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977030.494332
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.726255
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977086.61713
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977086.721663
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977086.824058
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977086.92398
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977087.0265
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.042902, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000057", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977030.08803
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977030.797221
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000057", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.006
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977030.623988
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977030.623988
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.826807
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977086.822999
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977086.929842
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977087.031274
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977087.13177
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977087.233836
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.006, 
+            "unitmanager": "umgr.0001"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000081", 
+            "control": "agent", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 3600 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0001.", 
+                    "timestamp": 1445977030.273329
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1445977031.004738
+                }, 
+                {
+                    "message": "Pilot 'pilot.0001' has terminated with state 'Canceled'. CU canceled.", 
+                    "timestamp": 1445977094.023742
+                }
+            ], 
+            "pilot": "pilot.0001", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016735.0011-pilot.0001//unit.000081", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1445977020.036592
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1445977030.834246
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977030.834246
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1445977081.927454
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1445977087.032274
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1445977087.137848
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1445977087.238885
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1445977087.339614
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1445977087.442128
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1445977020.036592, 
+            "unitmanager": "umgr.0001"
+        }
+    ]
+}

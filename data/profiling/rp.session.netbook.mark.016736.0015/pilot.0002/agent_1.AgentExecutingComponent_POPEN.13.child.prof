@@ -1,0 +1,59 @@
+#time,name,uid,state,event,msg
+0.0000,agent_1.AgentExecutingComponent_POPEN.13.child:,,,sync abs,1446034584.19:1446034584.12:1446034584.14:ntp
+0.0750,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,initialize,
+3.0817,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,pilot.0002,,run,
+3.0877,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,initialized,
+9.9067,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,ExecutingPending,get,queue.agent_executing_queue.output
+9.9067,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,ExecutingPending,work start,
+9.9067,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,Executing,advance,
+9.9068,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,Executing,publish,
+10.0071,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,,exec,unit launch
+10.0072,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,,spawn,unit spawn
+10.0218,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,,command,launch script constructed
+10.0288,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,,command,stdout and stderr files created
+10.0399,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,,spawn,spawning passed to popen
+10.0400,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000110,ExecutingPending,work done ,
+10.0951,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000110,,passed,ExecWatcher picked up unit
+13.2221,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,ExecutingPending,get,queue.agent_executing_queue.output
+13.2221,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,ExecutingPending,work start,
+13.2221,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,Executing,advance,
+13.2223,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,Executing,publish,
+13.3227,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,,exec,unit launch
+13.3227,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,,spawn,unit spawn
+13.3367,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,,command,launch script constructed
+13.3449,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,,command,stdout and stderr files created
+13.3528,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,,spawn,spawning passed to popen
+13.3529,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000100,ExecutingPending,work done ,
+13.4020,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000100,,passed,ExecWatcher picked up unit
+16.5216,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,ExecutingPending,get,queue.agent_executing_queue.output
+16.5216,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,ExecutingPending,work start,
+16.5216,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,Executing,advance,
+16.5218,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,Executing,publish,
+16.6222,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,,exec,unit launch
+16.6222,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,,spawn,unit spawn
+16.6337,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,,command,launch script constructed
+16.6408,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,,command,stdout and stderr files created
+16.6490,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,,spawn,spawning passed to popen
+16.6491,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,unit.000105,ExecutingPending,work done ,
+16.7091,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000105,,passed,ExecWatcher picked up unit
+118.4270,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000110,,exec,execution complete
+118.4278,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000110,,final,execution succeeded
+118.4278,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000110,AgentStagingOutputPending,advance,
+118.4279,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000110,AgentStagingOutputPending,publish,
+118.5287,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000110,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+121.7358,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000100,,exec,execution complete
+121.7361,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000100,,final,execution succeeded
+121.7361,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000100,AgentStagingOutputPending,advance,
+121.7362,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000100,AgentStagingOutputPending,publish,
+121.8368,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000100,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+125.0435,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000105,,exec,execution complete
+125.0439,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000105,,final,execution succeeded
+125.0440,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000105,AgentStagingOutputPending,advance,
+125.0440,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000105,AgentStagingOutputPending,publish,
+125.1446,agent_1.AgentExecutingComponent_POPEN.13.child:Watcher,unit.000105,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+141.0542,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,closing,
+141.6297,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,not_yet_finalized,
+141.6297,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,finalize,
+141.6298,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,finalized,
+141.6298,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,stopped,
+141.6298,agent_1.AgentExecutingComponent_POPEN.13.child:MainThread,,,QED,

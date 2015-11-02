@@ -1,0 +1,39 @@
+#time,name,uid,state,event,msg
+0.0000,agent_3.AgentExecutingWatcher_POPEN.5:,,,sync abs,1444126144.08:1444126144.07:1444126144.07:sys
+0.0134,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,pilot.0000,,run,
+4.8265,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,ExecutingPending,get,queue.agent_executing_queue.output
+4.8265,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,ExecutingPending,work start,
+4.8266,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,Executing,advance,
+4.8267,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,Executing,publish,
+4.8269,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,,exec,unit launch
+4.8270,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,,spawn,unit spawn
+5.4320,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,,command,launch script constructed
+5.5852,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,,command,stdout and stderr files created
+5.8925,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,,spawn,spawning passed to popen
+5.8927,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000023,ExecutingPending,work done ,
+5.9008,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000023,,passed,ExecWatcher picked up unit
+8.2081,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,ExecutingPending,get,queue.agent_executing_queue.output
+8.2081,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,ExecutingPending,work start,
+8.2081,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,Executing,advance,
+8.2084,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,Executing,publish,
+8.2086,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,,exec,unit launch
+8.2086,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,,spawn,unit spawn
+9.0808,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,,command,launch script constructed
+9.3152,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,,command,stdout and stderr files created
+9.5439,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,,spawn,spawning passed to popen
+9.5441,agent_3.AgentExecutingWatcher_POPEN.5:MainThread,unit.000114,ExecutingPending,work done ,
+9.6198,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000114,,passed,ExecWatcher picked up unit
+337.4028,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000023,,exec,execution complete
+337.4478,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000023,,final,execution succeeded
+337.4479,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000023,AgentStagingOutputPending,advance,
+337.4480,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000023,AgentStagingOutputPending,publish,
+337.4488,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000023,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+339.9215,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000114,,exec,execution complete
+339.9219,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000114,,final,execution succeeded
+339.9219,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000114,AgentStagingOutputPending,advance,
+339.9220,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000114,AgentStagingOutputPending,publish,
+339.9226,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,unit.000114,AgentStagingOutputPending,put,queue.agent_staging_output_queue.input
+349.5656,agent_3.AgentExecutingWatcher_POPEN.5:agent_3.AgentExecutingComponent_POPEN.5.child.subscriber,,,closing,
+349.5661,agent_3.AgentExecutingWatcher_POPEN.5:agent_3.AgentExecutingComponent_POPEN.5.child.subscriber,,,finalize,
+349.6671,agent_3.AgentExecutingWatcher_POPEN.5:Watcher,pilot.0000,,stop,
+349.9031,agent_3.AgentExecutingWatcher_POPEN.5:agent_3.AgentExecutingComponent_POPEN.5.child.subscriber,,,finalized,

@@ -1,0 +1,3811 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0000", 
+            "agent_config": {
+                "agent_launch_method": "SSH", 
+                "agent_layout": {
+                    "agent_0": {
+                        "bridges": [
+                            "agent_staging_input_queue", 
+                            "agent_scheduling_queue", 
+                            "agent_executing_queue", 
+                            "agent_staging_output_queue", 
+                            "agent_unschedule_pubsub", 
+                            "agent_reschedule_pubsub", 
+                            "agent_command_pubsub", 
+                            "agent_state_pubsub"
+                        ], 
+                        "components": {
+                            "AgentExecutingComponent": 0, 
+                            "AgentSchedulingComponent": 1, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "pull_units": true, 
+                        "sub_agents": [
+                            "agent_1"
+                        ], 
+                        "target": "local"
+                    }, 
+                    "agent_1": {
+                        "components": {
+                            "AgentExecutingComponent": 1
+                        }, 
+                        "target": "node"
+                    }
+                }, 
+                "bulk_collection_time": 1.0, 
+                "clone": {
+                    "AgentExecutingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentWorker": {
+                        "input": 1, 
+                        "output": 1
+                    }
+                }, 
+                "cores": 48, 
+                "cores_per_node": 24, 
+                "db_poll_sleeptime": 0.1, 
+                "debug": "DEBUG", 
+                "drop": {
+                    "AgentExecutingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentWorker": {
+                        "input": 1, 
+                        "output": 1
+                    }
+                }, 
+                "heartbeat_interval": 10, 
+                "lrms": "SLURM", 
+                "max_io_loglength": 1024, 
+                "mongodb_url": "mongodb://ec2-54-221-194-147.compute-1.amazonaws.com:24242/mark/", 
+                "mpi_launch_method": "MPIRUN_RSH", 
+                "pilot_id": "pilot.0000", 
+                "runtime": 30, 
+                "scheduler": "CONTINUOUS", 
+                "session_id": "rp.session.netbook.mark.016736.0026", 
+                "spawner": "POPEN", 
+                "staging_area": "staging_area", 
+                "staging_scheme": "staging", 
+                "task_launch_method": "SSH"
+            }, 
+            "callbackhistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446043224.395495
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1446043225.397939
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1446043244.477714
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1446043272.899688
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1446043388.600985
+                }
+            ], 
+            "commands": [], 
+            "cores_per_node": null, 
+            "description": {
+                "_config": {
+                    "agent_layout": {
+                        "agent_0": {
+                            "bridges": [
+                                "agent_staging_input_queue", 
+                                "agent_scheduling_queue", 
+                                "agent_executing_queue", 
+                                "agent_staging_output_queue", 
+                                "agent_unschedule_pubsub", 
+                                "agent_reschedule_pubsub", 
+                                "agent_command_pubsub", 
+                                "agent_state_pubsub"
+                            ], 
+                            "components": {
+                                "AgentExecutingComponent": 0, 
+                                "AgentSchedulingComponent": 1, 
+                                "AgentStagingInputComponent": 1, 
+                                "AgentStagingOutputComponent": 1
+                            }, 
+                            "pull_units": true, 
+                            "sub_agents": [
+                                "agent_1"
+                            ], 
+                            "target": "local"
+                        }, 
+                        "agent_1": {
+                            "components": {
+                                "AgentExecutingComponent": 1
+                            }, 
+                            "target": "node"
+                        }
+                    }, 
+                    "bulk_collection_time": 1.0, 
+                    "clone": {
+                        "AgentExecutingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentSchedulingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingInputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingOutputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentWorker": {
+                            "input": 1, 
+                            "output": 1
+                        }
+                    }, 
+                    "db_poll_sleeptime": 0.1, 
+                    "drop": {
+                        "AgentExecutingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentSchedulingComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingInputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentStagingOutputComponent": {
+                            "input": 1, 
+                            "output": 1
+                        }, 
+                        "AgentWorker": {
+                            "input": 1, 
+                            "output": 1
+                        }
+                    }, 
+                    "heartbeat_interval": 10, 
+                    "max_io_loglength": 1024, 
+                    "staging_area": "staging_area", 
+                    "staging_scheme": "staging"
+                }, 
+                "access_schema": null, 
+                "cleanup": false, 
+                "cores": 48, 
+                "exit_on_error": false, 
+                "memory": null, 
+                "project": "TG-MCB150124", 
+                "queue": "compute", 
+                "resource": "xsede.comet", 
+                "runtime": 30, 
+                "sandbox": null
+            }, 
+            "finished": 1446043387.790634, 
+            "global_sandbox": "/home/marksant/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1446043226.20945
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (<saga.filesystem.directory.Directory object at 0x105bb7e10>).", 
+                    "timestamp": 1446043226.209904
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/utils/radical.utils-v0.37-2-gee75da5-devel.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/).", 
+                    "timestamp": 1446043228.604513
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/saga/saga-python-v0.37-2-g4ef5f6d-devel.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/).", 
+                    "timestamp": 1446043230.347112
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/Users/mark/.virtualenv/rp/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.37.10-82-g9f348d7-fix-shutdown-race.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/).", 
+                    "timestamp": 1446043232.087579
+                }, 
+                {
+                    "message": "Writing agent configuration to file '/var/folders/49/k1pw9n4j02j3nwm7mb003yy80000gn/T/rp_agent_cfg_rW9Anp.json'.", 
+                    "timestamp": 1446043234.459517
+                }, 
+                {
+                    "message": "Copying agent configuration file 'file://localhost/var/folders/49/k1pw9n4j02j3nwm7mb003yy80000gn/T/rp_agent_cfg_rW9Anp.json' to sandbox (sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/).", 
+                    "timestamp": 1446043234.46127
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Project': 'TG-MCB150124', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/', 'Queue': 'compute', 'Environment': {'RADICAL_PILOT_PROFILE': 'TRUE'}, 'WallTimeLimit': 30, 'Arguments': ['-l bootstrap_1.sh', \" -d 'radical.utils-v0.37-2-gee75da5-devel.tar.gz:saga-python-v0.37-2-g4ef5f6d-devel.tar.gz:radical.pilot-v0.37.10-82-g9f348d7-fix-shutdown-race.tar.gz' -m 'create' -p 'pilot.0000' -r 'local' -s 'rp.session.netbook.mark.016736.0026' -v '/home/marksant/radical.pilot.sandbox/ve_comet' -a 'multicore' -e 'module load python' -w 'export PATH=$PATH' -w 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH'\"], 'ProcessesPerHost': 24, 'Error': 'bootstrap_1.err', 'Output': 'bootstrap_1.out', 'TotalCPUCount': 48}", 
+                    "timestamp": 1446043238.228774
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [slurm+ssh://comet.sdsc.xsede.org/]-[1207512]", 
+                    "timestamp": 1446043243.853895
+                }, 
+                {
+                    "message": "FAILED startup", 
+                    "timestamp": 1446043387.790634
+                }, 
+                {
+                    "message": "real 1446043387.797864 sec | user 1.270 sec | system 0.314 sec | mem 44732.00 kB", 
+                    "timestamp": 1446043387.790634
+                }
+            ], 
+            "logfile": null, 
+            "nodes": null, 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "pmgr.0000", 
+            "saga_job_id": "[slurm+ssh://comet.sdsc.xsede.org/]-[1207512]", 
+            "sagajobid": null, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "started": 1446043271.73075, 
+            "state": "Failed", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446043224.106731
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1446043224.201946
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1446043243.85403
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1446043271.73075
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1446043387.790634
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1446043224.106731, 
+            "unit_ids": [
+                "unit.000005", 
+                "unit.000023", 
+                "unit.000022", 
+                "unit.000008", 
+                "unit.000018", 
+                "unit.000009", 
+                "unit.000012", 
+                "unit.000004", 
+                "unit.000011", 
+                "unit.000016", 
+                "unit.000019", 
+                "unit.000001", 
+                "unit.000020", 
+                "unit.000021", 
+                "unit.000013", 
+                "unit.000000", 
+                "unit.000014", 
+                "unit.000002", 
+                "unit.000015", 
+                "unit.000006", 
+                "unit.000017", 
+                "unit.000007", 
+                "unit.000010", 
+                "unit.000003"
+            ], 
+            "unitmanager": "umgr.0000"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "pmgr.0000", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.netbook.mark.016736.0026", 
+        "connected": 1446043218.514821, 
+        "created": 1446043218.514821, 
+        "metadata": {
+            "backend": "COMET", 
+            "cu_cores": 1, 
+            "cu_count": 24, 
+            "cu_runtime": 84, 
+            "exclusive_agent_nodes": true, 
+            "generations": 1, 
+            "iteration": 0, 
+            "label": "exp8", 
+            "num_exec_instances_per_sub_agent": 1, 
+            "num_sub_agents": 1, 
+            "pilot_cores": 48, 
+            "pilot_runtime": 30, 
+            "profiling": true, 
+            "radical_stack": {
+                "rp": "v0.37.10-82-g9f348d7@fix-shutdown_race", 
+                "rs": "v0.37-2-g4ef5f6d@devel", 
+                "ru": "v0.37-2-gee75da5@devel"
+            }, 
+            "repetitions": 1
+        }, 
+        "name": "rp.session.netbook.mark.016736.0026"
+    }, 
+    "umgr": [
+        {
+            "_id": "umgr.0000", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "direct_submission"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000005", 
+            "callbackhistory": [
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043227.664609
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.772525
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.584813
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043368.934241
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.449519
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043226.892483
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043227.149254
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043368.671626
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000005", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.400321
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043226.959116
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043226.959116
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043281.600205
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043281.73773
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043281.842114
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043281.945446
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043282.046072
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043282.149242
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043366.764053
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043366.868032
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043366.970062
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043368.494594
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043368.671626
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:22 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:46 PDT 2015\n", 
+            "submitted": 1446043225.400321, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000023", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043227.664888
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.02214
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.772266
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.584559
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.623012
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043227.095321
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043227.504808
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043368.790544
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000023", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.424955
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043227.327881
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043227.327881
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043281.699036
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043281.943558
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043282.048128
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043282.151233
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043282.250108
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043282.352007
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043366.864993
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043367.071755
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043367.173469
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043368.616744
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043368.790544
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:22 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:46 PDT 2015\n", 
+            "submitted": 1446043225.424955, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000022", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043227.665027
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.201866
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.772395
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.584688
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043369.795371
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.845769
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043227.271166
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043227.873123
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043369.018466
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000022", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.423901
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043227.679279
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043227.679279
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043281.799557
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043282.150205
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043282.253891
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043282.356483
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043282.456572
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043282.558357
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043367.066265
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043367.274579
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043367.376518
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043368.845767
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.018466
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:23 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:47 PDT 2015\n", 
+            "submitted": 1446043225.423901, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000008", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.021946
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.548881
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.890342
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043283.772073
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.120448
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.584362
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.668934
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043227.448728
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043228.228371
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043369.137013
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000008", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.404158
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.050059
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.050059
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043281.900266
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043282.355478
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043282.460021
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043282.56301
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043282.679254
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043282.763904
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043367.267573
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043367.477793
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043367.580169
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043368.960854
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.137013
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:23 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:47 PDT 2015\n", 
+            "submitted": 1446043225.404158, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000018", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.021641
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.548592
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.889543
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043283.771713
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.119684
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.58386
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.137518
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043227.624077
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043228.32965
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043369.364682
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000018", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.418594
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.156251
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.156251
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.00095
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043282.561805
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043282.680256
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043282.767533
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043282.867963
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043282.970121
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043367.468867
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043367.681243
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043367.783511
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043369.190898
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.364682
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:23 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:47 PDT 2015\n", 
+            "submitted": 1446043225.418594, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000009", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.201605
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.89022
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.232735
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.120332
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043368.584209
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.449313
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.489951
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043227.806945
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043228.578796
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043369.48645
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000009", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.405696
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.402884
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.402884
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.101755
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043282.768445
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043282.871892
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043282.974026
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043283.07365
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.175592
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043367.670183
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043367.884531
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043367.986597
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043369.314496
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.48645
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:23 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:47 PDT 2015\n", 
+            "submitted": 1446043225.405696, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000012", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.201318
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.889935
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.23257
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.120064
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.448972
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.31582
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043227.980127
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043228.680322
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043369.714079
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000012", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.409989
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.506258
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.506258
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.202288
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043282.973033
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043283.077869
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043283.179895
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043283.279539
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.381534
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043367.87138
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043368.087812
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.189867
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043369.536832
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.714079
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:23 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:47 PDT 2015\n", 
+            "submitted": 1446043225.409989, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000004", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.549072
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.233034
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.409905
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.120638
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.622729
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.017948
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.243775
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043228.168486
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043228.924235
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043369.838781
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000004", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.398978
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.750887
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.750887
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.303052
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043283.178848
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043283.282919
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043283.385157
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043283.484873
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.586813
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043368.072613
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043368.29116
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.392922
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043369.662684
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043369.838781
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:24 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:48 PDT 2015\n", 
+            "submitted": 1446043225.398978, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000011", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.889797
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.232428
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.409411
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043284.11993
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.830665
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.448782
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.369337
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043228.344658
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043229.028514
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043370.058801
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000011", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.408681
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043228.853656
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043228.853656
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.403645
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043283.384222
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043283.500795
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043283.603004
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043283.702425
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043283.804153
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043368.374557
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043368.494273
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.596077
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043369.884534
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.058801
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:24 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:48 PDT 2015\n", 
+            "submitted": 1446043225.408681, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000016", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043228.890082
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.409577
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.801873
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043284.120204
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.830835
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.449171
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.544266
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043228.517203
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043229.291754
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043370.19531
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000016", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.41565
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.099367
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.099367
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.504095
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043283.602062
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043283.705741
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043283.807911
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043283.907547
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.009083
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043368.575798
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043368.697201
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043368.79907
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043370.011367
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.19531
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:24 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:48 PDT 2015\n", 
+            "submitted": 1446043225.41565, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000019", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043229.232134
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.408755
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.801464
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.830419
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043369.448444
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.315493
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.194138
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043228.700277
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043229.374323
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043370.406616
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000019", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.419901
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.200877
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.200877
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.604756
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043283.806964
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043283.912347
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043284.013748
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043284.113678
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.215286
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043368.777199
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043368.900385
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.002271
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043370.231031
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.406616
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:24 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:48 PDT 2015\n", 
+            "submitted": 1446043225.419901, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000001", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043229.23288
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.144589
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.831008
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.845043
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.068403
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043228.875746
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043229.639991
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043370.546877
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000001", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.394466
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.467492
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.467492
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.705143
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043284.012753
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043284.116827
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043284.218932
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043284.31882
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.420371
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043368.978394
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043369.103489
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.205183
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043370.366596
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.546877
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:24 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:48 PDT 2015\n", 
+            "submitted": 1446043225.394466, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000020", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043229.409708
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.14439
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.831279
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.84563
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.89462
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043229.048647
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043229.732283
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043370.752627
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000020", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.421651
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.55908
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.55908
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.805781
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043284.217948
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043284.32275
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043284.423861
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043284.524428
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.626311
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043369.179434
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043369.306329
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.408286
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043370.579224
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.752627
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:25 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:49 PDT 2015\n", 
+            "submitted": 1446043225.421651, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000021", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043229.802003
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.495357
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043285.831151
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.179406
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.845504
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.720064
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043229.233565
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043229.98596
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043370.895584
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000021", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.422832
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.812615
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.812615
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043282.906381
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043284.42476
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043284.527655
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043284.700471
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043284.729742
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043284.831113
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043369.380603
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043369.509363
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.611612
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043370.722516
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043370.895584
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:25 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:49 PDT 2015\n", 
+            "submitted": 1446043225.422832, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000013", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043229.801723
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.49482
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.178583
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.4896
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.543689
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.942588
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043229.409025
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043230.081787
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043371.098933
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000013", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.411311
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043229.905588
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043229.905588
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.00677
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043284.701438
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043284.733971
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043284.835122
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043284.935896
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.037745
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043369.581856
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043369.712754
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043369.814724
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043370.925966
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.098933
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:25 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:49 PDT 2015\n", 
+            "submitted": 1446043225.411311, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000000", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043230.144714
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.84695
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.179283
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043370.845327
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043372.243275
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043373.803347
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043229.625126
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043230.331439
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043371.251349
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000000", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.393096
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043230.158648
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.158648
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.107428
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043284.836036
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043284.939046
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043285.040048
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043285.1407
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.242502
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043369.783288
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043369.91588
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.018024
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.075178
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.251349
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:25 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:49 PDT 2015\n", 
+            "submitted": 1446043225.393096, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000014", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043230.495058
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.846399
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.17883
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043371.543971
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043373.114158
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043229.809137
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043230.426014
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043371.450624
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000014", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.412651
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043230.253194
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.253194
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.207812
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043285.04099
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043285.149763
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043285.251838
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043285.35145
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.453385
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043369.984415
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043370.119395
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.221529
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.278669
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.450624
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:25 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:49 PDT 2015\n", 
+            "submitted": 1446043225.412651, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000002", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043230.495213
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.022414
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.179141
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043372.068111
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043373.632123
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043229.981562
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043230.67966
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043371.597607
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000002", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.395779
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043230.503611
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.503611
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.308366
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043285.250877
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043285.355052
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043285.456891
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043285.556646
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.658589
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043370.185637
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043370.32241
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.42448
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.423474
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.597607
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:26 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:50 PDT 2015\n", 
+            "submitted": 1446043225.395779, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000015", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043230.846642
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.022143
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043286.178966
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043287.810114
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043371.544139
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043373.286143
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043230.158103
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043230.769688
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043371.797049
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000015", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.41429
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043230.596928
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.596928
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.408772
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043285.45595
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043285.56102
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043285.733224
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043285.762584
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043285.864363
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043370.386956
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043370.526081
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.627775
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.623899
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.797049
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:26 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:50 PDT 2015\n", 
+            "submitted": 1446043225.41429, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000006", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043230.847126
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.36596
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.541775
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043287.810776
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043372.243574
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043374.15916
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043230.32958
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043231.023292
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043371.942324
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000006", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.401615
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043230.850916
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.850916
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.509096
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043285.732264
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043285.765804
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043285.86764
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043285.967276
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.069163
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043370.588325
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043370.728961
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043370.830964
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.769467
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043371.942324
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:26 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:50 PDT 2015\n", 
+            "submitted": 1446043225.401615, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000017", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043230.846781
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.365712
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.541307
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043287.81026
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043371.719769
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043373.458691
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043230.503072
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043231.113567
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043372.143352
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000017", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.417288
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043230.941228
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043230.941228
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.609508
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043285.866693
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043285.971828
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043286.07295
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043286.173412
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.275323
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043370.789373
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043370.9323
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043371.034142
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043371.969399
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.143352
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:26 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:50 PDT 2015\n", 
+            "submitted": 1446043225.417288, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000007", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043231.022621
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.541641
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.918259
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043287.810642
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043373.981179
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043230.67372
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043231.374272
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043372.288966
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000007", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.40288
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.202056
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.202056
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.71004
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043286.073849
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043286.177003
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043286.278009
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043286.378629
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.480539
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043370.990433
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043371.13535
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043371.237556
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043372.114918
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.288966
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:26 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:50 PDT 2015\n", 
+            "submitted": 1446043225.40288, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000010", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043231.365434
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.541039
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.917862
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043287.809819
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043372.94231
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043374.877284
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043230.850241
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043231.4834
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043372.489585
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000010", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.407357
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.285978
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.285978
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.810586
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043286.278888
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043286.383197
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043286.485069
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043286.584528
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.686306
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043371.292073
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043371.394073
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043371.495671
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043372.314599
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.489585
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:27 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:51 PDT 2015\n", 
+            "submitted": 1446043225.407357, 
+            "unitmanager": "umgr.0000"
+        }, 
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [], 
+            "FTW_Input_Status": null, 
+            "FTW_Output_Directives": [], 
+            "FTW_Output_Status": null, 
+            "_id": "unit.000003", 
+            "callbackhistory": [
+                {
+                    "state": "PendingInputStaging", 
+                    "timestamp": 1446043231.541453
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043232.094634
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043287.810411
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043288.157709
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043373.63184
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043375.050472
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [
+                    "-c", 
+                    "date && hostname -f && sleep 84 && date"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sh", 
+                "input_staging": null, 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": null, 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446043231.026007
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446043231.747948
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446043372.640506
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/marksant/radical.pilot.sandbox/rp.session.netbook.mark.016736.0026-pilot.0000//unit.000003", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446043225.397117
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446043231.547693
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043231.547693
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446043283.911395
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446043286.484028
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446043286.587886
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446043286.759851
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446043286.789604
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446043286.891129
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446043371.392876
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446043371.596881
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446043371.699042
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446043372.467499
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446043372.640506
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "Wed Oct 28 07:41:27 PDT 2015\ncomet-05-07.sdsc.edu\nWed Oct 28 07:42:51 PDT 2015\n", 
+            "submitted": 1446043225.397117, 
+            "unitmanager": "umgr.0000"
+        }
+    ]
+}
