@@ -13,6 +13,10 @@ import inspect
 import argparse
 import tempfile
 
+import radical.utils as ru
+report = ru.LogReporter(name='radical.pilot')
+
+
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local
 VIRTENV_MODE = "create" # create, use, update
@@ -181,22 +185,20 @@ def unit_state_cb(unit, state):
 
     global CNT
 
-    print "[Callback]: unit %s on %s: %s." % (unit.uid, unit.pilot_id, state)
+    report.info("[Callback]: unit %s on %s: %s.\n" % (unit.uid, unit.pilot_id, state))
 
     if state in [rp.FAILED, rp.DONE, rp.CANCELED]:
         CNT += 1
-        print "[Callback]: # %6d" % CNT
-
+        report.info("[Callback]: # %6d\n" % CNT)
 
     if state == rp.FAILED:
-        print "stderr: %s" % unit.stderr
-        #sys.exit(2)
+        report.error("stderr: %s\n" % unit.stderr)
 
 
 #------------------------------------------------------------------------------
 #
 def wait_queue_size_cb(umgr, wait_queue_size):
-    print "[Callback]: wait_queue_size: %s." % wait_queue_size
+    report.info("[Callback]: wait_queue_size: %s.\n" % wait_queue_size)
 #------------------------------------------------------------------------------
 
 
@@ -322,9 +324,9 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     # Create a new session. No need to try/except this: if session creation
     # fails, there is not much we can do anyways...
     session = rp.Session()
-    print "session id: %s" % session.uid
-    print "Experiment - Backend:%s, PilotCores:%d, PilotRuntime:%d, CURuntime:%d, CUCores:%d, CUCount:%d" % \
-        (backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count)
+    report.info("session id: %s\n" % session.uid)
+    report.info("Experiment - Backend:%s, PilotCores:%d, PilotRuntime:%d, CURuntime:%d, CUCores:%d, CUCount:%d\n" % \
+        (backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count))
 
     cfg = session.get_resource_config(resource_config[backend]['RESOURCE'])
 
@@ -444,15 +446,14 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         # corresponding KeyboardInterrupt exception for shutdown.  We also catch
         # SystemExit (which gets raised if the main threads exits for some other
         # reason).
-        print "need to exit now: %s" % e
+        report.eror("need to exit now: %s\n" % e)
 
     finally:
 
         if metadata:
-            print "Inserting meta data into session"
+            report.info("Inserting meta data into session ...\n")
             rp.utils.inject_metadata(session, metadata)
 
-        print "closing session"
         session.close(cleanup=False, terminate=True)
 
         return session._uid, metadata
@@ -555,7 +556,7 @@ def iterate_experiment(
                             if cu_duration == 'GUESSTIMATE':
                                 cus_per_gen = worker_cores / cu_cores
                                 cu_duration = 60 + cus_per_gen / num_sub_agents
-                                print "CU_DURATION GUESSTIMATED at %d seconds" % cu_duration
+                                report.warn("CU_DURATION GUESSTIMATED at %d seconds.\n" % cu_duration)
 
                             # Create and agent layout
                             agent_config = construct_agent_config(
