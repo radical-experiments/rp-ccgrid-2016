@@ -91,6 +91,8 @@ def get_mpi(unit_info_df, sid):
 # TODO: add concurrent CUs on right axis
 def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sid):
 
+    print "Plotting %s ..." % sid
+
     labels = []
 
     # Legend info
