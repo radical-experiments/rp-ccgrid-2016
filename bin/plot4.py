@@ -159,7 +159,6 @@ if __name__ == '__main__':
     session_ids = []
 
     unit_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
-
     pilot_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
     unit_prof_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
     tr_unit_prof_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
