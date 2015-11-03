@@ -1016,9 +1016,9 @@ def exp8(backend):
         num_sub_agents_var=[1], # Number of sub-agents to iterate over
         #num_sub_agents_var=[1, 2, 4, 8, 16, 32], # Number of sub-agents to iterate over
         #num_exec_instances_per_sub_agent_var=[1, 2, 4, 8, 16, 24], # Number of workers per sub-agent to iterate over
-        num_exec_instances_per_sub_agent_var=[1],
-        #nodes_var=[1, 2, 4, 8, 16, 32, 48] # The number of nodes to allocate for running CUs
-        nodes_var=[10],
+        num_exec_instances_per_sub_agent_var=[24],
+        nodes_var=[1, 2, 4, 8, 16, 32, 48, 64] # The number of nodes to allocate for running CUs
+        #nodes_var=[10],
     )
     return sessions
 #
