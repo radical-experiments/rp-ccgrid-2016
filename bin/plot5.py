@@ -109,11 +109,11 @@ def plot(unit_prof_df, info_df, unit_info_df, pilot_info_df, sids, value, label=
 
     mp.pyplot.legend(labels, loc='upper right', fontsize=5)
     mp.pyplot.title("Concurrent number of CUs in stage '%s'.\n"
-                    "%d CUs of %d core(s) with a %ss payload on a %d(+%d*%s) (thus %d 'generations') core pilot on %s.\n"
+                    "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
                     "Constant number of %d sub-agent with %d ExecWorker(s) each.\n"
                     "RP: %s - RS: %s - RU: %s"
                    % (value,
-                      info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], cores, info['metadata.num_sub_agents'], ppn, info['metadata.generations'], resource_label,
+                      info['metadata.generations'], info['metadata.cu_cores'], info['metadata.cu_runtime'], resource_label,
                       info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
                       info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
                       ), fontsize=8)
