@@ -80,12 +80,12 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
 
     print 'labels: %s' % labels
     #mp.pyplot.legend(labels, loc='upper left', fontsize=5)
-    mp.pyplot.title("TTC for varying CUs/cores.\n"
-                    "%d CUs of %d core(s) with a %ss payload on a %d core pilot on %s.\n"
-                    "%d sub-agent with varying ExecWorker(s).\n"
+    mp.pyplot.title("TTC for a varying number of 'concurrent' CUs.\n"
+                    "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
+                    "Constant number of %d sub-agent with %d ExecWorker(s) each.\n"
                     "RP: %s - RS: %s - RU: %s"
-                   % (info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], info['metadata.pilot_cores'], resource_label,
-                      info['metadata.num_sub_agents'],
+                   % (info['metadata.generations'], info['metadata.cu_cores'], info['metadata.cu_runtime'], resource_label,
+                      info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
                       info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
                       ), fontsize=8)
     mp.pyplot.xlabel("Number of Cores")
