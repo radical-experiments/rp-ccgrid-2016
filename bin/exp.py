@@ -546,7 +546,7 @@ def iterate_experiment(
                             pilot_cores = int(resource_config[backend]['PPN']) * pilot_nodes
 
                             # Number of cores available for CUs
-                            worker_cores = int(resource_config[backend]['PPN']) * nodes
+                            effective_cores = int(resource_config[backend]['PPN']) * nodes
 
                             # Don't need full node experiments for low number of nodes,
                             # as we have no equivalent in single core experiments
@@ -559,10 +559,10 @@ def iterate_experiment(
                                 this_cu_count = cu_count
                             else:
                                 # keep core consumption equal
-                                this_cu_count = (generations * worker_cores) / cu_cores
+                                this_cu_count = (generations * effective_cores) / cu_cores
 
                             if cu_duration == 'GUESSTIMATE':
-                                cus_per_gen = worker_cores / cu_cores
+                                cus_per_gen = effective_cores / cu_cores
                                 cu_duration = 60 + cus_per_gen / num_sub_agents
                                 report.warn("CU_DURATION GUESSTIMATED at %d seconds.\n" % cu_duration)
 
@@ -594,6 +594,7 @@ def iterate_experiment(
                                     'exclusive_agent_nodes': exclusive_agent_nodes,
                                     'num_sub_agents': num_sub_agents,
                                     'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
+                                    'effective_cores': effective_cores,
                                 }
                             )
 
