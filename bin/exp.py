@@ -72,6 +72,7 @@ resource_config = {
         'TASK_LAUNCH_METHOD': "ORTE",
         'AGENT_SPAWNER': 'SHELL',
         #'AGENT_SPAWNER': 'POPEN',
+        'NETWORK_INTERFACE': 'ipogif0',
         #'QUEUE': 'debug', # Maximum 30 minutes
         'PPN': 32,
         'PRE_EXEC_PREPEND': [
@@ -82,6 +83,7 @@ resource_config = {
     },
     'BW': {
         'RESOURCE': 'ncsa.bw',
+        'NETWORK_INTERFACE': 'ipogif0',
         'TASK_LAUNCH_METHOD': "ORTE",
         'AGENT_SPAWNER': 'POPEN',
         'PROJECT': 'gkd',
@@ -96,6 +98,7 @@ resource_config = {
         #'AGENT_SPAWNER': 'SHELL',
         'AGENT_SPAWNER': 'POPEN',
         #'QUEUE': 'debug', # Maximum 60 minutes
+        'NETWORK_INTERFACE': 'ipogif0',
         'PROJECT': 'csc168',
         'PPN': 16,
         'PRE_EXEC_PREPEND': [
@@ -155,6 +158,7 @@ resource_config = {
         'TARGET': 'node',
         'TASK_LAUNCH_METHOD': "ORTE",
         'QUEUE': 'short', # Jobs can range from 1-8 nodes (24-192 cores) and can have a maximum walltime of 20 minutes.
+        'NETWORK_INTERFACE': 'ipogif0',
         'PROJECT': 'e290',
         'PPN': 24,
         'PRE_EXEC_PREPEND': [
@@ -207,7 +211,7 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 #------------------------------------------------------------------------------
 
 
-def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, target):
+def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, target, network_interface=None):
 
     config = {
 
@@ -228,6 +232,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
 
         # time between checks of internal state and commands from mothership (seconds)
         "heartbeat_interval"   : 10,
+
         # factor by which the number of units are increased at a certain step.  Value of
         # "1" will leave the units unchanged.  Any blowup will leave on unit as the
         # original, and will then create clones with an changed unit ID (see blowup()).
@@ -253,6 +258,10 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
             "AgentStagingOutputComponent" : {"input" : 1, "output" : 1}
         }
     }
+
+    # interface for binding zmq to
+    if network_interface:
+        config["network_interface"] = "ipogif0"
 
     layout =  {
         "agent_0"   : {
@@ -570,7 +579,8 @@ def iterate_experiment(
                             agent_config = construct_agent_config(
                                 num_sub_agents=num_sub_agents,
                                 num_exec_instances_per_sub_agent=num_exec_instances_per_sub_agent,
-                                target=resource_config[backend]['TARGET']
+                                target=resource_config[backend]['TARGET'],
+                                network_interface=resource_config[backend].get('NETWORK_INTERFACE')
                             )
 
                             # Fire!!
