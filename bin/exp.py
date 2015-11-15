@@ -587,7 +587,7 @@ def iterate_experiment(
                             # Fire!!
                             sid, meta = run_experiment(
                                 backend=backend,
-                                barrier='start',
+                                barrier=barrier,
                                 pilot_cores=pilot_cores,
                                 pilot_runtime=pilot_runtime,
                                 cu_runtime=cu_duration,
