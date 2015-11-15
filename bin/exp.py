@@ -314,7 +314,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, cu_mpi, profiling, agent_config, cancel_on_all_started=False, start_barrier=None, metadata=None):
+def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, cu_mpi, profiling, agent_config, cancel_on_all_started=False, barrier=None, metadata=None):
 
     # Profiling
     if profiling:
@@ -373,8 +373,8 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     new_cfg.virtenv_mode = VIRTENV_MODE
 
     # Barrier
-    if start_barrier:
-        new_cfg.pre_bootstrap_1.append("export RADICAL_PILOT_BARRIER=$PWD/staging_area/%s" % start_barrier)
+    if barrier == 'start':
+        new_cfg.pre_bootstrap_1.append("export RADICAL_PILOT_BARRIER=$PWD/staging_area/%s" % 'start_barrier')
 
     # now add the entry back.  As we did not change the config name, this will
     # replace the original configuration.  A completely new configuration would
@@ -426,13 +426,13 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         # it is difficult to really test the agent if queuing time is too short.
         # This barrier waits with starting the agent until all units have
         # reached the database.
-        if start_barrier:
+        if barrier == 'start':
             umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
             tmp_fd, tmp_name = tempfile.mkstemp()
             os.close(tmp_fd)
             sd_pilot = {
                 'source': 'file://%s' % tmp_name,
-                'target': 'staging:///%s' % start_barrier,
+                'target': 'staging:///%s' % 'start_barrier',
                 'action': rp.TRANSFER
             }
             pilot.stage_in(sd_pilot)
@@ -484,7 +484,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 #
 # Iterable: [cu_cores_var, cu_duration_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
 # Quantitative: repetitions, [cu_count | generations], pilot_runtime
-# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling
+# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling, barrier
 # Static: cu=/bin/sleep
 #
 def iterate_experiment(
@@ -492,6 +492,7 @@ def iterate_experiment(
         label,
         repetitions=1,
         exclusive_agent_nodes=True,
+        barrier=None,
         cu_cores_var=[1], # Number of cores per CU to iterate over
         cu_duration_var=[0], # Duration of the payload
         cancel_on_all_started=False, # Quit once everything is started.
@@ -586,7 +587,7 @@ def iterate_experiment(
                             # Fire!!
                             sid, meta = run_experiment(
                                 backend=backend,
-                                start_barrier=label,
+                                barrier='start',
                                 pilot_cores=pilot_cores,
                                 pilot_runtime=pilot_runtime,
                                 cu_runtime=cu_duration,
@@ -1023,6 +1024,7 @@ def exp8(backend):
         repetitions=1,
         generations=5,
         #cu_duration_var=['GUESSTIMATE'],
+        barrier='start',
         cu_duration_var=[60],
         num_sub_agents_var=[10], # Number of sub-agents to iterate over
         #num_sub_agents_var=[1, 2, 4, 8, 16, 32], # Number of sub-agents to iterate over
