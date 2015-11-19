@@ -124,13 +124,42 @@ if __name__ == '__main__':
     session_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
 
     session_ids = [
-        "rp.session.ip-10-184-31-85.santcroos.016743.0005",
-        "rp.session.ip-10-184-31-85.santcroos.016743.0007",
-        "rp.session.ip-10-184-31-85.santcroos.016743.0002",
-        "rp.session.ip-10-184-31-85.santcroos.016743.0008",
-        "rp.session.ip-10-184-31-85.santcroos.016743.0003",
-        "rp.session.ip-10-184-31-85.santcroos.016743.0006",
-        "rp.session.ip-10-184-31-85.santcroos.016743.0001",
+        # Comet before scheduler fix:
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0005",
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0007",
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0002",
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0008",
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0003",
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0006",
+        # "rp.session.ip-10-184-31-85.santcroos.016743.0001",
+        # Comet after scheduler fix1:
+        # "rp.session.ip-10-184-31-85.santcroos.016744.0000",
+        # "rp.session.ip-10-184-31-85.santcroos.016744.0001",
+        # "rp.session.ip-10-184-31-85.santcroos.016744.0002",
+        # "rp.session.ip-10-184-31-85.santcroos.016744.0003",
+        # "rp.session.ip-10-184-31-85.santcroos.016744.0004",
+        # #"rp.session.ip-10-184-31-85.santcroos.016745.0000",
+        # "rp.session.ip-10-184-31-85.santcroos.016745.0001",
+        # "rp.session.ip-10-184-31-85.santcroos.016745.0004",
+
+        # Comet after scheduler fix2
+        "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
+        "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
+        "rp.session.ip-10-184-31-85.santcroos.016747.0008", # 4 node
+        "rp.session.ip-10-184-31-85.santcroos.016747.0010", # 8 nodes
+        "rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
+        "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
+        "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
+
+        # Titan after scheduler fix
+        # "rp.session.titan-ext7.marksant1.016747.0002", # 16
+        # "rp.session.titan-ext7.marksant1.016747.0008", # 32
+        # "rp.session.titan-ext7.marksant1.016747.0005", # 64
+        # "rp.session.titan-ext7.marksant1.016747.0007", # 128
+        # "rp.session.titan-ext7.marksant1.016747.0003", # 256
+        # "rp.session.titan-ext7.marksant1.016747.0006", # 512 cores / 32 nodes
+        # "rp.session.titan-ext7.marksant1.016747.0009", # 1024 cores / 64 nodes
+        #"rp.session.titan-ext7.marksant1.016747.0010", # 2048 cores / 128 nodes # Doesnt complete
     ]
 
     plot(tr_unit_prof_df, session_info_df, unit_info_df, pilot_info_df, session_ids)
