@@ -1037,6 +1037,38 @@ def exp8(backend):
 #
 #-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
+#
+# Single resource experiment.
+#
+# Goal: determine degree of scaling with adding execworkers/sub-agents
+#
+# I think scaling with exec workers, and specifically to what problem size
+# this behaves kinda linear and also that this scaling is independent
+# from CU size (scalar / mpi)
+#
+def exp9(backend):
+
+    sessions = iterate_experiment(
+        backend=backend,
+        label=inspect.currentframe().f_code.co_name,
+        repetitions=1,
+        generations=5,
+        #cu_duration_var=['GUESSTIMATE'],
+        barrier='generation',
+        cu_duration_var=[60],
+        num_sub_agents_var=[10], # Number of sub-agents to iterate over
+        #exclusive_agent_nodes=False,
+        #num_sub_agents_var=[1, 2, 4, 8, 16, 32], # Number of sub-agents to iterate over
+        #num_exec_instances_per_sub_agent_var=[1, 2, 4, 8, 16, 24], # Number of workers per sub-agent to iterate over
+        num_exec_instances_per_sub_agent_var=[1],
+        #nodes_var=[1, 2, 4, 8, 16, 32, 48] # The number of nodes to allocate for running CUs
+        nodes_var=[1],
+    )
+    return sessions
+#
+#-------------------------------------------------------------------------------
+
 
 #------------------------------------------------------------------------------
 #
