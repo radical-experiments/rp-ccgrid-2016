@@ -314,7 +314,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, cu_mpi, profiling, agent_config, cancel_on_all_started=False, barrier=None, metadata=None):
+def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, generations, cu_mpi, profiling, agent_config, cancel_on_all_started=False, barrier=None, metadata=None):
 
     # Profiling
     if profiling:
@@ -332,6 +332,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         'cu_runtime': cu_runtime,
         'cu_cores': cu_cores,
         'cu_count': cu_count,
+        'generations': generations,
         'profiling': profiling
     })
 
@@ -411,44 +412,64 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         umgr.register_callback(wait_queue_size_cb, rp.WAIT_QUEUE_SIZE)
         umgr.add_pilots(pilot)
 
-        cuds = list()
-        for unit_count in range(0, cu_count):
-            cud = rp.ComputeUnitDescription()
-            cud.executable     = "/bin/sh"
-            cud.arguments      = ["-c", "date && hostname -f && sleep %d && date" % cu_runtime]
-            cud.cores          = cu_cores
-            cud.mpi            = cu_mpi
-            cuds.append(cud)
 
-        units = umgr.submit_units(cuds)
+        cuds = []
+        for generation in range(generations):
+            for unit_count in range(0, cu_count):
+                cud = rp.ComputeUnitDescription()
+                cud.executable     = "/bin/sh"
+                cud.arguments      = ["-c", "date && hostname -f && sleep %d && date" % cu_runtime]
+                cud.cores          = cu_cores
+                cud.mpi            = cu_mpi
+                cuds.append(cud)
 
-        # With the current un-bulkyness of the client <-> mongodb interaction,
-        # it is difficult to really test the agent if queuing time is too short.
-        # This barrier waits with starting the agent until all units have
-        # reached the database.
-        if barrier == 'start':
-            umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
-            tmp_fd, tmp_name = tempfile.mkstemp()
-            os.close(tmp_fd)
-            sd_pilot = {
-                'source': 'file://%s' % tmp_name,
-                'target': 'staging:///%s' % 'start_barrier',
-                'action': rp.TRANSFER
-            }
-            pilot.stage_in(sd_pilot)
-            os.remove(tmp_name)
+            # Switch behavior based on barrier type
+            if barrier == 'generation':
+                # We want to the submission below to happen for this set of units only
+                pass
+            elif barrier != 'generation' and generation == generations-1:
+                report.info("Barrier: %s, generation: %d, generations: %d" % (barrier, generation, generations))
+                pass
+            elif barrier != 'generation' and generation != generations-1:
+                report.info("Barrier: %s, generation: %d, generations: %d" % (barrier, generation, generations))
+                # We will add all the generations at once and only fall through with the last generation
+                continue
+            else:
+                raise("Unexpected condition. Barrier: %s, generation: %d, generations: %d" % (barrier, generation, generations))
 
-        # If we are only interested in startup times, we can cancel once that
-        # has been achieved, which might save us some cpu hours.
-        if cancel_on_all_started:
-            wait_states = [rp.EXECUTING, rp.DONE, rp.FAILED, rp.CANCELED]
-        else:
-            wait_states = [rp.DONE, rp.FAILED, rp.CANCELED]
-        umgr.wait_units(state=wait_states)
+            report.info("Submitting %d units." % len(cuds))
+            units = umgr.submit_units(cuds)
 
-        for cu in units:
-            report.plain("* Task %s state %s, exit code: %s, started: %s, finished: %s" \
-                % (cu.uid, cu.state, cu.exit_code, cu.start_time, cu.stop_time))
+            # With the current un-bulkyness of the client <-> mongodb interaction,
+            # it is difficult to really test the agent if queuing time is too short.
+            # This barrier waits with starting the agent until all units have
+            # reached the database.
+            if barrier == 'start':
+                umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
+                tmp_fd, tmp_name = tempfile.mkstemp()
+                os.close(tmp_fd)
+                sd_pilot = {
+                    'source': 'file://%s' % tmp_name,
+                    'target': 'staging:///%s' % 'start_barrier',
+                    'action': rp.TRANSFER
+                }
+                pilot.stage_in(sd_pilot)
+                os.remove(tmp_name)
+
+            # If we are only interested in startup times, we can cancel once that
+            # has been achieved, which might save us some cpu hours.
+            if cancel_on_all_started:
+                wait_states = [rp.EXECUTING, rp.DONE, rp.FAILED, rp.CANCELED]
+            else:
+                wait_states = [rp.DONE, rp.FAILED, rp.CANCELED]
+            umgr.wait_units(unit_ids=[cu.uid for cu in units], state=wait_states)
+
+            for cu in units:
+                report.plain("* Task %s state %s, exit code: %s, started: %s, finished: %s" \
+                    % (cu.uid, cu.state, cu.exit_code, cu.start_time, cu.stop_time))
+
+            # reset list for next generation
+            cuds = []
 
 
     except rp.PilotException as e:
@@ -569,7 +590,7 @@ def iterate_experiment(
                                 this_cu_count = cu_count
                             else:
                                 # keep core consumption equal
-                                this_cu_count = (generations * effective_cores) / cu_cores
+                                this_cu_count = effective_cores / cu_cores
 
                             if cu_duration == 'GUESSTIMATE':
                                 cus_per_gen = effective_cores / cu_cores
@@ -594,6 +615,7 @@ def iterate_experiment(
                                 cancel_on_all_started=cancel_on_all_started,
                                 cu_cores=cu_cores,
                                 cu_count=this_cu_count,
+                                generations=generations,
                                 cu_mpi=cu_mpi,
                                 profiling=profiling,
                                 agent_config=agent_config,
@@ -601,7 +623,6 @@ def iterate_experiment(
                                     'label': label,
                                     'repetitions': repetitions,
                                     'iteration': iter,
-                                    'generations': generations,
                                     'exclusive_agent_nodes': exclusive_agent_nodes,
                                     'num_sub_agents': num_sub_agents,
                                     'num_exec_instances_per_sub_agent': num_exec_instances_per_sub_agent,
