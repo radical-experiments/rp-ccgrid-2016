@@ -120,17 +120,17 @@ def plot(unit_prof_df, tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, si
     mp.pyplot.legend(labels, loc='upper left', fontsize=5)
     mp.pyplot.title("Concurrent Compute Units per Component.\n"
                     "%d CUs of %d core(s) with a %ss payload on a %d core pilot on %s.\n"
-                    "%d sub-agent with varying ExecWorker(s). All times are per CU.\n"
+                    "%d sub-agent(s) with %d ExecWorker(s) each. All times are per CU.\n"
                     "RP: %s - RS: %s - RU: %s"
                    % (info['metadata.cu_count'], info['metadata.cu_cores'], info['metadata.cu_runtime'], info['metadata.pilot_cores'], resource_label,
-                      info['metadata.num_sub_agents'],
+                      info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
                       info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
                       ), fontsize=8)
     mp.pyplot.xlabel("Time (s)")
     mp.pyplot.ylabel("Concurrent Compute Units")
 
     #mp.pyplot.ylim(0,100)
-    #mp.pyplot.xlim(600,1000)
+    #mp.pyplot.xlim(1200, 1500)
 
     mp.pyplot.savefig('%s_plot4.pdf' % sid)
     mp.pyplot.close()
