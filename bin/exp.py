@@ -20,7 +20,8 @@ import tempfile
 import radical.utils as ru
 report = ru.LogReporter(name='radical.pilot')
 
-BARRIER_START='start'
+BARRIER_AGENT_LAUNCH= 'barrier_agent_launch'
+BARRIER_CLIENT_SUBMIT='barrier_client_submit'
 BARRIER_GENERATION='generation'
 
 # Whether and how to install new RP remotely
@@ -376,7 +377,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     new_cfg.virtenv_mode = VIRTENV_MODE
 
     # Barrier
-    if BARRIER_START in barriers:
+    if BARRIER_AGENT_LAUNCH in barriers:
         new_cfg.pre_bootstrap_1.append("export RADICAL_PILOT_BARRIER=$PWD/staging_area/%s" % 'start_barrier')
 
     # now add the entry back.  As we did not change the config name, this will
@@ -414,6 +415,10 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         umgr.register_callback(wait_queue_size_cb, rp.WAIT_QUEUE_SIZE)
         umgr.add_pilots(pilot)
 
+        # Wait until the pilot is active before we start submitting things
+        if BARRIER_CLIENT_SUBMIT in barriers:
+            report.info("Waiting for pilot %s to become active ...\n" % pilot.uid)
+            pilot.wait(state=[rp.ACTIVE, rp.FAILED, rp.CANCELED])
 
         cuds = []
         for generation in range(generations):
@@ -445,7 +450,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
             # it is difficult to really test the agent if queuing time is too short.
             # This barrier waits with starting the agent until all units have
             # reached the database.
-            if BARRIER_START in barriers:
+            if BARRIER_AGENT_LAUNCH in barriers:
                 umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
                 tmp_fd, tmp_name = tempfile.mkstemp()
                 os.close(tmp_fd)
@@ -1046,7 +1051,7 @@ def exp8(backend):
         repetitions=1,
         generations=5,
         #cu_duration_var=['GUESSTIMATE'],
-        barriers=['start'],
+        barriers=[BARRIER_AGENT_LAUNCH],
         cu_duration_var=[60],
         num_sub_agents_var=[10], # Number of sub-agents to iterate over
         #num_sub_agents_var=[1, 2, 4, 8, 16, 32], # Number of sub-agents to iterate over
@@ -1077,7 +1082,7 @@ def exp9(backend):
         repetitions=1,
         generations=5,
         #cu_duration_var=['GUESSTIMATE'],
-        barriers=['generation'],
+        barriers=[BARRIER_CLIENT_SUBMIT, BARRIER_GENERATION],
         cu_duration_var=[60],
         num_sub_agents_var=[10], # Number of sub-agents to iterate over
         #exclusive_agent_nodes=False,
