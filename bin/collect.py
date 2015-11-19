@@ -18,7 +18,9 @@ def collect(sid):
     # If we run from the titan headnode, collect over GO
     if 'rp.session.titan' in sid:
         access = 'go://olcf#dtn'
+        #access = 'go://olcf#dtn_atlas'
         client_dir = 'go://olcf#dtn/ccs/home/marksant1/ccgrid16/client'
+        #client_dir = 'go://olcf#dtn_atlas/ccs/home/marksant1/ccgrid16/client'
         target_dir = 'go://localhost%s' % TARGET_DIR
     # If we ran on another client, only change the client
     elif 'rp.session.ip-10-184-31-85.santcroos' in sid:
