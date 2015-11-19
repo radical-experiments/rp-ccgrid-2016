@@ -296,13 +296,15 @@ def inject_all(session_ids, storage):
                 cu_prof_fr_all = cu_prof_fr_all.append(cu_prof_fr)
                 tr_cu_prof_fr_all = tr_cu_prof_fr_all.append(tr_cu_prof_fr)
 
-                ses_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
-                pilot_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
-                unit_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
-                ses_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_prof.pkl'))
-                pilot_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_prof.pkl'))
-                cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
-                tr_cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
+    if storage == 'pickle':
+        report.header("Writing dataframes to disk.\n")
+        ses_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
+        pilot_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
+        unit_info_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
+        ses_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'session_prof.pkl'))
+        pilot_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'pilot_prof.pkl'))
+        cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
+        tr_cu_prof_fr_all.to_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
 
 
 ###############################################################################
