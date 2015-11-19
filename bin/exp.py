@@ -20,6 +20,8 @@ import tempfile
 import radical.utils as ru
 report = ru.LogReporter(name='radical.pilot')
 
+BARRIER_START='start'
+BARRIER_GENERATION='generation'
 
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local
@@ -314,7 +316,7 @@ def construct_agent_config(num_sub_agents, num_exec_instances_per_sub_agent, tar
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, generations, cu_mpi, profiling, agent_config, cancel_on_all_started=False, barrier=None, metadata=None):
+def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu_count, generations, cu_mpi, profiling, agent_config, cancel_on_all_started=False, barriers=[], metadata=None):
 
     # Profiling
     if profiling:
@@ -374,7 +376,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
     new_cfg.virtenv_mode = VIRTENV_MODE
 
     # Barrier
-    if barrier == 'start':
+    if BARRIER_START in barriers:
         new_cfg.pre_bootstrap_1.append("export RADICAL_PILOT_BARRIER=$PWD/staging_area/%s" % 'start_barrier')
 
     # now add the entry back.  As we did not change the config name, this will
@@ -424,27 +426,26 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
                 cuds.append(cud)
 
             # Switch behavior based on barrier type
-            if barrier == 'generation':
+            if BARRIER_GENERATION in barriers:
                 # We want to the submission below to happen for this set of units only
+                report.info("Submitting %d units for generation %d.\n" % (len(cuds), generation))
                 pass
-            elif barrier != 'generation' and generation == generations-1:
-                report.info("Barrier: %s, generation: %d, generations: %d" % (barrier, generation, generations))
+            elif BARRIER_GENERATION not in barriers and generation == generations-1:
+                report.info("Submitting %d units for all %d generations.\n" % (len(cuds), generations))
                 pass
-            elif barrier != 'generation' and generation != generations-1:
-                report.info("Barrier: %s, generation: %d, generations: %d" % (barrier, generation, generations))
-                # We will add all the generations at once and only fall through with the last generation
+            elif BARRIER_GENERATION not in barriers and generation != generations-1:
+                # We will add all the generations at once and only fall through with the last generation only
                 continue
             else:
-                raise("Unexpected condition. Barrier: %s, generation: %d, generations: %d" % (barrier, generation, generations))
+                raise("Unexpected condition. Barriers: %s, generation: %d, generations: %d" % (barriers, generation, generations))
 
-            report.info("Submitting %d units." % len(cuds))
             units = umgr.submit_units(cuds)
 
             # With the current un-bulkyness of the client <-> mongodb interaction,
             # it is difficult to really test the agent if queuing time is too short.
             # This barrier waits with starting the agent until all units have
             # reached the database.
-            if barrier == 'start':
+            if BARRIER_START in barriers:
                 umgr.wait_units(state=rp.AGENT_STAGING_INPUT_PENDING)
                 tmp_fd, tmp_name = tempfile.mkstemp()
                 os.close(tmp_fd)
@@ -505,7 +506,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
 #
 # Iterable: [cu_cores_var, cu_duration_var, num_sub_agents_var, num_exec_instances_per_sub_agent_var, nodes_var]
 # Quantitative: repetitions, [cu_count | generations], pilot_runtime
-# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling, barrier
+# Config: backend, exclusive_agent_nodes, label, sort_nodes, skip_few_nodes, profiling, barriers
 # Static: cu=/bin/sleep
 #
 def iterate_experiment(
@@ -513,7 +514,7 @@ def iterate_experiment(
         label,
         repetitions=1,
         exclusive_agent_nodes=True,
-        barrier=None,
+        barriers=[],
         cu_cores_var=[1], # Number of cores per CU to iterate over
         cu_duration_var=[0], # Duration of the payload
         cancel_on_all_started=False, # Quit once everything is started.
@@ -608,7 +609,7 @@ def iterate_experiment(
                             # Fire!!
                             sid, meta = run_experiment(
                                 backend=backend,
-                                barrier=barrier,
+                                barriers=barriers,
                                 pilot_cores=pilot_cores,
                                 pilot_runtime=pilot_runtime,
                                 cu_runtime=cu_duration,
@@ -1045,7 +1046,7 @@ def exp8(backend):
         repetitions=1,
         generations=5,
         #cu_duration_var=['GUESSTIMATE'],
-        barrier='start',
+        barriers=['start'],
         cu_duration_var=[60],
         num_sub_agents_var=[10], # Number of sub-agents to iterate over
         #num_sub_agents_var=[1, 2, 4, 8, 16, 32], # Number of sub-agents to iterate over
@@ -1076,7 +1077,7 @@ def exp9(backend):
         repetitions=1,
         generations=5,
         #cu_duration_var=['GUESSTIMATE'],
-        barrier='generation',
+        barriers=['generation'],
         cu_duration_var=[60],
         num_sub_agents_var=[10], # Number of sub-agents to iterate over
         #exclusive_agent_nodes=False,
