@@ -5,7 +5,7 @@ import glob
 import pandas as pd
 import radical.pilot as rp
 
-from common import PICKLE_DIR, JSON_DIR
+from common import PICKLE_DIR
 
 # Global Pandas settings
 pd.set_option('display.width', 180)
@@ -137,17 +137,17 @@ def plot(unit_prof_df, tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, si
 
 ###############################################################################
 #
-def find_sessions(json_dir):
+def find_sessions(dir):
 
-    session_paths = glob.glob('%s/rp.session.*json' % json_dir)
+    session_paths = glob.glob('%s/rp.session.*' % dir)
     if not session_paths:
-        raise Exception("No session files found in directory %s" % json_dir)
+        raise Exception("No session files found in directory %s" % dir)
 
     session_files = [os.path.basename(e) for e in session_paths]
 
     session_ids = [e.rsplit('.json')[0] for e in session_files]
 
-    print "Found sessions in %s: %s" % (json_dir, session_ids)
+    print "Found sessions in %s: %s" % (dir, session_ids)
 
     return session_ids
 
@@ -158,11 +158,6 @@ if __name__ == '__main__':
 
     session_ids = []
 
-    unit_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
-    pilot_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
-    unit_prof_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
-    tr_unit_prof_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
-    session_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
 
     # Read from file if specified, otherwise read from stdin
     f = open(sys.argv[1]) if len(sys.argv) > 1 else sys.stdin
@@ -170,7 +165,15 @@ if __name__ == '__main__':
         session_ids.append(line.strip())
 
     if not session_ids:
-        session_ids = find_sessions(JSON_DIR)
+        session_ids = find_sessions(PICKLE_DIR)
 
     for sid in session_ids:
+        session_dir = os.path.join(PICKLE_DIR, sid)
+
+        unit_info_df = pd.read_pickle(os.path.join(session_dir, 'unit_info.pkl'))
+        pilot_info_df = pd.read_pickle(os.path.join(session_dir, 'pilot_info.pkl'))
+        unit_prof_df = pd.read_pickle(os.path.join(session_dir, 'unit_prof.pkl'))
+        tr_unit_prof_df = pd.read_pickle(os.path.join(session_dir, 'tr_unit_prof.pkl'))
+        session_info_df = pd.read_pickle(os.path.join(session_dir, 'session_info.pkl'))
+
         plot(unit_prof_df, tr_unit_prof_df, session_info_df, unit_info_df, pilot_info_df, sid)
