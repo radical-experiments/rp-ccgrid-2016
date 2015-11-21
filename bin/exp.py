@@ -336,6 +336,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         'cu_cores': cu_cores,
         'cu_count': cu_count,
         'generations': generations,
+        'barriers': barriers,
         'profiling': profiling
     })
 
