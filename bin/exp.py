@@ -181,11 +181,11 @@ def pilot_state_cb(pilot, state):
 
     report.warn("\n[Callback]: ComputePilot '%s' state: %s." % (pilot.uid, state))
 
-    if state == rp.FAILED:
-        raise rp.PilotException("Pilot %s failed (CB)" % pilot.uid)
+    #if state == rp.FAILED:
+    #    raise rp.PilotException("Pilot %s failed (CB)" % pilot.uid)
 
-    if state == rp.CANCELED:
-        raise rp.PilotException("Pilot %s canceled (CB)" % pilot.uid)
+    #if state == rp.CANCELED:
+    #    raise rp.PilotException("Pilot %s canceled (CB)" % pilot.uid)
 
 CNT = 0
 #------------------------------------------------------------------------------
