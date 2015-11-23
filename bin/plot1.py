@@ -13,28 +13,6 @@ import matplotlib as mp
 
 
 ###############################################################################
-# Get the pilots launch methods for this session
-def get_lm(unit_info_df, pilot_info_df, sid, mpi):
-
-    lms = {}
-
-    # Get all units and all pilots for session
-    unit_info = unit_info_df[unit_info_df['sid'] == sid]
-    pilot_info = pilot_info_df[pilot_info_df['sid'] == sid]
-
-    pilots_in_session = unit_info['pilot'].unique()
-
-    for pilot_id in pilots_in_session:
-        pilot = pilot_info.loc[pilot_id]
-        if mpi:
-            lm = pilot['agent_config.mpi_launch_method']
-        else:
-            lm = pilot['agent_config.task_launch_method']
-        lms[pilot_id] = lm
-
-    return lms
-
-###############################################################################
 # Get the value of MPI for the first CU (assuming all equal)
 def get_mpi(unit_info_df, sid):
 
