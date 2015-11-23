@@ -17,10 +17,9 @@ colors = { 'pilot_bar': 'green', 'gen_bar': 'red', 'client_bar': 'blue'}
 ###############################################################################
 #
 # TODO: add concurrent CUs on right axis
-def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
+def plot(sids):
 
     labels = []
-
 
     for key in sids:
 
@@ -28,8 +27,15 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
 
         for sid in sids[key]:
 
+            session_dir = os.path.join(PICKLE_DIR, sid)
+
+            unit_info_df = pd.read_pickle(os.path.join(session_dir, 'unit_info.pkl'))
+            pilot_info_df = pd.read_pickle(os.path.join(session_dir, 'pilot_info.pkl'))
+            tr_unit_prof_df = pd.read_pickle(os.path.join(session_dir, 'tr_unit_prof.pkl'))
+            session_info_df = pd.read_pickle(os.path.join(session_dir, 'session_info.pkl'))
+
             # Legend info
-            info = info_df.loc[sid]
+            info = session_info_df.loc[sid]
 
             cores = info['metadata.cu_count'] # / info['metadata.generations']
 
@@ -85,11 +91,6 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
 #
 if __name__ == '__main__':
 
-    unit_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
-    pilot_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
-    tr_unit_prof_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'tr_unit_prof.pkl'))
-    session_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
-
     session_ids = {
         'pilot_bar': [
             # Comet after scheduler fix2
@@ -112,15 +113,22 @@ if __name__ == '__main__':
             "rp.session.ip-10-184-31-85.santcroos.016758.0020", # 48
         ],
         'client_bar': [
-            "rp.session.ip-10-184-31-85.santcroos.016759.0016", # 1
-            "rp.session.ip-10-184-31-85.santcroos.016759.0015", # 2
-            "rp.session.ip-10-184-31-85.santcroos.016759.0014", # 4
-            "rp.session.ip-10-184-31-85.santcroos.016759.0009", # 8
-            "rp.session.ip-10-184-31-85.santcroos.016759.0001", # 16
-            "rp.session.ip-10-184-31-85.santcroos.016759.0000", # 32
-            "rp.session.ip-10-184-31-85.santcroos.016759.0010", # 48
-            "rp.session.ip-10-184-31-85.santcroos.016760.0002",
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0016", # 1
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0015", # 2
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0014", # 4
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0009", # 8
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0001", # 16
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0000", # 32
+            # "rp.session.ip-10-184-31-85.santcroos.016759.0010", # 48
+            # "rp.session.ip-10-184-31-85.santcroos.016760.0002",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0010",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0011",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0012",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0013",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0014",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0015",
+            "rp.session.ip-10-184-31-85.santcroos.016760.0016",
         ]
-}
+    }
 
-    plot(tr_unit_prof_df, session_info_df, unit_info_df, pilot_info_df, session_ids)
+    plot(session_ids)
