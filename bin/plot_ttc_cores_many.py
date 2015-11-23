@@ -80,22 +80,6 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
     mp.pyplot.savefig('plot_ttc_cores_many.pdf')
     mp.pyplot.close()
 
-###############################################################################
-#
-def find_sessions(json_dir):
-
-    session_paths = glob.glob('%s/rp.session.*json' % json_dir)
-    if not session_paths:
-        raise Exception("No session files found in directory %s" % json_dir)
-
-    session_files = [os.path.basename(e) for e in session_paths]
-
-    session_ids = [e.rsplit('.json')[0] for e in session_files]
-
-    print "Found sessions in %s: %s" % (json_dir, session_ids)
-
-    return session_ids
-
 
 ###############################################################################
 #
