@@ -71,3 +71,24 @@ def get_resources(unit_info_df, pilot_info_df, sid):
         resources[pilot_id] = label
 
     return resources
+
+
+###############################################################################
+# Get the pilots spawners for this session
+def get_spawners(unit_info_df, pilot_info_df, sid):
+
+    spawners = {}
+
+    # Get all units and all pilots for session
+    unit_info = unit_info_df[unit_info_df['sid'] == sid]
+    pilot_info = pilot_info_df[pilot_info_df['sid'] == sid]
+
+    pilots_in_session = unit_info['pilot'].unique()
+
+    for pilot_id in pilots_in_session:
+        pilot = pilot_info.loc[pilot_id]
+        spawner = pilot['agent_config.spawner']
+
+        spawners[pilot_id] = spawner
+
+    return spawners
