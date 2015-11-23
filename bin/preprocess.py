@@ -192,7 +192,7 @@ def preprocess(sid):
         print ses_info_fr.head()
 
     except:
-        report.error("Failed to pre-process data")
+        report.error("Failed to pre-process data for session %s" % sid)
         return
 
     report.header("Writing dataframes to disk.\n")
