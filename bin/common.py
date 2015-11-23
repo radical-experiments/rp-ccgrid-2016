@@ -1,4 +1,5 @@
 import os
+import glob
 
 EXPERIMENT_DIR = '/Users/mark/ccgrid16/experiments'
 
@@ -29,3 +30,21 @@ def get_ppn(unit_info_df, pilot_info_df, sid):
         ppn_values[pilot_id] = ppn
 
     return ppn_values
+
+###############################################################################
+#
+def find_preprocessed_sessions():
+
+    dir = PICKLE_DIR
+
+    session_paths = glob.glob('%s/rp.session.*' % dir)
+    if not session_paths:
+        raise Exception("No session files found in directory %s" % dir)
+
+    session_files = [os.path.basename(e) for e in session_paths]
+
+    session_ids = [e.rsplit('.json')[0] for e in session_files]
+
+    print "Found sessions in %s: %s" % (dir, session_ids)
+
+    return session_ids

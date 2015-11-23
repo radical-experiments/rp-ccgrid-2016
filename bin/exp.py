@@ -336,6 +336,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         'cu_cores': cu_cores,
         'cu_count': cu_count,
         'generations': generations,
+        'barriers': barriers,
         'profiling': profiling
     })
 
@@ -490,7 +491,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         # corresponding KeyboardInterrupt exception for shutdown.  We also catch
         # SystemExit (which gets raised if the main threads exits for some other
         # reason).
-        report.eror("need to exit now: %s\n" % e)
+        report.error("need to exit now: %s\n" % e)
 
     finally:
 
