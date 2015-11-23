@@ -11,6 +11,7 @@ PICKLE_DIR = os.path.join(EXPERIMENT_DIR, 'data/pickle')
 
 RADICAL_PILOT_DBURL = None
 
+
 ###############################################################################
 # Get the pilots ppn values for this session
 def get_ppn(unit_info_df, pilot_info_df, sid):
@@ -31,6 +32,7 @@ def get_ppn(unit_info_df, pilot_info_df, sid):
 
     return ppn_values
 
+
 ###############################################################################
 #
 def find_preprocessed_sessions():
@@ -48,3 +50,24 @@ def find_preprocessed_sessions():
     print "Found sessions in %s: %s" % (dir, session_ids)
 
     return session_ids
+
+
+###############################################################################
+# Get the pilots resource labels for this session
+def get_resources(unit_info_df, pilot_info_df, sid):
+
+    resources = {}
+
+    # Get all units and all pilots for session
+    unit_info = unit_info_df[unit_info_df['sid'] == sid]
+    pilot_info = pilot_info_df[pilot_info_df['sid'] == sid]
+
+    pilots_in_session = unit_info['pilot'].unique()
+
+    for pilot_id in pilots_in_session:
+        pilot = pilot_info.loc[pilot_id]
+        label = pilot['description.resource']
+
+        resources[pilot_id] = label
+
+    return resources

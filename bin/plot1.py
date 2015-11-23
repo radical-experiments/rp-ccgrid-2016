@@ -3,34 +3,13 @@ import sys
 import time
 import pandas as pd
 
-from common import PICKLE_DIR, find_preprocessed_sessions
+from common import PICKLE_DIR, find_preprocessed_sessions, get_resources
 
 # Global Pandas settings
 pd.set_option('display.width', 180)
 pd.set_option('io.hdf.default_format','table')
 
 import matplotlib as mp
-
-
-###############################################################################
-# Get the pilots resource labels for this session
-def get_resources(unit_info_df, pilot_info_df, sid):
-
-    resources = {}
-
-    # Get all units and all pilots for session
-    unit_info = unit_info_df[unit_info_df['sid'] == sid]
-    pilot_info = pilot_info_df[pilot_info_df['sid'] == sid]
-
-    pilots_in_session = unit_info['pilot'].unique()
-
-    for pilot_id in pilots_in_session:
-        pilot = pilot_info.loc[pilot_id]
-        label = pilot['description.resource']
-
-        resources[pilot_id] = label
-
-    return resources
 
 
 ###############################################################################
