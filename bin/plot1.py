@@ -3,22 +3,13 @@ import sys
 import time
 import pandas as pd
 
-from common import PICKLE_DIR, find_preprocessed_sessions, get_resources, get_spawners
+from common import PICKLE_DIR, find_preprocessed_sessions, get_resources, get_spawners, get_lm, get_mpi
 
 # Global Pandas settings
 pd.set_option('display.width', 180)
 pd.set_option('io.hdf.default_format','table')
 
 import matplotlib as mp
-
-
-###############################################################################
-# Get the value of MPI for the first CU (assuming all equal)
-def get_mpi(unit_info_df, sid):
-
-    # Get all units and all pilots for session
-    unit_info = unit_info_df[unit_info_df['sid'] == sid]
-    return unit_info.iloc[0]['description.mpi']
 
 
 ###############################################################################

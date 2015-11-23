@@ -115,3 +115,12 @@ def get_lm(unit_info_df, pilot_info_df, sid, mpi):
         lms[pilot_id] = lm
 
     return lms
+
+
+###############################################################################
+# Get the value of MPI for the first CU (assuming all equal)
+def get_mpi(unit_info_df, sid):
+
+    # Get all units and all pilots for session
+    unit_info = unit_info_df[unit_info_df['sid'] == sid]
+    return unit_info.iloc[0]['description.mpi']
