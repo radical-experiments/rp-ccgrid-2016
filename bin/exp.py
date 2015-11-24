@@ -179,7 +179,7 @@ def pilot_state_cb(pilot, state):
     if not pilot:
         return
 
-    report.warn("\n[Callback]: ComputePilot '%s' state: %s." % (pilot.uid, state))
+    report.warn("\n[Callback]: ComputePilot '%s' state: %s.\n" % (pilot.uid, state))
 
     #if state == rp.FAILED:
     #    raise rp.PilotException("Pilot %s failed (CB)" % pilot.uid)
