@@ -334,7 +334,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         'pilot_runtime': pilot_runtime,
         'cu_runtime': cu_runtime,
         'cu_cores': cu_cores,
-        'cu_count': cu_count,
+        'cu_count': cu_count, # total cu count
         'generations': generations,
         'barriers': barriers,
         'profiling': profiling
@@ -421,9 +421,12 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
             report.info("Waiting for pilot %s to become active ...\n" % pilot.uid)
             pilot.wait(state=[rp.ACTIVE, rp.FAILED, rp.CANCELED])
 
+        if cu_count % generations:
+            raise Exception("Number of CUs %d dont spread even over %d generations!\n" % (cu_count, generations))
+
         cuds = []
         for generation in range(generations):
-            for unit_count in range(0, cu_count):
+            for unit_count in range(0, cu_count / generations):
                 cud = rp.ComputeUnitDescription()
                 cud.executable     = "/bin/sh"
                 cud.arguments      = ["-c", "date && hostname -f && sleep %d && date" % cu_runtime]
@@ -591,16 +594,18 @@ def iterate_experiment(
                             if skip_few_nodes and nodes < cu_cores:
                                 continue
 
+                            # Calculate the number of cores per generation
+                            cus_per_gen = effective_cores / cu_cores
+
                             # Check if fixed cu_count was specified
                             # Note: make a copy because of the loop
                             if cu_count:
                                 this_cu_count = cu_count
                             else:
                                 # keep core consumption equal
-                                this_cu_count = effective_cores / cu_cores
+                                this_cu_count = cus_per_gen * generations
 
                             if cu_duration == 'GUESSTIMATE':
-                                cus_per_gen = effective_cores / cu_cores
                                 cu_duration = 60 + cus_per_gen / num_sub_agents
                                 report.warn("CU_DURATION GUESSTIMATED at %d seconds.\n" % cu_duration)
 
