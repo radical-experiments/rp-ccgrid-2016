@@ -16,7 +16,7 @@ import matplotlib as mp
 ###############################################################################
 #
 # TODO: add concurrent CUs on right axis
-def plot(unit_prof_df, info_df, unit_info_df, pilot_info_df, sids, value, label=''):
+def plot(sids, value, label=''):
 
     labels = []
 
@@ -24,8 +24,15 @@ def plot(unit_prof_df, info_df, unit_info_df, pilot_info_df, sids, value, label=
 
     for sid in sids:
 
+        session_dir = os.path.join(PICKLE_DIR, sid)
+
+        unit_info_df = pd.read_pickle(os.path.join(session_dir, 'unit_info.pkl'))
+        pilot_info_df = pd.read_pickle(os.path.join(session_dir, 'pilot_info.pkl'))
+        unit_prof_df = pd.read_pickle(os.path.join(session_dir, 'unit_prof.pkl'))
+        session_info_df = pd.read_pickle(os.path.join(session_dir, 'session_info.pkl'))
+
         # Legend info
-        info = info_df.loc[sid]
+        info = session_info_df.loc[sid]
 
         # For this call assume that there is only one pilot per session
         resources = get_resources(unit_info_df, pilot_info_df, sid)
@@ -124,11 +131,6 @@ def find_sessions(json_dir):
 #
 if __name__ == '__main__':
 
-    unit_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_info.pkl'))
-    pilot_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'pilot_info.pkl'))
-    unit_prof_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'unit_prof.pkl'))
-    session_info_df = pd.read_pickle(os.path.join(PICKLE_DIR, 'session_info.pkl'))
-
     session_ids = [
         # Comet before scheduler fix:
         # "rp.session.ip-10-184-31-85.santcroos.016743.0005",
@@ -172,4 +174,4 @@ if __name__ == '__main__':
     label = '_10sa_1ew'
 
     for value in ['sched', 'exec']:
-        plot(unit_prof_df, session_info_df, unit_info_df, pilot_info_df, session_ids, value, label)
+        plot(session_ids, value, label)
