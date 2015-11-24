@@ -14,12 +14,11 @@ pd.set_option('io.hdf.default_format','table')
 
 import matplotlib as mp
 
-colors = { 'pilot_bar': 'green', 'gen_bar': 'red', 'client_bar': 'blue'}
 
 ###############################################################################
 #
 # TODO: add concurrent CUs on right axis
-def plot(sids):
+def plot(sids, paper=False):
 
     labels = []
 
@@ -63,26 +62,31 @@ def plot(sids):
 
         orte_df = pd.DataFrame(orte_ttc)
 
-        labels.append("Config: %s" % key)
-        ax = orte_df.mean().plot(kind='line', color=colors[key])
+        labels.append("%s" % barrier_legend[key])
+        ax = orte_df.mean().plot(kind='line', color=barrier_colors[key], marker=barrier_marker[key], fontsize=BARRIER_FONTSIZE, linewidth=2)
 
     print 'labels: %s' % labels
-    mp.pyplot.legend(labels, loc='upper left', fontsize=5)
-    mp.pyplot.title("TTC for a varying number of 'concurrent' CUs.\n"
-                    "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
-                    "Constant number of %d sub-agent with %d ExecWorker(s) each.\n"
-                    "RP: %s - RS: %s - RU: %s"
-                   % (info['metadata.generations'], info['metadata.cu_cores'], info['metadata.cu_runtime'], resource_label,
-                      info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
-                      info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
-                      ), fontsize=8)
-    mp.pyplot.xlabel("Number of Cores")
-    mp.pyplot.ylabel("Time to Completion (s)")
-    #mp.pyplot.ylim(0)
+    mp.pyplot.legend(labels, loc='lower left', fontsize=BARRIER_FONTSIZE)
+    if not paper:
+        mp.pyplot.title("TTC for a varying number of 'concurrent' CUs.\n"
+            "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
+            "Constant number of %d sub-agent with %d ExecWorker(s) each.\n"
+            "RP: %s - RS: %s - RU: %s"
+           % (info['metadata.generations'], info['metadata.cu_cores'], info['metadata.cu_runtime'], resource_label,
+              info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
+              info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
+              ), fontsize=8)
+    mp.pyplot.xlabel("# Cores", fontsize=BARRIER_FONTSIZE)
+    mp.pyplot.ylabel("Time to Completion (s)", fontsize=BARRIER_FONTSIZE)
+    mp.pyplot.ylim(0)
     #ax.get_xaxis().set_ticks([])
     #ax.get_xaxis.set
 
-    mp.pyplot.savefig('plot_ttc_cores_many.pdf')
+    if paper:
+        mp.pyplot.savefig('plot_ttc_cores_barriers.pdf')
+    else:
+        mp.pyplot.savefig('plot_ttc_cores_many.pdf')
+
     mp.pyplot.close()
 
 
@@ -129,15 +133,17 @@ if __name__ == '__main__':
             # "rp.session.ip-10-184-31-85.santcroos.016759.0001", # 16
             # "rp.session.ip-10-184-31-85.santcroos.016759.0000", # 32
             # "rp.session.ip-10-184-31-85.santcroos.016759.0010", # 48
-            # "rp.session.ip-10-184-31-85.santcroos.016760.0002",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0010",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0011",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0012",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0013",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0014",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0015",
-            "rp.session.ip-10-184-31-85.santcroos.016760.0016",
+
+            #"rp.session.ip-10-184-31-85.santcroos.016762.0000", # 1
+            "rp.session.ip-10-184-31-85.santcroos.016760.0007", # 1
+            "rp.session.ip-10-184-31-85.santcroos.016760.0005", # 2
+            "rp.session.ip-10-184-31-85.santcroos.016760.0003", # 4
+            #"rp.session.ip-10-184-31-85.santcroos.016760.0009", # 8
+            "rp.session.ip-10-184-31-85.santcroos.016762.0003", # 8
+            "rp.session.ip-10-184-31-85.santcroos.016760.0004", # 16
+            "rp.session.ip-10-184-31-85.santcroos.016760.0008", # 32
+            "rp.session.ip-10-184-31-85.santcroos.016760.0006", # 48
         ]
     }
 
-    plot(session_ids)
+    plot(session_ids, paper=True)
