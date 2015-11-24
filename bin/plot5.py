@@ -44,7 +44,8 @@ def plot(sids, value, label=''):
 
         # We sort the units based on the order they arrived at the agent
         #ufs = uf.sort('awo_get_u_pend')
-        cores = info['metadata.cu_count'] / info['metadata.generations']
+
+        cores = info['metadata.effective_cores']
 
         if value == 'sched':
             #

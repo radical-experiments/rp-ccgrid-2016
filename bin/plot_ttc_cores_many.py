@@ -37,10 +37,7 @@ def plot(sids):
             # Legend info
             info = session_info_df.loc[sid]
 
-            cores = info['metadata.cu_count'] # / info['metadata.generations']
-
-            if key == 'pilot_bar':
-                cores /= 5
+            cores = info['metadata.effective_cores']
 
             if cores not in orte_ttc:
                 orte_ttc[cores] = []
