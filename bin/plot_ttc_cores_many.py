@@ -4,7 +4,9 @@ import time
 import glob
 import pandas as pd
 
-from common import PICKLE_DIR, get_resources
+from common import PICKLE_DIR, get_resources,\
+    BARRIER_AGENT_LAUNCH, BARRIER_CLIENT_SUBMIT, BARRIER_GENERATION,\
+    barrier_legend, barrier_colors, barrier_marker, BARRIER_FONTSIZE
 
 # Global Pandas settings
 pd.set_option('display.width', 180)
@@ -89,7 +91,7 @@ def plot(sids):
 if __name__ == '__main__':
 
     session_ids = {
-        'pilot_bar': [
+        BARRIER_AGENT_LAUNCH: [
             # Comet after scheduler fix2
             "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
             "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
@@ -99,17 +101,27 @@ if __name__ == '__main__':
             "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
             "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
         ],
-        'gen_bar': [
-            # Comet generation barrier
-            "rp.session.ip-10-184-31-85.santcroos.016758.0016", # 1
-            "rp.session.ip-10-184-31-85.santcroos.016758.0009", # 2
-            "rp.session.ip-10-184-31-85.santcroos.016758.0015", # 4
-            "rp.session.ip-10-184-31-85.santcroos.016758.0010", # 8
-            "rp.session.ip-10-184-31-85.santcroos.016758.0019", # 16
-            "rp.session.ip-10-184-31-85.santcroos.016758.0000", # 32
-            "rp.session.ip-10-184-31-85.santcroos.016758.0020", # 48
+        BARRIER_GENERATION: [
+            # Comet generation barrier / exp9
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0016", # 1
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0009", # 2
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0015", # 4
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0010", # 8
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0019", # 16
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0000", # 32
+            # "rp.session.ip-10-184-31-85.santcroos.016758.0020", # 48
+
+            "rp.session.ip-10-184-31-85.santcroos.016760.0010", # 24 / 1
+            "rp.session.ip-10-184-31-85.santcroos.016760.0015", # 48 / 2
+            "rp.session.ip-10-184-31-85.santcroos.016760.0014", # 96 / 4
+            "rp.session.ip-10-184-31-85.santcroos.016760.0013", # 192 / 8
+            "rp.session.ip-10-184-31-85.santcroos.016762.0001", # 384 / 16
+            "rp.session.ip-10-184-31-85.santcroos.016760.0016", # 768 / 32
+            "rp.session.ip-10-184-31-85.santcroos.016762.0002", # 1152 / 48
         ],
-        'client_bar': [
+        BARRIER_CLIENT_SUBMIT: [
+            # Single client barrier / exp10
+
             # "rp.session.ip-10-184-31-85.santcroos.016759.0016", # 1
             # "rp.session.ip-10-184-31-85.santcroos.016759.0015", # 2
             # "rp.session.ip-10-184-31-85.santcroos.016759.0014", # 4

@@ -17,12 +17,10 @@ import inspect
 import argparse
 import tempfile
 
+from common import BARRIER_AGENT_LAUNCH, BARRIER_CLIENT_SUBMIT, BARRIER_GENERATION
+
 import radical.utils as ru
 report = ru.LogReporter(name='radical.pilot')
-
-BARRIER_AGENT_LAUNCH= 'barrier_agent_launch'
-BARRIER_CLIENT_SUBMIT='barrier_client_submit'
-BARRIER_GENERATION='generation'
 
 # Whether and how to install new RP remotely
 RP_VERSION = "local" # debug, installed, local

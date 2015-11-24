@@ -11,6 +11,29 @@ PICKLE_DIR = os.path.join(EXPERIMENT_DIR, 'data/pickle')
 
 RADICAL_PILOT_DBURL = None
 
+#
+# Various barrier constants
+#
+BARRIER_AGENT_LAUNCH= 'barrier_agent_launch'
+BARRIER_CLIENT_SUBMIT='barrier_client_submit'
+BARRIER_GENERATION='barrier_generation'
+barrier_legend = {
+    BARRIER_AGENT_LAUNCH: 'Pilot Barrier',
+    BARRIER_GENERATION: 'Generation Barrier',
+    BARRIER_CLIENT_SUBMIT: 'Client Barrier'
+}
+barrier_colors = {
+    BARRIER_AGENT_LAUNCH: 'green',
+    BARRIER_GENERATION: 'red',
+    BARRIER_CLIENT_SUBMIT: 'blue'
+}
+barrier_marker = {
+    BARRIER_AGENT_LAUNCH: 'x',
+    BARRIER_GENERATION: '+',
+    BARRIER_CLIENT_SUBMIT: '*'
+}
+BARRIER_FONTSIZE = 15
+
 
 ###############################################################################
 # Get the pilots ppn values for this session
