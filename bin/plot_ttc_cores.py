@@ -120,13 +120,13 @@ if __name__ == '__main__':
         # "rp.session.ip-10-184-31-85.santcroos.016745.0004",
 
         # Comet after scheduler fix2
-        "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
-        "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
-        "rp.session.ip-10-184-31-85.santcroos.016747.0008", # 4 node
-        "rp.session.ip-10-184-31-85.santcroos.016747.0010", # 8 nodes
-        "rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
-        "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
-        "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0008", # 4 node
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0010", # 8 nodes
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
+        #"rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
 
         # Titan after scheduler fix
         # "rp.session.titan-ext7.marksant1.016747.0002", # 16
@@ -137,6 +137,17 @@ if __name__ == '__main__':
         # "rp.session.titan-ext7.marksant1.016747.0006", # 512 cores / 32 nodes
         # "rp.session.titan-ext7.marksant1.016747.0009", # 1024 cores / 64 nodes
         #"rp.session.titan-ext7.marksant1.016747.0010", # 2048 cores / 128 nodes # Doesnt complete
+
+        # Comet generation barrier
+        "rp.session.ip-10-184-31-85.santcroos.016758.0016", # 1
+        "rp.session.ip-10-184-31-85.santcroos.016758.0009", # 2
+        "rp.session.ip-10-184-31-85.santcroos.016758.0015", # 4
+        "rp.session.ip-10-184-31-85.santcroos.016758.0010", # 8
+        #"rp.session.ip-10-184-31-85.santcroos.016758.0002", # 16 broken
+        "rp.session.ip-10-184-31-85.santcroos.016758.0000", # 32
+        #"rp.session.ip-10-184-31-85.santcroos.016758.0001", # 48 broken
+        "rp.session.ip-10-184-31-85.santcroos.016758.0019", #
+        "rp.session.ip-10-184-31-85.santcroos.016758.0020", #
     ]
 
     plot(tr_unit_prof_df, session_info_df, unit_info_df, pilot_info_df, session_ids)

@@ -153,13 +153,13 @@ if __name__ == '__main__':
         #
 
         # Comet after scheduler fix 2:
-        "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
-        "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
+        # "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
+        # "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
         "rp.session.ip-10-184-31-85.santcroos.016747.0008", # 4 node
         "rp.session.ip-10-184-31-85.santcroos.016747.0010", # 8 nodes
-        "rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
-        "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
-        "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
+        # "rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
+        # "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
+        # "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
 
         # Titan after scheduler fix
         # "rp.session.titan-ext7.marksant1.016747.0002", # 16
