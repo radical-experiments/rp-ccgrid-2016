@@ -481,12 +481,13 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
             # reset list for next generation
             cuds = []
 
-
     except rp.PilotException as e:
         session._logger.exception("Caught a Pilot Exception, cleaning up ...")
+        report.error("Caught a Pilot Exception, cleaning up ... (%s)" % e)
 
     except Exception as e:
         session._logger.exception("caught exception")
+        report.error("Caught exception: %s" % e)
         raise
 
     except (KeyboardInterrupt, SystemExit) as e:
@@ -494,7 +495,7 @@ def run_experiment(backend, pilot_cores, pilot_runtime, cu_runtime, cu_cores, cu
         # corresponding KeyboardInterrupt exception for shutdown.  We also catch
         # SystemExit (which gets raised if the main threads exits for some other
         # reason).
-        report.error("need to exit now: %s\n" % e)
+        report.error("Need to exit now!\n")
 
     finally:
 
