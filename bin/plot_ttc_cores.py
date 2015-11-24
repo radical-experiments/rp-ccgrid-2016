@@ -28,7 +28,7 @@ def plot(tr_unit_prof_df, info_df, unit_info_df, pilot_info_df, sids):
         # Legend info
         info = info_df.loc[sid]
 
-        cores = info['metadata.cu_count'] / info['metadata.generations']
+        cores = info['metadata.effective_cores']
 
         if cores not in orte_ttc:
             orte_ttc[cores] = []
