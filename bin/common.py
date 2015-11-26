@@ -33,6 +33,7 @@ barrier_marker = {
     BARRIER_CLIENT_SUBMIT: '*'
 }
 BARRIER_FONTSIZE = 15
+BARRIER_LINEWIDTH = 2
 
 
 ###############################################################################

@@ -6,7 +6,7 @@ import pandas as pd
 
 from common import PICKLE_DIR, get_resources,\
     BARRIER_AGENT_LAUNCH, BARRIER_CLIENT_SUBMIT, BARRIER_GENERATION,\
-    barrier_legend, barrier_colors, barrier_marker, BARRIER_FONTSIZE
+    barrier_legend, barrier_colors, barrier_marker, BARRIER_FONTSIZE, BARRIER_LINEWIDTH
 
 # Global Pandas settings
 pd.set_option('display.width', 180)
@@ -63,7 +63,7 @@ def plot(sids, paper=False):
         orte_df = pd.DataFrame(orte_ttc)
 
         labels.append("%s" % barrier_legend[key])
-        ax = orte_df.mean().plot(kind='line', color=barrier_colors[key], marker=barrier_marker[key], fontsize=BARRIER_FONTSIZE, linewidth=2)
+        ax = orte_df.mean().plot(kind='line', color=barrier_colors[key], marker=barrier_marker[key], fontsize=BARRIER_FONTSIZE, linewidth=BARRIER_LINEWIDTH)
 
     print 'labels: %s' % labels
     mp.pyplot.legend(labels, loc='lower left', fontsize=BARRIER_FONTSIZE)
