@@ -4,7 +4,7 @@ import time
 import glob
 import pandas as pd
 
-from common import PICKLE_DIR, get_ppn, get_resources
+from common import PICKLE_DIR, get_ppn, get_resources, BARRIER_FONTSIZE
 
 # Global Pandas settings
 pd.set_option('display.width', 180)
@@ -16,7 +16,7 @@ import matplotlib as mp
 ###############################################################################
 #
 # TODO: add concurrent CUs on right axis
-def plot(sids, value, label=''):
+def plot(sids, value, label='', paper=False):
 
     labels = []
 
@@ -78,7 +78,8 @@ def plot(sids, value, label=''):
         else:
             df_all = pd.merge(df_all, df,  on='time', how='outer')
 
-        labels.append("Cores: %d" % cores)
+        #labels.append("Cores: %d" % cores)
+        labels.append("%d" % cores)
 
         first = False
 
@@ -87,20 +88,21 @@ def plot(sids, value, label=''):
     #df_all.plot(colormap='Paired')
     df_all.plot()
 
-    mp.pyplot.legend(labels, loc='upper right', fontsize=5)
-    mp.pyplot.title("Concurrent number of CUs in stage '%s'.\n"
-                    "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
-                    "Constant number of %d sub-agent with %d ExecWorker(s) each.\n"
-                    "RP: %s - RS: %s - RU: %s"
-                   % (value,
-                      info['metadata.generations'], info['metadata.cu_cores'], info['metadata.cu_runtime'], resource_label,
-                      info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
-                      info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
-                      ), fontsize=8)
-    mp.pyplot.xlabel("Time (s)")
-    mp.pyplot.ylabel("Concurrent Compute Units")
-    #mp.pyplot.ylim(0)
-    #mp.pyplot.xlim(0, 1800)
+    mp.pyplot.legend(labels, loc='upper right', fontsize=BARRIER_FONTSIZE, labelspacing=0)
+    if not paper:
+        mp.pyplot.title("Concurrent number of CUs in stage '%s'.\n"
+                "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
+                "Constant number of %d sub-agent with %d ExecWorker(s) each.\n"
+                "RP: %s - RS: %s - RU: %s"
+               % (value,
+                  info['metadata.generations'], info['metadata.cu_cores'], info['metadata.cu_runtime'], resource_label,
+                  info['metadata.num_sub_agents'], info['metadata.num_exec_instances_per_sub_agent'],
+                  info['metadata.radical_stack.rp'], info['metadata.radical_stack.rs'], info['metadata.radical_stack.ru']
+                  ), fontsize=BARRIER_FONTSIZE)
+    mp.pyplot.xlabel("Time (s)", fontsize=BARRIER_FONTSIZE)
+    mp.pyplot.ylabel("# Concurrent Compute Units", fontsize=BARRIER_FONTSIZE)
+    #mp.pyplot.ylim(0, 1800)
+    mp.pyplot.xlim(0, 400)
     #ax.get_xaxis().set_ticks([])
 
     mp.pyplot.savefig('plot5_%s%s.pdf' % (value, label))
