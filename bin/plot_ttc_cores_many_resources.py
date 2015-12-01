@@ -41,7 +41,7 @@ def plot(sids, paper=False):
             cores = info['metadata.effective_cores']
 
             if cores not in orte_ttc:
-                orte_ttc[cores] = []
+                orte_ttc[cores] = pd.Series()
 
             # For this call assume that there is only one pilot per session
             resources = get_resources(unit_info_df, pilot_info_df, sid)
@@ -57,10 +57,12 @@ def plot(sids, paper=False):
             # We sort the units based on the order they arrived at the agent
             tufs = tuf.sort('awo_get_u_pend')
 
-            orte_ttc[cores].append((tufs['aec_after_exec'].max() - tufs['awo_get_u_pend'].min()))
+            orte_ttc[cores] = orte_ttc[cores].append(pd.Series((tufs['aec_after_exec'].max() - tufs['awo_get_u_pend'].min())))
 
-
+        print 'orte_ttc raw:', orte_ttc
+        #print 'orte_ttc mean:', orte_ttc.mean()
         orte_df = pd.DataFrame(orte_ttc)
+        print 'orte_ttc df:', orte_df
 
         labels.append("%s" % resource_legend[key])
         ax = orte_df.mean().plot(kind='line', color=resource_colors[key], marker=resource_marker[key], fontsize=BARRIER_FONTSIZE, linewidth=BARRIER_LINEWIDTH)
