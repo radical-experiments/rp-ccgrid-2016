@@ -150,13 +150,13 @@ if __name__ == '__main__':
         #
 
         # Comet after scheduler fix 2:
-        # "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
-        # "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
+        "rp.session.ip-10-184-31-85.santcroos.016747.0011", # 1 node
+        "rp.session.ip-10-184-31-85.santcroos.016747.0009", # 2 node
         "rp.session.ip-10-184-31-85.santcroos.016747.0008", # 4 node
         "rp.session.ip-10-184-31-85.santcroos.016747.0010", # 8 nodes
-        # "rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
-        # "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
-        # "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
+        "rp.session.ip-10-184-31-85.santcroos.016747.0013", # 16 nodes
+        "rp.session.ip-10-184-31-85.santcroos.016747.0000", # 32 nodes
+        "rp.session.ip-10-184-31-85.santcroos.016747.0001", # 48 nodes
 
         # Titan after scheduler fix
         # "rp.session.titan-ext7.marksant1.016747.0002", # 16
@@ -167,9 +167,23 @@ if __name__ == '__main__':
         # "rp.session.titan-ext7.marksant1.016747.0006", # 512 cores / 32 nodes
         # "rp.session.titan-ext7.marksant1.016747.0009", # 1024 cores / 64 nodes
         # "rp.session.titan-ext7.marksant1.016747.0010", # 2048 cores / 128 nodes
+
+        # Blue Waters
+        # #"rp.session.ip-10-184-31-85.santcroos.016765.0001", # 32 - outlier
+        # "rp.session.ip-10-184-31-85.santcroos.016765.0010", # 32
+        # #"rp.session.ip-10-184-31-85.santcroos.016765.0002", # 64 - outlier
+        # "rp.session.ip-10-184-31-85.santcroos.016765.0009", # 64
+        # "rp.session.ip-10-184-31-85.santcroos.016765.0005", # 128
+        # "rp.session.ip-10-184-31-85.santcroos.016765.0004", # 256
+        # #"rp.session.ip-10-184-31-85.santcroos.016765.0021", # 256
+        # #"rp.session.ip-10-184-31-85.santcroos.016765.0006", # 512 - outlier?
+        # #"rp.session.ip-10-184-31-85.santcroos.016765.0011", # 512 - outlier?
+        # #"rp.session.ip-10-184-31-85.santcroos.016765.0020", # 512
+        # "rp.session.ip-10-184-31-85.santcroos.016770.0005", # new
+        # "rp.session.ip-10-184-31-85.santcroos.016765.0003", # 1024
     ]
 
     label = '_10sa_1ew'
 
-    for value in ['sched', 'exec']:
-        plot(session_ids, value, label)
+    for value in ['exec']:
+        plot(session_ids, value, label, paper=True)
