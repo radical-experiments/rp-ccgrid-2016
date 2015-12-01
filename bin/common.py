@@ -35,6 +35,21 @@ barrier_marker = {
 BARRIER_FONTSIZE = 15
 BARRIER_LINEWIDTH = 2
 
+resource_legend = {
+    'titan': 'Titan',
+    'comet': 'Comet',
+    'bw': 'Blue Waters'
+}
+resource_colors = {
+    'titan': 'green',
+    'comet': 'red',
+    'bw': 'blue'
+}
+resource_marker = {
+    'titan': 'x',
+    'comet': '+',
+    'bw': '*'
+}
 
 ###############################################################################
 # Get the pilots ppn values for this session
