@@ -87,11 +87,6 @@ def plot(sids, value, label=''):
     #df_all.plot(colormap='Paired')
     df_all.plot()
 
-    # For this call assume that there is only one pilot per session
-    ppn_values = get_ppn(unit_info_df, pilot_info_df, sid)
-    assert len(ppn_values) == 1
-    ppn = ppn_values.values()[0]
-
     mp.pyplot.legend(labels, loc='upper right', fontsize=5)
     mp.pyplot.title("Concurrent number of CUs in stage '%s'.\n"
                     "%d generations of a variable number of 'concurrent' CUs of %d core(s) with a %ss payload on a variable core pilot on %s.\n"
